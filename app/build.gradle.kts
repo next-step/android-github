@@ -60,7 +60,6 @@ dependencies {
         implementation(UI)
         implementation(MATERIAL)
         implementation(UI_TOOLING)
-        implementation(UI)
         implementation(RUNTIME_LIVEDATA)
         implementation(ACTIVITY)
     }
