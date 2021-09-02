@@ -29,3 +29,7 @@ object ConverterConfig {
 object TestConfig {
     const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:4.9.1"
 }
+
+object CoroutinesConfig {
+    const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
+}
