@@ -1,4 +1,4 @@
-package com.nextstep.edu.github.data
+package com.nextstep.edu.github.data.remote
 
 import com.nextstep.edu.github.domain.RepositoryItem
 import com.squareup.moshi.Moshi
