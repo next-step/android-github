@@ -25,3 +25,7 @@ object ConverterConfig {
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:$MOSHI_VER"
     const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VER"
 }
+
+object TestConfig {
+    const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:4.9.1"
+}

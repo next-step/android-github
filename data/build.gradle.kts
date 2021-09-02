@@ -21,6 +21,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.assertj:assertj-core:3.18.0")
     testImplementation("io.mockk:mockk:1.12.0")
+    testImplementation(TestConfig.MOCK_WEB_SERVER)
 }
 
 tasks.test {
