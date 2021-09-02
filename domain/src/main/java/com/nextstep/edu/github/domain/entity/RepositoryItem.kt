@@ -1,4 +1,4 @@
-package com.nextstep.edu.github.domain
+package com.nextstep.edu.github.domain.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

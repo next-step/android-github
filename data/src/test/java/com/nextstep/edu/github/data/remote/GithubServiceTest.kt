@@ -1,6 +1,6 @@
 package com.nextstep.edu.github.data.remote
 
-import com.nextstep.edu.github.domain.RepositoryItem
+import com.nextstep.edu.github.domain.entity.RepositoryItem
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.io.File
