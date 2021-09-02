@@ -10,3 +10,18 @@ object ComposeConfig {
     const val RUNTIME_LIVEDATA = "androidx.compose.runtime:runtime-livedata:$COMPOSE_VERSION"
     const val ACTIVITY = "androidx.activity:activity-compose:1.3.1"
 }
+
+object NetworkConfig {
+    private const val RETROFIT_VER = "2.9.0"
+
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VER"
+    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VER"
+}
+
+object ConverterConfig {
+    private const val MOSHI_VER = "1.12.0"
+
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:$MOSHI_VER"
+    const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VER"
+}

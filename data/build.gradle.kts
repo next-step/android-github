@@ -11,6 +11,12 @@ java {
 dependencies {
     implementation(project(":domain"))
 
+    NetworkConfig.run {
+        implementation(RETROFIT)
+        implementation(LOGGING_INTERCEPTOR)
+        implementation(CONVERTER_MOSHI)
+    }
+
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.assertj:assertj-core:3.18.0")
