@@ -13,18 +13,21 @@ dependencies {
     implementation(project(":domain"))
 
     NetworkConfig.run {
-        implementation(RETROFIT)
-        implementation(CONVERTER_MOSHI)
+        api(RETROFIT)
+        api(CONVERTER_MOSHI)
     }
 
     ConverterConfig.run {
-        implementation(MOSHI_KOTLIN)
+        api(MOSHI_KOTLIN)
         kapt(MOSHI_KOTLIN_CODEGEN)
     }
 
     implementation(CoroutinesConfig.CORE)
 
-    implementation(HiltConfig.CORE)
+    HiltConfig.run {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")

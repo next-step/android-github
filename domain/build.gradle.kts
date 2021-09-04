@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -11,7 +12,10 @@ java {
 dependencies {
     implementation(CoroutinesConfig.CORE)
 
-    implementation(HiltConfig.CORE)
+    HiltConfig.run {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
