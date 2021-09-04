@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("java-library")
     id("kotlin")
@@ -16,7 +14,6 @@ dependencies {
 
     NetworkConfig.run {
         implementation(RETROFIT)
-        implementation(LOGGING_INTERCEPTOR)
         implementation(CONVERTER_MOSHI)
     }
 

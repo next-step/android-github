@@ -15,7 +15,6 @@ object NetworkConfig {
     private const val RETROFIT_VER = "2.9.0"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VER"
-    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:4.9.1"
     const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VER"
 }
 
