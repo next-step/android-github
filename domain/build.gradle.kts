@@ -9,6 +9,8 @@ java {
 }
 
 dependencies {
+    implementation(CoroutinesConfig.CORE)
+
     implementation(HiltConfig.CORE)
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
