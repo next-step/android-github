@@ -75,6 +75,7 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.18.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("io.mockk:mockk:1.12.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
