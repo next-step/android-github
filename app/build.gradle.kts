@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -62,6 +63,11 @@ dependencies {
         implementation(UI_TOOLING)
         implementation(RUNTIME_LIVEDATA)
         implementation(ACTIVITY)
+    }
+
+    HiltConfig.run {
+        implementation(ANDROID)
+        kapt(COMPILER)
     }
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
