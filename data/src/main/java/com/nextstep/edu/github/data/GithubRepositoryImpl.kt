@@ -1,6 +1,5 @@
 package com.nextstep.edu.github.data
 
-import com.nextstep.edu.github.data.entity.RepositoryItem
 import com.nextstep.edu.github.data.remote.GithubRemoteDataSource
 import com.nextstep.edu.github.domain.GithubRepository
 import com.nextstep.edu.github.domain.dto.RepositoryItemDto
@@ -12,5 +11,5 @@ class GithubRepositoryImpl @Inject constructor(
 
     override suspend fun fetchRepositories(): List<RepositoryItemDto> = githubRemoteDataSource
         .fetchRepositories()
-        .map(RepositoryItem::toDto)
+        .toDto()
 }
