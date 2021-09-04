@@ -39,4 +39,5 @@ object HiltConfig {
     const val ANDROID_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:$HILT_VERSION"
     const val ANDROID = "com.google.dagger:hilt-android:$HILT_VERSION"
     const val COMPILER = "com.google.dagger:hilt-compiler:$HILT_VERSION"
+    const val CORE = "com.google.dagger:hilt-core:$HILT_VERSION"
 }
