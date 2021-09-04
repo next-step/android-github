@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("java-library")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -19,7 +22,7 @@ dependencies {
 
     ConverterConfig.run {
         implementation(MOSHI_KOTLIN)
-        implementation(MOSHI_KOTLIN_CODEGEN)
+        kapt(MOSHI_KOTLIN_CODEGEN)
     }
 
     implementation(CoroutinesConfig.CORE)
