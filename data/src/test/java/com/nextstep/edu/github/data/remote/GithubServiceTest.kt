@@ -1,6 +1,7 @@
 package com.nextstep.edu.github.data.remote
 
-import com.nextstep.edu.github.domain.entity.RepositoryItem
+import com.nextstep.edu.github.data.entity.RepositoryItem
+import com.nextstep.edu.github.domain.dto.RepositoryItemDto
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.io.File
@@ -44,15 +45,15 @@ internal class GithubServiceTest {
         val actual = service.fetchRepositories()
 
         val expected = listOf(
-            RepositoryItem(
+            RepositoryItemDto(
                 fullName = "mojombo/grit",
                 description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
             ),
-            RepositoryItem(
+            RepositoryItemDto(
                 fullName = "wycats/merb-core",
                 description = "Merb Core: All you need. None you don't."
             )
         )
-        assertEquals(expected, actual)
+        assertEquals(expected, actual.map(RepositoryItem::toDto))
     }
 }

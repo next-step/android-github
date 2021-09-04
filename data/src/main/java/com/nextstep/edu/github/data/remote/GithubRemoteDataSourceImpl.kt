@@ -1,8 +1,8 @@
 package com.nextstep.edu.github.data.remote
 
-import com.nextstep.edu.github.domain.entity.RepositoryItem
+import com.nextstep.edu.github.data.entity.RepositoryItem
 
-class GithubRemoteDataSourceImpl(
+internal class GithubRemoteDataSourceImpl(
     private val githubService: GithubService
 ): GithubRemoteDataSource {
 
