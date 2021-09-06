@@ -6,7 +6,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class RepositoryItem(
+internal data class RepositoryItem(
 
 	@Json(name="tags_url")
 	val tagsUrl: String? = null,

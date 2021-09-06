@@ -5,7 +5,7 @@ import com.nextstep.edu.github.domain.GithubRepository
 import com.nextstep.edu.github.domain.dto.RepositoryItemDto
 import javax.inject.Inject
 
-class GithubRepositoryImpl @Inject constructor(
+internal class GithubRepositoryImpl @Inject constructor(
     private val githubRemoteDataSource: GithubRemoteDataSource
 ) : GithubRepository {
 

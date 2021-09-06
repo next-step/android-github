@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Owner(
+internal data class Owner(
 
 	@Json(name="gists_url")
 	val gistsUrl: String? = null,

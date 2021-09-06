@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ServiceModule {
+internal class ServiceModule {
 
     @Provides
     @Singleton
