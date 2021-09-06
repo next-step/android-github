@@ -1,5 +1,6 @@
 package com.nextstep.edu.github.data.entity
 
+import com.nextstep.edu.github.data.DataToDomainMapper
 import com.nextstep.edu.github.domain.dto.RepositoryItemDto
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -144,9 +145,9 @@ internal data class RepositoryItem(
 
 	@Json(name="node_id")
 	val nodeId: String? = null
-) {
+) : DataToDomainMapper<RepositoryItemDto> {
 
-	fun toDto() = RepositoryItemDto(
+	override fun toDto() = RepositoryItemDto(
 		fullName = this.fullName ?: "",
 		description = this.description ?: ""
 	)

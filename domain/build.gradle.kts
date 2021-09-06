@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -9,6 +10,13 @@ java {
 }
 
 dependencies {
+    implementation(CoroutinesConfig.CORE)
+
+    HiltConfig.run {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
+
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.assertj:assertj-core:3.18.0")

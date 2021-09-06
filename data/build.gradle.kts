@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("java-library")
     id("kotlin")
@@ -15,17 +13,21 @@ dependencies {
     implementation(project(":domain"))
 
     NetworkConfig.run {
-        implementation(RETROFIT)
-        implementation(LOGGING_INTERCEPTOR)
-        implementation(CONVERTER_MOSHI)
+        api(RETROFIT)
+        api(CONVERTER_MOSHI)
     }
 
     ConverterConfig.run {
-        implementation(MOSHI_KOTLIN)
+        api(MOSHI_KOTLIN)
         kapt(MOSHI_KOTLIN_CODEGEN)
     }
 
     implementation(CoroutinesConfig.CORE)
+
+    HiltConfig.run {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
