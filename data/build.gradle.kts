@@ -14,6 +14,7 @@ tasks.test {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(Coroutine.core)
     implementation(Retrofit.core)
     implementation(Retrofit.gsonConverter)
 
@@ -21,4 +22,5 @@ dependencies {
     testImplementation(Test.truth)
     testImplementation(Test.mockk)
     testImplementation(OkHttp.mockWebServer)
+    testImplementation(Coroutine.test)
 }

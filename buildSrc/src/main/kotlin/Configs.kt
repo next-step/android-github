@@ -22,6 +22,11 @@ object OkHttp {
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
 }
 
+object Coroutine {
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
+}
+
 object Test {
     const val junit4 = "junit:junit:4.13.2"
     const val junit5 = "org.junit.jupiter:junit-jupiter:5.7.2"
