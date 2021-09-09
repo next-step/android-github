@@ -16,7 +16,7 @@ internal interface GithubService {
     ): Response<List<GithubRepoResponse>>
 
     companion object {
-        private const val BASE_URL = ""
+        private const val BASE_URL = "https://api.github.com"
         fun newInstance(): GithubService = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
