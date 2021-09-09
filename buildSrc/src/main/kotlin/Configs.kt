@@ -19,6 +19,7 @@ object Retrofit {
 
 object OkHttp {
     private const val version = "4.9.1"
+    const val core = "com.squareup.okhttp3:okhttp:$version"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
 }
 

@@ -15,6 +15,7 @@ tasks.test {
 dependencies {
     implementation(project(":domain"))
     implementation(Coroutine.core)
+    implementation(OkHttp.core)
     implementation(Retrofit.core)
     implementation(Retrofit.gsonConverter)
 
