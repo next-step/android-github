@@ -4,5 +4,5 @@ import camp.nextstep.edu.github.domain.entity.GithubRepo
 
 interface GithubRepoRepository {
 
-    suspend fun getRepositoriesOf(userName: String): List<GithubRepo>?
+    suspend fun getRepositoriesOf(userName: String): Result<List<GithubRepo>>
 }

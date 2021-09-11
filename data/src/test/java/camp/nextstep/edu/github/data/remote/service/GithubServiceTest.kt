@@ -33,7 +33,7 @@ internal class GithubServiceTest {
     @Test
     fun `Github 유저의 Repository 목록을 가져올 수 있다`() = runBlocking {
         // given
-        val responseJson = File("src/test/resources/getUserReposSuccessResponse.json").readText()
+        val responseJson = File("src/test/resources/users_malibinyun_repos_success.json").readText()
         val response = MockResponse().setBody(responseJson)
         mockWebServer.enqueue(response)
 
@@ -65,7 +65,7 @@ internal class GithubServiceTest {
     @Test
     fun `없는 유저의 Repository는 조회할 수 없다`() = runBlocking {
         // given
-        val responseJson = File("src/test/resources/getUserReposNotFoundUserResponse.json").readText()
+        val responseJson = File("src/test/resources/users_malibinyun_repos_failure_404.json").readText()
         val response = MockResponse()
             .setResponseCode(404)
             .setBody(responseJson)

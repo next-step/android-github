@@ -3,6 +3,7 @@ package camp.nextstep.edu.github.data
 import camp.nextstep.edu.github.data.remote.response.GithubRepoResponse
 import camp.nextstep.edu.github.data.remote.service.GithubService
 import camp.nextstep.edu.github.domain.entity.GithubRepo
+import camp.nextstep.edu.github.domain.exception.NotFoundUserException
 import camp.nextstep.edu.github.domain.repository.GithubRepoRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
@@ -12,6 +13,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import retrofit2.Response
 
 /**
@@ -46,10 +48,15 @@ internal class RealGithubRepoRepositoryTest {
         )
 
         // when
-        val actualGithubRepos = githubRepoRepository.getRepositoriesOf("malibinYun")
+        val githubReposResult = githubRepoRepository.getRepositoriesOf("malibinYun")
 
         // then
-        assertThat(actualGithubRepos).containsExactlyElementsIn(expectedGithubRepos)
+        val actualGithubRepos = githubReposResult.getOrThrow()
+        assertAll(
+            { assertThat(githubReposResult.isSuccess).isTrue() },
+            { assertThat(actualGithubRepos).containsExactlyElementsIn(expectedGithubRepos) },
+        )
+
     }
 
     @Test
@@ -59,23 +66,31 @@ internal class RealGithubRepoRepositoryTest {
         coEvery { githubService.getUserRepos("malibinYun") } returns reposResponse
 
         // when
-        val actualGithubRepos = githubRepoRepository.getRepositoriesOf("malibinYun")
+        val githubReposResult = githubRepoRepository.getRepositoriesOf("malibinYun")
+        val actualGithubRepos = githubReposResult.getOrThrow()
 
         // then
-        assertThat(actualGithubRepos).isEmpty()
+        assertAll(
+            { assertThat(githubReposResult.isSuccess).isTrue() },
+            { assertThat(actualGithubRepos).isEmpty() },
+        )
     }
 
     @Test
-    fun `존재하지 않는 유저의 Repo를 조회하면 null을 반환한다`() = runBlocking {
+    fun `존재하지 않는 유저의 Repo를 조회하면 NotFoundUserException이 발생한다`() = runBlocking {
         // given
         val userNotFoundResponse = "{}".toResponseBody("application/json".toMediaTypeOrNull())
         val reposResponse = Response.error<List<GithubRepoResponse>>(404, userNotFoundResponse)
         coEvery { githubService.getUserRepos("malibinYun") } returns reposResponse
 
         // when
-        val actualGithubRepos = githubRepoRepository.getRepositoriesOf("malibinYun")
+        val githubReposResult = githubRepoRepository.getRepositoriesOf("malibinYun")
+        val actualException = githubReposResult.exceptionOrNull()
 
         // then
-        assertThat(actualGithubRepos).isNull()
+        assertAll(
+            { assertThat(githubReposResult.isFailure).isTrue() },
+            { assertThat(actualException).isInstanceOf(NotFoundUserException::class.java) },
+        )
     }
 }
