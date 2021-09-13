@@ -7,14 +7,17 @@ import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.entity.GithubRepo
 import camp.nextstep.edu.github.domain.repository.GithubRepoRepository
 import camp.nextstep.edu.github.utils.ToastMessage
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created By Malibin
  * on 9월 13, 2021
  */
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val githubReposRepository: GithubRepoRepository,
 ) : ViewModel() {
 

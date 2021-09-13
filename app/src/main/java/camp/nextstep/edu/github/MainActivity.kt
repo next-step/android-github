@@ -1,15 +1,17 @@
 package camp.nextstep.edu.github
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import camp.nextstep.edu.github.data.Injector
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import camp.nextstep.edu.github.utils.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel: MainViewModel = MainViewModel(Injector.provideGithubRepoRepository())
+    private val mainViewModel: MainViewModel by viewModels()
     private val githubReposAdapter = GithubReposAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
