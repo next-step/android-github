@@ -8,6 +8,6 @@ import androidx.annotation.StringRes
  */
 
 sealed class ToastMessage {
-    class ResourceId(@StringRes val message: Int) : ToastMessage()
-    class StringValue(val message: String) : ToastMessage()
+    data class ResourceId(@StringRes val message: Int) : ToastMessage()
+    data class StringValue(val message: String) : ToastMessage()
 }
