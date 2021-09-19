@@ -14,13 +14,4 @@ internal interface GithubService {
     suspend fun getUserRepos(
         @Path("username") userName: String,
     ): Response<List<GithubRepoResponse>>
-
-    companion object {
-        private const val BASE_URL = "https://api.github.com"
-        fun newInstance(): GithubService = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create()
-    }
 }

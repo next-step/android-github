@@ -4,13 +4,14 @@ import camp.nextstep.edu.github.data.remote.service.GithubService
 import camp.nextstep.edu.github.domain.entity.GithubRepo
 import camp.nextstep.edu.github.domain.exception.NotFoundUserException
 import camp.nextstep.edu.github.domain.repository.GithubRepoRepository
+import javax.inject.Inject
 
 /**
  * Created By Malibin
  * on 9월 09, 2021
  */
 
-internal class RealGithubRepoRepository(
+internal class RealGithubRepoRepository @Inject constructor(
     private val githubService: GithubService,
 ) : GithubRepoRepository {
 

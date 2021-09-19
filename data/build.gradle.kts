@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -18,6 +19,9 @@ dependencies {
     implementation(OkHttp.core)
     implementation(Retrofit.core)
     implementation(Retrofit.gsonConverter)
+
+    implementation(Hilt.core)
+    kapt(Hilt.compiler)
 
     testImplementation(Test.junit5)
     testImplementation(Test.truth)
