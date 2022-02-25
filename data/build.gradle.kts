@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
@@ -9,24 +9,20 @@ android {
     compileSdk = 30
 
     defaultConfig {
-        applicationId = "camp.nextstep.edu.github"
         minSdk = 21
         targetSdk = 30
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["runnerBuilder"] =
             "de.mannodermaus.junit5.AndroidJUnit5Builder"
+
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -36,15 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-    }
 }
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":data"))
 
     Kotlin.apply {
         implementation(STDLIB)
@@ -54,7 +45,6 @@ dependencies {
         implementation(CORE)
         implementation(APPCOMPAT)
         implementation(GOOGLE_MATERIAL)
-        implementation(CONSTRAINT_LAYOUT)
     }
 
     Test.apply {
