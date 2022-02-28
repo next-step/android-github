@@ -1,8 +1,13 @@
 const val KOTLIN_VERSION = "1.5.21"
-const val JUNIT5_VERSION = "5.7.2"
+const val JUNIT5_VERSION = "5.8.2"
 
 object Kotlin {
     const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
+}
+
+object Coroutines {
+    const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
+    const val TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
 }
 
 object Androidx {
@@ -12,18 +17,34 @@ object Androidx {
     const val GOOGLE_MATERIAL = "com.google.android.material:material:1.4.0"
 }
 
-object Test {
-    private const val DE_MANNODERMAUS_JUNIT5 = "1.2.2"
+object Networking {
+    private const val RETROFIT_VERSION = "2.9.0"
+    private const val MOSHI_VERSION = "1.13.0"
+    private const val OKHTTP_VERSION = "4.9.3"
 
-    const val JUNIT4 = "junit:junit:4.13.2"
-    const val JUNIT5 = "org.junit.jupiter:junit-jupiter:$JUNIT5_VERSION"
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
+
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:$MOSHI_VERSION"
+    const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VERSION"
+
+    const val OKHTTP = "com.squareup.okhttp3:okhttp-bom:$OKHTTP_VERSION"
+    const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:$OKHTTP_VERSION"
+}
+
+object Test {
+    private const val DE_MANNODERMAUS_JUNIT5_VERSION = "1.3.0"
+
     const val JUNIT5_JUPITER_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT5_VERSION"
+    const val JUNIT5_JUPITER_ENGINE = "org.junit.jupiter:junit-jupiter-engine:$JUNIT5_VERSION"
+    const val JUNIT5_JUPITER_PARAMS = "org.junit.jupiter:junit-jupiter-params:$JUNIT5_VERSION"
     const val JUNIT5_VINTAGE_ENGINE = "org.junit.vintage:junit-vintage-engine:$JUNIT5_VERSION"
-    const val JUNIT5_ANDROID_TEST_CORE = "de.mannodermaus.junit5:android-test-core:$DE_MANNODERMAUS_JUNIT5"
-    const val JUNIT5_ANDROID_TEST_RUNNER = "de.mannodermaus.junit5:android-test-runner:$DE_MANNODERMAUS_JUNIT5"
+    const val JUNIT5_ANDROID_TEST_CORE = "de.mannodermaus.junit5:android-test-core:$DE_MANNODERMAUS_JUNIT5_VERSION"
+    const val JUNIT5_ANDROID_TEST_RUNNER = "de.mannodermaus.junit5:android-test-runner:$DE_MANNODERMAUS_JUNIT5_VERSION"
 
     const val ANDROIDX_JUNIT = "androidx.test.ext:junit:1.1.3"
-    const val THRUTH = "com.google.truth:truth:1.1.3"
+    const val TRUTH = "com.google.truth:truth:1.1.3"
 
+    const val MOCKK = "io.mockk:mockk:1.12.2"
     const val ESSPRESSO_CORE = "androidx.test.espresso:espresso-core:3.4.0"
 }
