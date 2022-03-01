@@ -18,9 +18,16 @@ dependencies {
         implementation(STDLIB)
     }
 
+    Coroutines.apply {
+        implementation(CORE)
+        implementation(TEST)
+    }
+
     Test.apply {
-        testImplementation(JUNIT5)
+//        testImplementation(JUNIT5)
+        testImplementation(JUNIT5_JUPITER_API)
+        testImplementation(JUNIT5_JUPITER_PARAMS)
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
-        testImplementation(THRUTH)
+        testImplementation(TRUTH)
     }
 }

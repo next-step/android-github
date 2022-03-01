@@ -41,23 +41,40 @@ dependencies {
         implementation(STDLIB)
     }
 
+    Coroutines.apply {
+        implementation(CORE)
+        implementation(TEST)
+    }
+
     Androidx.apply {
         implementation(CORE)
         implementation(APPCOMPAT)
         implementation(GOOGLE_MATERIAL)
     }
 
+    Networking.apply {
+        implementation(RETROFIT)
+        implementation(CONVERTER_MOSHI)
+        implementation(MOSHI_KOTLIN)
+        kapt(MOSHI_KOTLIN_CODEGEN)
+        implementation(OKHTTP)
+        implementation(MOCK_WEB_SERVER)
+    }
+
     Test.apply {
-        testImplementation(JUNIT4)
-        testImplementation(JUNIT5)
+        testImplementation(JUNIT5_JUPITER_API)
+        testRuntimeOnly(JUNIT5_JUPITER_ENGINE)
+        testImplementation(JUNIT5_JUPITER_PARAMS)
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
-        testImplementation(THRUTH)
+        testImplementation(TRUTH)
+        testImplementation(MOCKK)
 
         androidTestImplementation(ANDROIDX_JUNIT)
-        androidTestImplementation(JUNIT5)
         androidTestImplementation(JUNIT5_JUPITER_API)
         androidTestImplementation(JUNIT5_ANDROID_TEST_CORE)
-        androidTestImplementation(ESSPRESSO_CORE)
         androidTestRuntimeOnly(JUNIT5_ANDROID_TEST_RUNNER)
+        androidTestImplementation(ESSPRESSO_CORE)
     }
+
+    testImplementation("app.cash.turbine:turbine:0.7.0")
 }
