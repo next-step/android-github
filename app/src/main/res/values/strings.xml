@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-github</string>
+    <string name="btn_get_repositories_text">Repositories 가져오기</string>
 </resources>
