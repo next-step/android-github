@@ -15,9 +15,8 @@ internal class RemoteGithubDataSource(
 ) : GithubDataSource {
 
     override fun getReposotories(): Flow<List<Repository>> = flow {
-        val responseRepositoryList = githubService.getRepositories()
-        val repositoryList = responseRepositoryList.map(responseRepositoryMapper::mapToDomain)
-
-        emit(repositoryList)
+        githubService.getRepositories()
+            .map(responseRepositoryMapper::mapToDomain)
+            .also { emit(it) }
     }
 }
