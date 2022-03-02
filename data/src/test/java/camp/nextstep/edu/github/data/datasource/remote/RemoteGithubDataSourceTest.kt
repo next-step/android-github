@@ -12,17 +12,17 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class GithubDataSourceTest {
+internal class RemoteGithubDataSourceTest {
 
     private lateinit var githubService: GithubService
     private lateinit var responseRepositoryMapper: ResponseRepositoryMapper
-    private lateinit var githubDataSource: GithubDataSource
+    private lateinit var githubDataSource: RemoteGithubDataSource
 
     @BeforeEach
     internal fun setUp() {
         githubService = mockk(relaxed = true)
         responseRepositoryMapper = ResponseRepositoryMapper()
-        githubDataSource = GithubDataSource(githubService, responseRepositoryMapper)
+        githubDataSource = RemoteGithubDataSource(githubService, responseRepositoryMapper)
     }
 
     @Test
