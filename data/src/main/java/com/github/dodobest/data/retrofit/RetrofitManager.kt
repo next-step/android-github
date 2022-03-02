@@ -1,8 +1,8 @@
 package com.github.dodobest.data.retrofit
 
+import com.github.dodobest.data.GithubRepository
 import com.github.dodobest.data.utils.API
 import com.github.dodobest.data.utils.RESPONSE_STATE
-import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Response
 
@@ -18,13 +18,13 @@ class RetrofitManager {
     fun getRepositories(completion: (RESPONSE_STATE, String) -> Unit) {
         val call = iRetrofit.getRepositories()
 
-        call.enqueue(object: retrofit2.Callback<JsonElement>{
-            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
+        call.enqueue(object: retrofit2.Callback<List<GithubRepository>>{
+            override fun onResponse(call: Call<List<GithubRepository>>, response: Response<List<GithubRepository>>) {
                 println("RetrofitManager - onResponse() called / response : ${response.raw()}")
                 completion(RESPONSE_STATE.OK, response.body().toString())
             }
 
-            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+            override fun onFailure(call: Call<List<GithubRepository>>, t: Throwable) {
                 println("RetrofitManager - onFailure() called")
                 completion(RESPONSE_STATE.FAIL, t.toString())
             }
