@@ -68,6 +68,7 @@ dependencies {
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
         testImplementation(TRUTH)
         testImplementation(MOCKK)
+        testImplementation(TURBINE)
 
         androidTestImplementation(ANDROIDX_JUNIT)
         androidTestImplementation(JUNIT5_JUPITER_API)
@@ -75,6 +76,4 @@ dependencies {
         androidTestRuntimeOnly(JUNIT5_ANDROID_TEST_RUNNER)
         androidTestImplementation(ESSPRESSO_CORE)
     }
-
-    testImplementation("app.cash.turbine:turbine:0.7.0")
 }

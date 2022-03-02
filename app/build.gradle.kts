@@ -62,6 +62,19 @@ dependencies {
         implementation(CONSTRAINT_LAYOUT)
     }
 
+    Compose.apply {
+        implementation(UI)
+        implementation(UI_TOOLING)
+        implementation(FOUNDATION)
+        implementation(MATERIAL_DESIGN)
+        implementation(MATERIAL_ICONS)
+        implementation(MATERIAL_ICONS_EXTENDED)
+        implementation(RUNTIME_LIVEDATA)
+        implementation(ACTIVITY)
+
+        androidTestImplementation(ANDROID_TEST)
+    }
+
     Test.apply {
         testImplementation(JUNIT5_JUPITER_API)
         testRuntimeOnly(JUNIT5_JUPITER_ENGINE)
