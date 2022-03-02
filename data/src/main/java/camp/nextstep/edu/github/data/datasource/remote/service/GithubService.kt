@@ -7,4 +7,8 @@ internal interface GithubService {
 
     @GET("repositories")
     suspend fun getRepositories(): List<ResponseRepository>
+
+    companion object {
+        const val BASE_ENDPOINT = "https://api.github.com/"
+    }
 }

@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data.di
 
-import camp.nextstep.edu.github.data.datasource.remote.environment.Environment
+import camp.nextstep.edu.github.data.datasource.remote.service.GithubService.Companion.BASE_ENDPOINT
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -11,7 +11,7 @@ internal object NetworkModule {
 
     private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Environment.BASE_ENDPOINT)
+            .baseUrl(BASE_ENDPOINT)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
