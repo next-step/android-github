@@ -6,9 +6,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 internal data class ResponseRepository(
 
-    @Json(name = "description")
-    val description: String? = null,
-
     @Json(name = "full_name")
     val fullName: String? = null,
+
+    @Json(name = "description")
+    val description: String? = null,
 )
