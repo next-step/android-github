@@ -1,8 +1,10 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-parcelize")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -19,7 +21,6 @@ android {
         testInstrumentationRunnerArguments["runnerBuilder"] =
             "de.mannodermaus.junit5.AndroidJUnit5Builder"
     }
-
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -39,23 +40,52 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Compose.COMPOSE_VERSION
+    }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("com.google.truth:truth:1.1.3")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
-    androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
-    androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
+    Kotlin.run {
+        implementation(STDLIB)
+    }
+
+    Coroutines.run {
+        implementation(CORE)
+        implementation(ANDROID)
+    }
+
+    Hilt.run {
+        implementation(ANDROID)
+        kapt(COMPILER)
+    }
+
+    Android.run {
+        implementation(CORE)
+        implementation(APPCOMPAT)
+        implementation(MATERIAL)
+        implementation(CONSTRAINTLAYOUT)
+    }
+
+    Test.run {
+        testRuntimeOnly(ENGINE)
+        testImplementation(JUPITER)
+        testImplementation(ASSERTJ)
+        testImplementation(JUNIT4)
+        testImplementation(TRUTH)
+        testImplementation(MOCKK)
+        androidTestImplementation(EXT_JUNIT)
+        androidTestImplementation(ESPRESSO_CORE)
+        androidTestImplementation(API)
+        androidTestImplementation(ANDROID_TEST_CORE)
+        androidTestRuntimeOnly(ANDROID_TEST_RUNNER)
+    }
 }
