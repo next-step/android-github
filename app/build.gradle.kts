@@ -73,6 +73,16 @@ dependencies {
         implementation(APPCOMPAT)
         implementation(MATERIAL)
         implementation(CONSTRAINTLAYOUT)
+        implementation(ACTIVITY)
+        implementation(FRAGMENT)
+        implementation(LIFECYCLE)
+    }
+
+    Compose.run {
+        implementation(UI)
+        implementation(MATERIAL)
+        implementation(UI_TOOLING)
+        implementation(RUNTIME_LIVEDATA)
     }
 
     Test.run {
