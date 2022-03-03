@@ -8,12 +8,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
-        minSdk = 21
-        targetSdk = 30
+        minSdk = 24
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
