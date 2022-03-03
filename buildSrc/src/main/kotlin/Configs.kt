@@ -36,7 +36,7 @@ object Coroutines {
 }
 
 object Compose {
-    private const val COMPOSE_VERSION = "1.1.0"
+    const val COMPOSE_VERSION = "1.1.0"
 
     const val UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
     const val MATERIAL = "androidx.compose.material:material:$COMPOSE_VERSION"
