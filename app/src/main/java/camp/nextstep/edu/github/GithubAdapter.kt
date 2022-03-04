@@ -19,7 +19,7 @@ class GithubAdapter : ListAdapter<Github, GithubViewHolder>(DiffCallbackUtil()) 
         holder.bind(getItem(position))
     }
 
-    class DiffCallbackUtil : DiffUtil.ItemCallback<Github>() {
+    private class DiffCallbackUtil : DiffUtil.ItemCallback<Github>() {
         override fun areItemsTheSame(oldItem: Github, newItem: Github): Boolean =
             oldItem.fullName == newItem.fullName
 
