@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.model.GithubDto
+import camp.nextstep.edu.github.data.model.GithubResponse
 import camp.nextstep.edu.github.domain.model.Github
 import com.google.common.truth.Truth.assertThat
 import kotlinx.serialization.decodeFromString
@@ -15,7 +15,7 @@ class MapperTest {
         // GIVEN
         val json = Json { ignoreUnknownKeys = true }
         val githubDto =
-            json.decodeFromString<List<GithubDto>>(File("src/test/resources/repositories.json").readText())
+            json.decodeFromString<List<GithubResponse>>(File("src/test/resources/repositories.json").readText())
 
         // WHEN
         val github = githubDto.first().mapper()

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
 @Serializable
-internal data class GithubDto(
+internal data class GithubResponse(
     @SerializedName("archive_url")
     val archiveUrl: String? = null,
     @SerializedName("assignees_url")
