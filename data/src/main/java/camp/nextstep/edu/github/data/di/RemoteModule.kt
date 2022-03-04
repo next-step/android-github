@@ -1,6 +1,9 @@
 package camp.nextstep.edu.github.data.di
 
 import camp.nextstep.edu.github.data.remote.GitHubService
+import camp.nextstep.edu.github.data.remote.GitHubRepositoryImpl
+import camp.nextstep.edu.github.domain.repository.GitHubRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,10 +13,16 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal class RemoteModule {
+internal interface RemoteModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun providesGitHubService(retrofit: Retrofit): GitHubService = retrofit
-        .create(GitHubService::class.java)
+    fun bindsGitHubRepository(gitHubRepositoryImpl: GitHubRepositoryImpl): GitHubRepository
+
+    companion object {
+        @Provides
+        @Singleton
+        fun providesGitHubService(retrofit: Retrofit): GitHubService = retrofit
+            .create(GitHubService::class.java)
+    }
 }
