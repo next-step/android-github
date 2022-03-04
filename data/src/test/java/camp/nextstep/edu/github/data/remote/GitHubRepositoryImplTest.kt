@@ -4,10 +4,8 @@ import camp.nextstep.edu.github.domain.model.GitHub
 import camp.nextstep.edu.github.domain.repository.GitHubRepository
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
-
 import org.junit.jupiter.api.Test
 
 internal class GitHubRepositoryImplTest {
@@ -16,9 +14,8 @@ internal class GitHubRepositoryImplTest {
 
     @BeforeEach
     fun setup() {
-        gitHubRepository = GitHubRepositoryImpl(GitHubDataSource(Fixture.gitHubService))
+        gitHubRepository = GitHubRepositoryImpl(Fixture.mockGitHubDataSource())
     }
-
 
     @DisplayName("GitHub Repositories HTTP 결과를 불러와야 합니다.")
     @Test
