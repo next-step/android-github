@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-github</string>
+    <string name="fail_network">데이터를 불러오지 못했습니다.</string>
 </resources>
