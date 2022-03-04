@@ -33,7 +33,7 @@ class GithubServiceTest {
     fun `Github 레포지터리 리스트 요청`() = runBlocking {
         // given
         val response = MockResponse()
-            .setBody(File("src/test/resources/repositories.json").readText())
+            .setBody(File("src/test/resources/repositories-200.json").readText())
         server.enqueue(response)
 
         // when

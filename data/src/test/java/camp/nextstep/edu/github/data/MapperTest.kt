@@ -15,7 +15,7 @@ class MapperTest {
         // GIVEN
         val json = Json { ignoreUnknownKeys = true }
         val githubDto =
-            json.decodeFromString<List<GithubResponse>>(File("src/test/resources/repositories.json").readText())
+            json.decodeFromString<List<GithubResponse>>(File("src/test/resources/repositories-200.json").readText())
 
         // WHEN
         val github = githubDto.first().mapper()
