@@ -36,10 +36,6 @@ class GithubServiceTest {
             .setBody(File("src/test/resources/repositories-200.json").readText())
         server.enqueue(response)
 
-        // when
-        val actual = service.getGithubRepositories().mapping()
-
-        // then
         val expected = listOf(
             Github(
                 "mojombo/grit",
@@ -54,6 +50,11 @@ class GithubServiceTest {
                 "The Rubinius Language Platform"
             )
         )
+
+        // when
+        val actual = service.getGithubRepositories().mapping()
+
+        // then
         assertThat(actual, equalTo(expected))
     }
 }
