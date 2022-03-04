@@ -7,6 +7,7 @@ import camp.nextstep.edu.github.domain.model.Github
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -14,18 +15,19 @@ class MainViewModel(
 ) : ViewModel() {
 
     private val _githubRepositories = MutableStateFlow<List<Github>>(emptyList())
-    val githubRepositories: SharedFlow<List<Github>>
+    val githubRepositories: StateFlow<List<Github>>
         get() = _githubRepositories
     private val _networkState = MutableSharedFlow<Boolean>()
     val networkState: SharedFlow<Boolean>
         get() = _networkState
 
     fun getGithubRepositories() = viewModelScope.launch {
-        githubRepositoriesUseCase().onSuccess {
-            _networkState.emit(true)
-            _githubRepositories.emit(it)
-        }.onFailure {
-            _networkState.emit(false)
-        }
+        githubRepositoriesUseCase()
+            .onSuccess {
+                _networkState.emit(true)
+                _githubRepositories.emit(it)
+            }.onFailure {
+                _networkState.emit(false)
+            }
     }
 }
