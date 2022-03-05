@@ -1,7 +1,7 @@
 plugins {
     id("java-library")
-    id("kotlin")
-    id("kotlin-kapt")
+    kotlin("jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -18,7 +18,7 @@ dependencies {
 
     Coroutine.apply {
         implementation(CORE)
-        implementation(TEST)
+        testImplementation(TEST)
     }
 
     Network.apply {

@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
-    id("kotlin")
+    kotlin("jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -11,6 +12,6 @@ java {
 dependencies {
     Coroutine.apply {
         implementation(CORE)
-        implementation(TEST)
+        testImplementation(TEST)
     }
 }
