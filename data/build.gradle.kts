@@ -24,8 +24,6 @@ dependencies {
     Network.apply {
         implementation(RETROFIT)
         implementation(CONVERTER_GSON)
-        implementation(MOSHI_KOTLIN)
-        implementation(MOSHI_KOTLIN_CODEGEN)
         implementation(OKHTTP)
         testImplementation(MOCK_WEB_SERVER)
     }
