@@ -8,6 +8,7 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -39,8 +40,15 @@ internal class GithubServiceTest {
         val actual = service.getRepositories()
 
         // then
-        assertThat(actual[0].fullName).isEqualTo("blackJin")
-        assertThat(actual[0].description).isEqualTo("description")
-        assertThat(actual.size).isEqualTo(2)
+        val firstItem = actual[0]
+        val secondItem = actual[1]
+
+        assertAll(
+            { assertThat(firstItem.fullName).isEqualTo("blackJin") },
+            { assertThat(firstItem.description).isEqualTo("description") },
+            { assertThat(secondItem.fullName).isEqualTo(null) },
+            { assertThat(secondItem.description).isEqualTo(null) },
+            { assertThat(actual.size).isEqualTo(2) }
+        )
     }
 }
