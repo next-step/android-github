@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +23,6 @@ internal interface RemoteModule {
     companion object {
         @Provides
         @Singleton
-        fun providesGitHubDataSource(retrofit: Retrofit): GitHubDataSource = retrofit
-            .create(GitHubDataSource::class.java)
+        fun providesGitHubDataSource(retrofit: Retrofit): GitHubDataSource = retrofit.create()
     }
 }
