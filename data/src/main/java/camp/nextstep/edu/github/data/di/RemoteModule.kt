@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.data.di
 
+import camp.nextstep.edu.github.data.remote.GitHubDataSource
 import camp.nextstep.edu.github.data.remote.GitHubRepositoryImpl
-import camp.nextstep.edu.github.data.remote.GitHubService
 import camp.nextstep.edu.github.domain.repository.GitHubRepository
 import dagger.Binds
 import dagger.Module
@@ -22,7 +22,7 @@ internal interface RemoteModule {
     companion object {
         @Provides
         @Singleton
-        fun providesGitHubService(retrofit: Retrofit): GitHubService = retrofit
-            .create(GitHubService::class.java)
+        fun providesGitHubDataSource(retrofit: Retrofit): GitHubDataSource = retrofit
+            .create(GitHubDataSource::class.java)
     }
 }

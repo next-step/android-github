@@ -18,7 +18,7 @@ internal class Fixture {
         )
     }
 
-    private val gitHubService = Retrofit
+    private val gitHubDataSource = Retrofit
         .Builder()
         .baseUrl(mockServer.url(""))
         .addConverterFactory(
@@ -30,10 +30,9 @@ internal class Fixture {
             )
         )
         .build()
-        .create(GitHubService::class.java)
+        .create(GitHubDataSource::class.java)
 
     companion object {
-        fun mockGitHubService(): GitHubService = Fixture().gitHubService
-        fun mockGitHubDataSource(): GitHubDataSource = GitHubDataSource(mockGitHubService())
+        fun mockGitHubDataSource(): GitHubDataSource = Fixture().gitHubDataSource
     }
 }

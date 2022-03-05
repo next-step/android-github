@@ -1,11 +1,10 @@
 package camp.nextstep.edu.github.data.remote
 
 import camp.nextstep.edu.github.data.dto.GitHubDto
-import javax.inject.Inject
+import retrofit2.http.GET
 
-internal class GitHubDataSource @Inject constructor(
-    private val gitHubService: GitHubService
-) {
-    suspend fun fetch(): List<GitHubDto> = gitHubService
-        .fetch()
+internal interface GitHubDataSource {
+
+    @GET("repositories")
+    suspend fun fetch(): List<GitHubDto>
 }
