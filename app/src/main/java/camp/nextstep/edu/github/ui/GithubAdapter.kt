@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
 import camp.nextstep.edu.github.domain.model.Github
+import dagger.hilt.android.scopes.ActivityScoped
 
+@ActivityScoped
 class GithubAdapter : ListAdapter<Github, GithubViewHolder>(DiffCallbackUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
