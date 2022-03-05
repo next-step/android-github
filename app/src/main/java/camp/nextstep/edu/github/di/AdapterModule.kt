@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
 @InstallIn(ActivityComponent::class)
-class ViewModule {
+class AdapterModule {
     @Provides
     @ActivityScoped
     fun provideChampionAdapter(): GithubAdapter = GithubAdapter()
