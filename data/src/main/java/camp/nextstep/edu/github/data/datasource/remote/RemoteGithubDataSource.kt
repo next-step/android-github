@@ -8,10 +8,11 @@ import camp.nextstep.edu.github.data.di.ServiceModule
 import camp.nextstep.edu.github.domain.model.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-internal class RemoteGithubDataSource(
-    private val githubService: GithubService = ServiceModule.githubService,
-    private val responseRepositoryMapper: ResponseRepositoryMapper = MapperModule.responseRepositoryMapper
+internal class RemoteGithubDataSource @Inject constructor(
+    private val githubService: GithubService,
+    private val responseRepositoryMapper: ResponseRepositoryMapper
 ) : GithubDataSource {
 
     override fun getReposotories(): Flow<List<Repository>> = flow {
