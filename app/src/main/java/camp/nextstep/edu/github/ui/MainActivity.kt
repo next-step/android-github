@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.apply {
+        binding.run {
             lifecycleOwner = this@MainActivity
             vm = mainViewModel
             adapter = githubAdapter
