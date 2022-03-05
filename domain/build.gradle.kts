@@ -23,8 +23,12 @@ dependencies {
         implementation(TEST)
     }
 
+    Hilt.apply {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
+
     Test.apply {
-//        testImplementation(JUNIT5)
         testImplementation(JUNIT5_JUPITER_API)
         testImplementation(JUNIT5_JUPITER_PARAMS)
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원

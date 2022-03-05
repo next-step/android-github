@@ -26,14 +26,24 @@ object Compose {
     const val MATERIAL_ICONS = "androidx.compose.material:material-icons-core:$COMPOSE_VERSION"
     const val MATERIAL_ICONS_EXTENDED = "androidx.compose.material:material-icons-extended:$COMPOSE_VERSION"
     const val RUNTIME_LIVEDATA = "androidx.compose.runtime:runtime-livedata:$COMPOSE_VERSION"
-    const val ACTIVITY = "androidx.activity:activity-compose:1.4.0"
+    const val ACTIVITY = "androidx.activity:activity-compose:1.3.1"
 
     const val ANDROID_TEST = "androidx.compose.ui:ui-test-junit4:$COMPOSE_VERSION"
 }
 
+object Hilt {
+    private const val VERSION = "2.38.1"
+
+    const val ANDROID_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:$VERSION"
+    const val ANDROID = "com.google.dagger:hilt-android:$VERSION"
+    const val ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:$VERSION"
+    const val COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
+    const val CORE = "com.google.dagger:hilt-core:$VERSION"
+}
+
 object Networking {
     private const val RETROFIT_VERSION = "2.9.0"
-    private const val MOSHI_VERSION = "1.13.0"
+    private const val MOSHI_VERSION = "1.12.0"
     private const val OKHTTP_VERSION = "4.9.3"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
