@@ -4,11 +4,11 @@ import camp.nextstep.edu.github.domain.model.GitHub
 import camp.nextstep.edu.github.domain.repository.GitHubRepository
 import javax.inject.Inject
 
-class GitHubUseCase @Inject constructor(
+class FetchGitHubUseCase @Inject constructor(
     private val gitHubRepository: GitHubRepository
 ) {
 
-    suspend fun fetch(): Result<List<GitHub>> = runCatching {
+    suspend operator fun invoke(): Result<List<GitHub>> = runCatching {
         gitHubRepository.fetch()
     }
 }
