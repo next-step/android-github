@@ -39,8 +39,9 @@ internal class MainViewModelTest {
     @Test
     @DisplayName("")
     fun test() = runTest {
-        val expected = Repositories(mockk(relaxed = true))
-        coEvery { getGithubRepositoriesUseCase() } answers { flow { emit(expected) } }
+        val mockRepositories = Repositories(mockk(relaxed = true))
+        val expected = uiRepositoryMapper.mapToView(mockRepositories)
+        coEvery { getGithubRepositoriesUseCase() } answers { flow { emit(mockRepositories) } }
 
         // when
         viewModel.getGithubRepositories().join()
