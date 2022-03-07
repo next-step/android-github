@@ -91,6 +91,8 @@ dependencies {
         testImplementation(JUNIT5_JUPITER_PARAMS)
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
         testImplementation(TRUTH)
+        testImplementation(MOCKK)
+        testImplementation(TURBINE)
 
         androidTestImplementation(ANDROIDX_JUNIT)
         androidTestImplementation(JUNIT5_JUPITER_API)
