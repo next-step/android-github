@@ -1,6 +1,7 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.main
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,16 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-//        val githubRepository = DefaultGithubRepository()
-//        val getGithubRepositories = GetGithubRepositories(githubRepository)
-//
-//        getGithubRepositories()
-//            .onEach { println(it) }
-//            .catch { println(it) }
-//            .launchIn(lifecycleScope)
-
+        setContent { MainScreen(mainViewModel = viewModel) }
         viewModel.getGithubRepositories()
     }
 }
