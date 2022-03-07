@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -55,6 +56,17 @@ dependencies {
         implementation(MATERIAL)
         implementation(CONSTRAINT_LAYOUT)
         implementation(FRAGMENT_KTX)
+    }
+
+    Network.apply {
+        implementation(RETROFIT)
+        implementation(CONVERTER_GSON)
+        implementation(OKHTTP)
+    }
+
+    HILT.apply {
+        implementation(ANDROID)
+        kapt(ANDROID_COMPILER)
     }
 
     Test.apply {

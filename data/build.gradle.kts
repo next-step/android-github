@@ -28,6 +28,11 @@ dependencies {
         testImplementation(MOCK_WEB_SERVER)
     }
 
+    HILT.apply {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
+
     Test.apply {
         testImplementation(JUNIT5_JUPITER)
         testImplementation(TRUTH)
