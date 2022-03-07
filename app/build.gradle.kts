@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     Kotlin.apply {
         implementation(STDLIB)
@@ -53,6 +54,7 @@ dependencies {
         implementation(APPCOMPAT)
         implementation(MATERIAL)
         implementation(CONSTRAINT_LAYOUT)
+        implementation(FRAGMENT_KTX)
     }
 
     Test.apply {

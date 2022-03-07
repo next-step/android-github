@@ -9,6 +9,7 @@ object Androidx {
     const val APPCOMPAT = "androidx.appcompat:appcompat:1.3.1"
     const val MATERIAL = "com.google.android.material:material:1.4.0"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.4.1"
 }
 
 object Network {
