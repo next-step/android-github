@@ -1,23 +1,32 @@
 package camp.nextstep.edu.github.data.di
 
-import camp.nextstep.edu.github.data.datasource.remote.environment.Environment
+import camp.nextstep.edu.github.data.datasource.remote.service.GithubService.Companion.BASE_ENDPOINT
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
-internal object NetworkModule {
+@Module
+@InstallIn(SingletonComponent::class)
+internal class NetworkModule {
 
-    val retrofit = provideRetrofit(provideOkHttpClient())
-
-    private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Environment.BASE_ENDPOINT)
+            .baseUrl(BASE_ENDPOINT)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
 
-    private fun provideOkHttpClient(): OkHttpClient {
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .build()
     }

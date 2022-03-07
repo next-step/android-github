@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["runnerBuilder"] =
@@ -52,12 +52,17 @@ dependencies {
         implementation(GOOGLE_MATERIAL)
     }
 
+    Hilt.apply {
+        implementation(ANDROID)
+        kapt(ANDROID_COMPILER)
+    }
+
     Networking.apply {
-        implementation(RETROFIT)
+        api(RETROFIT)
         implementation(CONVERTER_MOSHI)
         implementation(MOSHI_KOTLIN)
         kapt(MOSHI_KOTLIN_CODEGEN)
-        implementation(OKHTTP)
+        api(OKHTTP)
         implementation(MOCK_WEB_SERVER)
     }
 
@@ -68,6 +73,7 @@ dependencies {
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
         testImplementation(TRUTH)
         testImplementation(MOCKK)
+        testImplementation(TURBINE)
 
         androidTestImplementation(ANDROIDX_JUNIT)
         androidTestImplementation(JUNIT5_JUPITER_API)
@@ -75,6 +81,4 @@ dependencies {
         androidTestRuntimeOnly(JUNIT5_ANDROID_TEST_RUNNER)
         androidTestImplementation(ESSPRESSO_CORE)
     }
-
-    testImplementation("app.cash.turbine:turbine:0.7.0")
 }

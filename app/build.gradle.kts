@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -39,6 +40,10 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = COMPOSE_VERSION
     }
 }
 
@@ -62,12 +67,32 @@ dependencies {
         implementation(CONSTRAINT_LAYOUT)
     }
 
+    Compose.apply {
+        implementation(UI)
+        implementation(UI_TOOLING)
+        implementation(FOUNDATION)
+        implementation(MATERIAL_DESIGN)
+        implementation(MATERIAL_ICONS)
+        implementation(MATERIAL_ICONS_EXTENDED)
+        implementation(RUNTIME_LIVEDATA)
+        implementation(ACTIVITY)
+
+        androidTestImplementation(ANDROID_TEST)
+    }
+
+    Hilt.apply {
+        implementation(ANDROID)
+        kapt(ANDROID_COMPILER)
+    }
+
     Test.apply {
         testImplementation(JUNIT5_JUPITER_API)
         testRuntimeOnly(JUNIT5_JUPITER_ENGINE)
         testImplementation(JUNIT5_JUPITER_PARAMS)
         testRuntimeOnly(JUNIT5_VINTAGE_ENGINE) // junit4 지원
         testImplementation(TRUTH)
+        testImplementation(MOCKK)
+        testImplementation(TURBINE)
 
         androidTestImplementation(ANDROIDX_JUNIT)
         androidTestImplementation(JUNIT5_JUPITER_API)
@@ -75,4 +100,8 @@ dependencies {
         androidTestRuntimeOnly(JUNIT5_ANDROID_TEST_RUNNER)
         androidTestImplementation(ESSPRESSO_CORE)
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }

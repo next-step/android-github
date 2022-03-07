@@ -1,6 +1,6 @@
-package camp.nextstep.edu.github.data.di
+package camp.nextstep.edu.github.di
 
-import camp.nextstep.edu.github.data.datasource.remote.response.mappers.ResponseRepositoryMapper
+import camp.nextstep.edu.github.main.model.mappers.UiRepositoryMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ internal class MapperModule {
 
     @Provides
     @Singleton
-    fun provideResponseRepositoryMapper(): ResponseRepositoryMapper = ResponseRepositoryMapper()
+    fun provideUiRepositoryMapper(): UiRepositoryMapper = UiRepositoryMapper()
 }

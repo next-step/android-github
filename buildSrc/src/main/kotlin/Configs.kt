@@ -1,5 +1,6 @@
 const val KOTLIN_VERSION = "1.5.21"
 const val JUNIT5_VERSION = "5.8.2"
+const val COMPOSE_VERSION = "1.0.5"
 
 object Kotlin {
     const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
@@ -17,9 +18,32 @@ object Androidx {
     const val GOOGLE_MATERIAL = "com.google.android.material:material:1.4.0"
 }
 
+object Compose {
+    const val UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
+    const val UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
+    const val FOUNDATION = "androidx.compose.foundation:foundation:$COMPOSE_VERSION"
+    const val MATERIAL_DESIGN = "androidx.compose.material:material:$COMPOSE_VERSION"
+    const val MATERIAL_ICONS = "androidx.compose.material:material-icons-core:$COMPOSE_VERSION"
+    const val MATERIAL_ICONS_EXTENDED = "androidx.compose.material:material-icons-extended:$COMPOSE_VERSION"
+    const val RUNTIME_LIVEDATA = "androidx.compose.runtime:runtime-livedata:$COMPOSE_VERSION"
+    const val ACTIVITY = "androidx.activity:activity-compose:1.3.1"
+
+    const val ANDROID_TEST = "androidx.compose.ui:ui-test-junit4:$COMPOSE_VERSION"
+}
+
+object Hilt {
+    private const val VERSION = "2.38.1"
+
+    const val ANDROID_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:$VERSION"
+    const val ANDROID = "com.google.dagger:hilt-android:$VERSION"
+    const val ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:$VERSION"
+    const val COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
+    const val CORE = "com.google.dagger:hilt-core:$VERSION"
+}
+
 object Networking {
     private const val RETROFIT_VERSION = "2.9.0"
-    private const val MOSHI_VERSION = "1.13.0"
+    private const val MOSHI_VERSION = "1.12.0"
     private const val OKHTTP_VERSION = "4.9.3"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
@@ -47,4 +71,5 @@ object Test {
 
     const val MOCKK = "io.mockk:mockk:1.12.2"
     const val ESSPRESSO_CORE = "androidx.test.espresso:espresso-core:3.4.0"
+    const val TURBINE = "app.cash.turbine:turbine:0.7.0"
 }

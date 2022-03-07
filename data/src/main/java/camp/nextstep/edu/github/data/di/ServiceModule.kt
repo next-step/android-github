@@ -1,13 +1,20 @@
 package camp.nextstep.edu.github.data.di
 
 import camp.nextstep.edu.github.data.datasource.remote.service.GithubService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
-internal object ServiceModule {
+@Module
+@InstallIn(SingletonComponent::class)
+internal class ServiceModule {
 
-    val githubService = provideGithubService(NetworkModule.retrofit)
-
-    private fun provideGithubService(retrofit: Retrofit): GithubService {
+    @Provides
+    @Singleton
+    fun provideGithubService(retrofit: Retrofit): GithubService {
         return retrofit.create(GithubService::class.java)
     }
 }
