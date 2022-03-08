@@ -11,10 +11,12 @@ java {
 dependencies {
     implementation(project(":domain"))
 
-    implementation(Network.retrofit)
-    implementation(Network.converterGson)
-    implementation(Network.gson)
-    implementation(Network.okHttp)
+    Network.apply {
+        implementation(retrofit)
+        implementation(converterGson)
+        implementation(gson)
+        implementation(okHttp)
 
-    testImplementation(Network.mockWebserver)
+        testImplementation(mockWebserver)
+    }
 }

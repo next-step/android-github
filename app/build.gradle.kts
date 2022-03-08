@@ -46,19 +46,26 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation(Kotlin.kotlinStdlib)
-    implementation(Androidx.core)
-    implementation(Androidx.appCompat)
-    implementation(Androidx.materialDesign)
-    implementation(Androidx.constraintLayout)
+    Kotlin.apply {
+        implementation(kotlinStdlib)
+    }
 
-    testImplementation(Test.jUnitJupiter)
-    testRuntimeOnly(Test.junitVintageEngine) // junit4 지원
-    testImplementation(Test.jUnit)
-    testImplementation(Test.truth)
-    androidTestImplementation(Test.androidxJunit)
-    androidTestImplementation(Test.espressoCore)
-    androidTestImplementation(Test.junitJupiterApi)
-    androidTestImplementation(Test.androidTestCore)
-    androidTestRuntimeOnly(Test.androidTestRunner)
+    Androidx.apply {
+        implementation(core)
+        implementation(appCompat)
+        implementation(materialDesign)
+        implementation(constraintLayout)
+    }
+
+    Test.apply {
+        testImplementation(jUnitJupiter)
+        testRuntimeOnly(junitVintageEngine) // junit4 지원
+        testImplementation(jUnit)
+        testImplementation(truth)
+        androidTestImplementation(androidxJunit)
+        androidTestImplementation(espressoCore)
+        androidTestImplementation(junitJupiterApi)
+        androidTestImplementation(androidTestCore)
+        androidTestRuntimeOnly(androidTestRunner)
+    }
 }
