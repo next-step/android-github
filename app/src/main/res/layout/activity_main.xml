@@ -23,15 +23,13 @@
             android:id="@+id/rv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello World!"
             app:adapter="@{adapter}"
-            app:githubItems="@{vm.networkState}"
+            app:githubItems="@{vm.stateFlow}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:toast="@{vm.networkState}"
             tools:itemCount="20"
             tools:listitem="@layout/item_repo" />
 

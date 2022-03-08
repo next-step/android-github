@@ -9,6 +9,7 @@ import javax.inject.Inject
 class GetGithubRepositoriesUseCase @Inject constructor(private val githubRepository: GithubRepository) {
     operator fun invoke() = flow<NetworkState> {
         val githubRepositories: List<Github> = githubRepository.getGithubRepositories()
+        throw IllegalArgumentException("aaaa")
         emit(NetworkState.Success(githubRepositories))
         return@flow
     }.catch { emit(NetworkState.Error(it)) }
