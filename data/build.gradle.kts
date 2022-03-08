@@ -8,5 +8,5 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 dependencies {
-    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(":domain"))
 }
