@@ -11,13 +11,8 @@ class GithubRepositoryUseCase(
 ) {
     operator fun invoke(): Flow<Resource<Repositories>> {
         return flow {
-            try {
-                emit(Resource.Loading<Repositories>())
-                val result = githubRepository.getRepositories()
-                emit(Resource.Success(result))
-            } catch (e: Exception) {
-                emit(Resource.Error<Repositories>(e))
-            }
+            emit(Resource.Loading())
+            emit(githubRepository.getRepositories())
         }
     }
 }
