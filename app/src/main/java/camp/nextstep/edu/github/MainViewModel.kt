@@ -10,13 +10,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val gieHubUseCase: GithubRepositoryUseCase
+    private val gitHubUseCase: GithubRepositoryUseCase
 ) : BaseViewModel() {
 
     val items = MutableStateFlow<List<Repository>>(emptyList())
 
     fun loadRepository() {
-        gieHubUseCase().handleResultWithState {
+        gitHubUseCase().handleResultWithState {
             viewModelScope.launch {
                 items.emit(it.items)
             }
