@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 @BindingAdapter("itemList", "itemLayoutId")
 fun <VM : Any> RecyclerView.bindListAdapterData(
     itemList: List<VM>?,
-    layoutId: Int
+    layoutId: Int?
 ) {
-    if (itemList == null) return
+    if (itemList == null || layoutId == null) return
 
     if (layoutManager == null) {
         layoutManager = LinearLayoutManager(context)
