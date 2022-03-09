@@ -14,11 +14,11 @@ abstract class BaseViewModel : ViewModel() {
     private val _eventShowErrorSnackBar = MutableSharedFlow<Unit>()
     val eventShowErrorSnackBar = _eventShowErrorSnackBar.asSharedFlow()
 
-    protected suspend fun showProgressDialog() {
+    protected suspend fun showProgress() {
         _isShowProgress.emit(true)
     }
 
-    protected suspend fun hideProgressDialog() {
+    protected suspend fun hideProgress() {
         _isShowProgress.emit(false)
     }
 
@@ -29,13 +29,13 @@ abstract class BaseViewModel : ViewModel() {
     fun <T : BaseEntity> Flow<Resource<T>>.handleResultWithState(onSuccess: (T) -> Unit) {
         onEach { result ->
             when (result) {
-                is Resource.Loading -> showProgressDialog()
+                is Resource.Loading -> showProgress()
                 is Resource.Success -> {
-                    hideProgressDialog()
+                    hideProgress()
                     onSuccess(result.data)
                 }
                 is Resource.Error -> {
-                    hideProgressDialog()
+                    hideProgress()
                     showErrorSnackBar()
                 }
             }
