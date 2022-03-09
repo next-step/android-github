@@ -31,8 +31,6 @@ abstract class SimpleListAdapter<ITEM : Any>(
             bindingVariableId = bindingVariableId
         ) {}
 
-    override fun getItemCount() = currentList.size
-
     override fun onBindViewHolder(holderList: SimpleListViewHolder, position: Int) {
         holderList.bind(currentList[position])
     }
