@@ -21,3 +21,12 @@
 - data 모듈의 구현체는 모두 internal class로 선언한다.
 - HTTP 요청을 통해 가져오는 구현체에 대한 테스트 코드를 작성한다.
 - OkHttp MockWebServer 이용
+
+# 🚀 3단계 - GitHub (UI)
+
+## 기능 요구사항
+
+- 앱을 실행하면 리스트 형태의 GitHub Repository UI가 보여야 한다.
+- 프로그래밍 요구사항
+- MVVM 패턴으로 구현한다.
+- Dagger2, Hilt를 이용하여 의존성을 주입한다.
