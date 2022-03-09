@@ -8,20 +8,22 @@ import kotlinx.coroutines.flow.*
 
 abstract class BaseViewModel : ViewModel() {
 
-    val isShowProgress = MutableStateFlow(false)
+    private val _isShowProgress = MutableStateFlow(false)
+    val isShowProgress = _isShowProgress.asStateFlow()
 
-    val eventShowErrorSnackBar = MutableSharedFlow<Unit>()
+    private val _eventShowErrorSnackBar = MutableSharedFlow<Unit>()
+    val eventShowErrorSnackBar = _eventShowErrorSnackBar.asSharedFlow()
 
     protected suspend fun showProgressDialog() {
-        isShowProgress.emit(true)
+        _isShowProgress.emit(true)
     }
 
     protected suspend fun hideProgressDialog() {
-        isShowProgress.emit(false)
+        _isShowProgress.emit(false)
     }
 
     protected suspend fun showErrorSnackBar() {
-        eventShowErrorSnackBar.emit(Unit)
+        _eventShowErrorSnackBar.emit(Unit)
     }
 
     fun <T : BaseEntity> Flow<Resource<T>>.handleResultWithState(onSuccess: (T) -> Unit) {
