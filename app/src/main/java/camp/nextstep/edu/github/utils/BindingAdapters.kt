@@ -17,10 +17,10 @@ object BindingAdapters {
 //                    .show()
 //            }
 //        }
-////        if (networkState is NetworkState.Error) {
-////            Toast.makeText(context, context.getString(R.string.fail_network), Toast.LENGTH_SHORT)
-////                .show()
-////        }
+    //        if (networkState is NetworkState.Error) {
+    //            Toast.makeText(context, context.getString(R.string.fail_network), Toast.LENGTH_SHORT)
+    //                .show()
+    //        }
 //    }
 
     @JvmStatic
