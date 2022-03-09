@@ -26,7 +26,7 @@ abstract class BaseViewModel : ViewModel() {
         _eventShowErrorSnackBar.emit(Unit)
     }
 
-    fun <T : BaseEntity> Flow<Resource<T>>.handleResultWithState(onSuccess: (T) -> Unit) {
+    protected fun <T : BaseEntity> Flow<Resource<T>>.handleResultWithState(onSuccess: (T) -> Unit) {
         onEach { result ->
             when (result) {
                 is Resource.Loading -> showProgress()
