@@ -19,11 +19,15 @@ fun <VM : Any> RecyclerView.bindListAdapterData(
         layoutManager = LinearLayoutManager(context)
     }
 
-    val simpleLisAdapter = adapter as? SimpleListAdapter<VM>
-        ?: object : SimpleListAdapter<VM>(
-            layoutRes = layoutId
-        ) {}
+    val simpleLisAdapter: SimpleListAdapter<VM>?
 
+    if (adapter is SimpleListAdapter<*>) {
+        simpleLisAdapter = adapter as? SimpleListAdapter<VM>
+        simpleLisAdapter?.replaceAll(itemList)
+        return
+    }
+
+    simpleLisAdapter = object : SimpleListAdapter<VM>(layoutRes = layoutId) {}
     adapter = simpleLisAdapter
     simpleLisAdapter.replaceAll(itemList)
 }
