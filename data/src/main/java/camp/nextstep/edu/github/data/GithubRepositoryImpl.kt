@@ -10,7 +10,7 @@ internal class GithubRepositoryImpl(
     override suspend fun fetchGithubRepos(): Result<List<GithubRepoModel>> {
         val response = githubService.fetchGithubRepos()
         if (response.isSuccessful) {
-            val githubRepos = response.body()?.toModelList() ?: return Result.failure(Exception())
+            val githubRepos = response.body()?.toModelList().orEmpty()
             return Result.success(githubRepos)
         }
 
