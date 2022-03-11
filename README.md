@@ -17,7 +17,7 @@
 - HTTP 요청을 통해 가져오는 구현체에 대한 테스트 코드를 작성한다.
   - OkHttp [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) 이용
 
-#3단계 - 계산기록 (로컬 저장소)
+# 3단계 - 계산기록 (로컬 저장소)
 ## 기능 요구사항
 - 앱을 실행하면 리스트 형태의 GitHub Repository UI가 보여야 한다.
 
