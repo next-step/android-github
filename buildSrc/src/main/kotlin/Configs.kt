@@ -24,6 +24,7 @@ object ConverterConfig {
 
 object TestConfig {
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:4.9.1"
+    const val truth = "com.google.truth:truth:1.1.3"
 }
 
 object CoroutinesConfig {

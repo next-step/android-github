@@ -34,6 +34,7 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.18.0")
     testImplementation("io.mockk:mockk:1.12.0")
     testImplementation(TestConfig.mockWebServer)
+    testImplementation(TestConfig.truth)
 }
 
 tasks.test {

@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data
 
-import junit.framework.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -28,12 +28,12 @@ class GithubServiceTest {
     fun `깃헙 레포지토리 리스트를 불러온다`() = runBlocking {
         // given
         val jsonResponse = MockResponse()
-            .setBody(File("src/test/resources/github_response_200.json").readText())
+            .setBody(File("src/test/resources/github_fetch_repos_200.json").readText())
         mockServer.enqueue(jsonResponse)
 
         // when
         val response = service.fetchGithubRepos()
-        val actualData = response.body() as List<GithubRepoData>
+        val actualData = response.body()
 
         val expected = listOf(
             GithubRepoData(
@@ -47,6 +47,6 @@ class GithubServiceTest {
         )
 
         // then
-        assertEquals(expected, actualData)
+        assertThat(actualData).isEqualTo(expected)
     }
 }
