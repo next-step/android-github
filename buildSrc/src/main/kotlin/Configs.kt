@@ -1,4 +1,5 @@
 const val KOTLIN_VERSION = "1.5.21"
+const val HILT_VERSION = "2.38.1"
 
 object Kotlin {
     const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
@@ -9,6 +10,7 @@ object Androidx {
     const val APPCOMPAT = "androidx.appcompat:appcompat:1.3.1"
     const val MATERIAL = "com.google.android.material:material:1.4.0"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.4.1"
 }
 
 object Network {
@@ -34,6 +36,14 @@ object Coroutine {
 
     const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINE_VERSION"
     const val TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$COROUTINE_VERSION"
+}
+
+object HILT {
+    const val CORE = "com.google.dagger:hilt-core:$HILT_VERSION"
+    const val COMPILER = "com.google.dagger:hilt-compiler:$HILT_VERSION"
+
+    const val ANDROID = "com.google.dagger:hilt-android:$HILT_VERSION"
+    const val ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:$HILT_VERSION"
 }
 
 object Test {

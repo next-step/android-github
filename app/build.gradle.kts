@@ -3,15 +3,16 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
@@ -43,6 +44,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     Kotlin.apply {
         implementation(STDLIB)
@@ -53,6 +55,18 @@ dependencies {
         implementation(APPCOMPAT)
         implementation(MATERIAL)
         implementation(CONSTRAINT_LAYOUT)
+        implementation(FRAGMENT_KTX)
+    }
+
+    Network.apply {
+        implementation(RETROFIT)
+        implementation(CONVERTER_GSON)
+        implementation(OKHTTP)
+    }
+
+    HILT.apply {
+        implementation(ANDROID)
+        kapt(ANDROID_COMPILER)
     }
 
     Test.apply {

@@ -14,4 +14,9 @@ dependencies {
         implementation(CORE)
         testImplementation(TEST)
     }
+
+    HILT.apply {
+        implementation(CORE)
+        kapt(COMPILER)
+    }
 }
