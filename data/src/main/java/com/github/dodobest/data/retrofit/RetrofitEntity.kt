@@ -5,7 +5,7 @@ import com.github.dodobest.data.utils.API
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface IRetrofit {
+interface RetrofitEntity {
     @GET(API.SEARCH_PUBLIC_REPOSITORY)
-    fun getRepositories() : Call<List<GithubRepository>>
+    fun getRepositories() : List<GithubRepository>
 }
