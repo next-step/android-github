@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding

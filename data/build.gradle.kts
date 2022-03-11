@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     id("kotlin")
     id("kotlinx-serialization")
+    id("kotlin-kapt")
 }
 
 java {
@@ -17,6 +18,9 @@ dependencies {
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.squareup.okhttp3:mockwebserver:4.9.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0")
+
+    implementation("com.google.dagger:hilt-core:2.41")
+    kapt("com.google.dagger:hilt-android-compiler:2.41")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")

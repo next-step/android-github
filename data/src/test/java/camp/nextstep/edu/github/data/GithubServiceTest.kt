@@ -33,13 +33,9 @@ class GithubServiceTest {
     fun `Github 레포지터리 리스트 요청`() = runBlocking {
         // given
         val response = MockResponse()
-            .setBody(File("src/test/resources/repositories.json").readText())
+            .setBody(File("src/test/resources/repositories-200.json").readText())
         server.enqueue(response)
 
-        // when
-        val actual = service.getGithubRepositories().mapping()
-
-        // then
         val expected = listOf(
             Github(
                 "mojombo/grit",
@@ -54,6 +50,11 @@ class GithubServiceTest {
                 "The Rubinius Language Platform"
             )
         )
+
+        // when
+        val actual = service.getGithubRepositories().mapping()
+
+        // then
         assertThat(actual, equalTo(expected))
     }
 }
