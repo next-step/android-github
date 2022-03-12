@@ -2,6 +2,9 @@ package camp.nextstep.edu.github
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.github.dodobest.data.GithubRepositoryImpl
+import com.github.dodobest.data.retrofit.RetrofitManager
+import com.github.dodobest.domain.usecase.GetRepositoriesUseCase
 
 class GithubViewModelFactory : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
@@ -13,6 +16,9 @@ class GithubViewModelFactory : ViewModelProvider.Factory {
     }
 
     private fun createGithubViewModel(): GithubViewModel {
-        return GithubViewModel()
+        val retrofitManager = RetrofitManager()
+        val githubRepositoryImpl = GithubRepositoryImpl(retrofitManager)
+        val getRepositoriesUseCase = GetRepositoriesUseCase(githubRepositoryImpl)
+        return GithubViewModel(getRepositoriesUseCase)
     }
 }

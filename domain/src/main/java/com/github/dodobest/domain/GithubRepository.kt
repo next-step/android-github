@@ -1,5 +1,5 @@
 package com.github.dodobest.domain
 
-interface TaskRepository {
+interface GithubRepository {
     fun getRepositories(): List<GithubData>
 }

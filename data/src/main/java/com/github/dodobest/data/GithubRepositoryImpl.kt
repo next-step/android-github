@@ -2,11 +2,11 @@ package com.github.dodobest.data
 
 import com.github.dodobest.data.retrofit.RetrofitManager
 import com.github.dodobest.domain.GithubData
-import com.github.dodobest.domain.TaskRepository
+import com.github.dodobest.domain.GithubRepository
 
-class DefaultTaskRepository(
+class GithubRepositoryImpl(
     private val retrofitManager: RetrofitManager
-) : TaskRepository{
+) : GithubRepository {
     override fun getRepositories(): List<GithubData> {
         return retrofitManager.getRepositories()
     }
