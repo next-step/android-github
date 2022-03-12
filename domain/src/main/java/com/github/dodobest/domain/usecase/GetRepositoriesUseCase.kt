@@ -1,10 +1,10 @@
 package com.github.dodobest.domain.usecase
 
-import com.github.dodobest.domain.GithubRepository
-import com.github.dodobest.domain.RetrofitManager
+import com.github.dodobest.domain.GithubData
+import com.github.dodobest.domain.TaskRepository
 
-class GetRepositoriesUseCase(private val retrofitManager: RetrofitManager) {
-    operator fun invoke(): List<GithubRepository> {
-        return retrofitManager.getRepositories()
+class GetRepositoriesUseCase(private val taskRepository: TaskRepository) {
+    operator fun invoke(): List<GithubData> {
+        return taskRepository.getRepositories()
     }
 }

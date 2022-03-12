@@ -1,21 +1,18 @@
 package com.github.dodobest.data.retrofit
 
-import com.github.dodobest.data.utils.toMyRetrofit
-import com.github.dodobest.domain.MyRetrofit
-import com.github.dodobest.domain.RetrofitClient
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitClientImpl : RetrofitClient {
+class RetrofitClient {
     private lateinit var retrofitClient: Retrofit
 
-    override fun getRetrofit(baseUrl: String): MyRetrofit {
+    fun getRetrofit(baseUrl: String): Retrofit {
         val client = OkHttpClient.Builder()
 
         if (::retrofitClient.isInitialized) {
-            return retrofitClient.toMyRetrofit()
+            return retrofitClient
         }
 
         client.connectTimeout(5, TimeUnit.SECONDS)
@@ -28,6 +25,6 @@ class RetrofitClientImpl : RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())
             .build()
-        return retrofitClient.toMyRetrofit()
+        return retrofitClient
     }
 }
