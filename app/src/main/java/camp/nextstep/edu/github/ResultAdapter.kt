@@ -9,6 +9,10 @@ import com.github.dodobest.domain.GithubData
 class ResultAdapter : RecyclerView.Adapter<ResultAdapterViewHolder>() {
     private var results: List<GithubData> = emptyList()
 
+    fun setResult(newResults: List<GithubData>) {
+        results = newResults
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultAdapterViewHolder {
         val binding: ItemRepoBinding = ItemRepoBinding.inflate(LayoutInflater.from(parent.context))
         return ResultAdapterViewHolder(binding)
