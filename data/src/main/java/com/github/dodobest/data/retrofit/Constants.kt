@@ -1,4 +1,4 @@
-package com.github.dodobest.data.utils
+package com.github.dodobest.data.retrofit
 
 object API {
     const val BASE_URL : String = "https://api.github.com/"
