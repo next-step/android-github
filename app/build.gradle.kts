@@ -55,6 +55,7 @@ dependencies {
         implementation(appCompat)
         implementation(materialDesign)
         implementation(constraintLayout)
+        implementation(viewModels)
     }
 
     Test.apply {

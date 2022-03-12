@@ -14,6 +14,7 @@ object Androidx {
     val appCompat by lazy { "androidx.appcompat:appcompat:${Versions.appCompat}" }
     val materialDesign by lazy { "com.google.android.material:material:${Versions.material}" }
     val constraintLayout by lazy { "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}" }
+    val viewModels by lazy { "androidx.fragment:fragment-ktx:${Versions.viewModels}"}
 }
 
 object Network {

@@ -1,6 +1,7 @@
 object Versions {
     const val gradlePlugin = "7.0.0"
     const val kotlin = "1.5.21"
+    const val viewModels = "1.3.0"
 
 
     // AndroidX
