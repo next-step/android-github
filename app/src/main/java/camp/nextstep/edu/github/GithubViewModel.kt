@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.dodobest.domain.GithubData
+import com.github.dodobest.domain.RESPONSE_STATE
 import com.github.dodobest.domain.usecase.GetRepositoriesUseCase
 
 class GithubViewModel(
@@ -18,8 +19,23 @@ class GithubViewModel(
             get() = _gitText
 
     fun getRepositories() {
-        _githubData.value = getRepositoriesUseCase()
-        _gitText.value = _githubData.value.toString()
+//        _githubData.value = getRepositoriesUseCase()
+        var responseText = ""
+        getRepositoriesUseCase {
+            responseState: RESPONSE_STATE, responseBody: List<GithubData> ->
+
+            when(responseState) {
+                RESPONSE_STATE.OK -> {
+                    for (gitData: GithubData in responseBody) {
+                        responseText += "${gitData.full_name} : ${gitData.description}\n"
+                    }
+                }
+                RESPONSE_STATE.FAIL -> {
+                    responseText = "${responseBody[0].full_name} : ${responseBody[0].description}\n"
+                }
+            }
+            _gitText.value = responseText
+        }
     }
 
 }
