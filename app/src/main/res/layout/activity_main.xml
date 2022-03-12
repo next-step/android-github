@@ -17,13 +17,14 @@
             android:id="@+id/btn_get_repositories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.getRepositories()}"
             android:text="@string/btn_get_repositories_text" />
 
         <TextView
             android:id="@+id/text_repositories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="result" />
+            android:text="@{viewModel.gitText}" />
     </LinearLayout>
 </layout>
 
