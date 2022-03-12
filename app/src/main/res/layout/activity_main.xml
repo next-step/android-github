@@ -25,6 +25,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{viewModel.gitText}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:listitem="@layout/item_repo"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
     </LinearLayout>
 </layout>
 
