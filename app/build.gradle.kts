@@ -50,6 +50,10 @@ dependencies {
         implementation(kotlinStdlib)
     }
 
+    Network.apply {
+        implementation(retrofit)
+    }
+
     Androidx.apply {
         implementation(core)
         implementation(appCompat)
