@@ -7,7 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RetrofitManager(
-    private val githubApiService : GithubApiService = RetrofitClient().getRetrofit(API.BASE_URL).create(GithubApiService::class.java)
+    private val githubApiService : GithubApiService = RetrofitClient.getRetrofit().create(GithubApiService::class.java)
 ) {
     fun getRepositories(completion: (RESPONSE_STATE, List<GithubData>) -> Unit) {
         val call = githubApiService.getRepositories()
