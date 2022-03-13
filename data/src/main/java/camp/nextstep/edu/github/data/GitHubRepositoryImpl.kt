@@ -1,23 +1,36 @@
 package camp.nextstep.edu.github.data
 
+import camp.nextstep.edu.github.data.exception.HttpStatusException
+import camp.nextstep.edu.github.data.mapper.toDomain
 import camp.nextstep.edu.github.data.network.GitHubService
+import camp.nextstep.edu.github.domain.error.Error
 import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 import camp.nextstep.edu.github.domain.repository.GitHubRepository
-import java.lang.Exception
+import retrofit2.Response
+import java.net.UnknownHostException
 
 internal class GitHubRepositoryImpl(private val gitHubService: GitHubService) : GitHubRepository {
-    companion object {
-        private const val EMPTY = ""
-    }
-
-    override suspend fun getRepositories(): List<GitHubRepositoryData>? {
-        return try {
-            val response = gitHubService.getRepositories()
-            response.body()?.let {
-                it.map { repo -> GitHubRepositoryData(repo.full_name, repo.description ?: EMPTY) }
-            }
-        } catch(e: Exception) {
-            null
+    override suspend fun getRepositories(): Result<List<GitHubRepositoryData>> {
+        val result = runCatching {
+            gitHubService.getRepositories()
+                .getResponse()
+                .orEmpty()
+                .toDomain()
         }
+
+        return when (val exception = result.exceptionOrNull()) {
+            null -> result
+            is UnknownHostException -> return Result.failure(Error.NetworkUnavailable)
+            is HttpStatusException -> return Result.failure(Error.NetworkUnavailable)
+            else -> Result.failure(exception)
+        }
+    }
+}
+
+internal fun <T> Response<T>.getResponse(): T? {
+    if(this.isSuccessful) {
+       return this.body()
+    } else {
+       throw HttpStatusException("statusCode : ${this.code()}, message: ${this.message()}")
     }
 }

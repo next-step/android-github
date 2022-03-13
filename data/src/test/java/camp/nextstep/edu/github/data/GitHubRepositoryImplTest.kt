@@ -1,6 +1,7 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.network.response.Repositories
+import camp.nextstep.edu.github.domain.error.Error
 import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 import camp.nextstep.edu.github.util.TestGitHubService
 import com.google.common.truth.Truth.assertThat
@@ -33,7 +34,7 @@ internal class GitHubRepositoryImplTest {
             .setBody(json)
         server.enqueue(response)
 
-        val actual = gitHubRepository.getRepositories()
+        val actual = gitHubRepository.getRepositories().getOrDefault(emptyList())
 
         val expected = GsonBuilder().create().fromJson(json, Repositories::class.java)
             .map { GitHubRepositoryData(it.full_name, it.description ?: "") }
@@ -41,27 +42,28 @@ internal class GitHubRepositoryImplTest {
         assertThat(actual).isEqualTo(expected)
     }
 
-    @DisplayName("상태코드가 200 이 아닌 경우 NULL 이 반환된다.")
+    @DisplayName("상태코드가 200 이 아닌 경우 Result 가 Failure 이다.")
     @ParameterizedTest()
     @ValueSource(ints = [400, 401, 404, 403, 500, 503])
-    fun notOkResponseCodeTest(responseCode: Int) = runBlocking {
+    fun notOkResponseCodeFailureTest(responseCode: Int) = runBlocking {
         val response = MockResponse().setResponseCode(responseCode)
         server.enqueue(response)
 
         val actual = gitHubRepository.getRepositories()
 
-        assertThat(actual).isNull()
+        assertThat(actual.isFailure).isTrue()
     }
 
-    @DisplayName("상태코드 200, 에러 응답이 올 경우 NULL 이 반환된다.")
-    @Test
-    fun errorResponseTest() = runBlocking {
-        val response = MockResponse().setBody(
-            """{"message": "Not Found", "documentation_url": "https://docs.github.com/rest"}""")
+    @DisplayName("상태코드가 200 이 아닌 경우 NetworkUnavailable Error 가 Result 에 전달된다")
+    @ParameterizedTest()
+    @ValueSource(ints = [400, 401, 404, 403, 500, 503])
+    fun notOkResponseCodeErrorTest(responseCode: Int) = runBlocking {
+        val response = MockResponse().setResponseCode(responseCode)
         server.enqueue(response)
 
         val actual = gitHubRepository.getRepositories()
 
-        assertThat(actual).isNull()
+        assertThat(actual.exceptionOrNull()).isInstanceOf(Error.NetworkUnavailable.javaClass)
     }
+
 }
