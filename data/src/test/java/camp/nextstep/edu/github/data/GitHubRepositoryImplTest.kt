@@ -1,6 +1,5 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.network.response.RepositoriesItem
 import camp.nextstep.edu.github.domain.error.Error
 import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 import camp.nextstep.edu.github.util.TestGitHubService
@@ -25,10 +24,10 @@ internal class GitHubRepositoryImplTest {
         gitHubRepository = GitHubRepositoryImpl(TestGitHubService.getGitHubService(server))
     }
 
-    @DisplayName("정상적인 응답이 있을 경우 Repository 리스트를 가지고 온다")
+    @DisplayName("정상적인(200) 응답이 있을 경우 Repository 리스트를 가지고 온다")
     @Test
     fun getRepositoriesTest(): Unit = runBlocking {
-        val json = File("src/test/resources/repositories.json").readText()
+        val json = File("src/test/resources/repositories-200.json").readText()
         val response = MockResponse()
             .setBody(json)
         server.enqueue(response)

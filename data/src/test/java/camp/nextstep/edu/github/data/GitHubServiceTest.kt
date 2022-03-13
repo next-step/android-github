@@ -25,7 +25,7 @@ class GitHubServiceTest {
     @DisplayName("Repository 리스트를 가지고 온다")
     @Test
     fun getRepositoriesTest(): Unit = runBlocking {
-        val json =  File("src/test/resources/repositories.json").readText()
+        val json =  File("src/test/resources/repositories-200.json").readText()
         val response = MockResponse()
             .setBody(json)
         server.enqueue(response)
