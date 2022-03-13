@@ -19,7 +19,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapterViewHolder>() {
     }
 
     override fun onBindViewHolder(holderResultAdapter: ResultAdapterViewHolder, position: Int) {
-        holderResultAdapter.fullName.text = results[position].full_name
+        holderResultAdapter.fullName.text = results[position].fullName
         holderResultAdapter.description.text = results[position].description
     }
 

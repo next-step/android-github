@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface GithubApiService {
     @GET(API.SEARCH_PUBLIC_REPOSITORY)
-    fun getRepositories() : Call<List<GithubData>>
+    fun getRepositories() : Call<List<GithubDataResponse>>
 }

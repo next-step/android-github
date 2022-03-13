@@ -16,7 +16,7 @@ class GithubViewModel(
 
     fun getRepositories() {
         getRepositoriesUseCase {
-            responseState: RESPONSE_STATE, responseBody: List<GithubData> -> _githubData.value = responseBody
+                responseState: RESPONSE_STATE, dataBody: List<GithubData> -> _githubData.value = dataBody
         }
     }
 

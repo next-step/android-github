@@ -14,15 +14,15 @@ class RetrofitManagerImpl(
     override fun getRepositories(completion: (RESPONSE_STATE, List<GithubData>) -> Unit) {
         val call = retrofit.create(GithubApiService::class.java).getRepositories()
 
-        call.enqueue(object: Callback<List<GithubData>> {
+        call.enqueue(object: Callback<List<GithubDataResponse>> {
             override fun onResponse(
-                call: Call<List<GithubData>>,
-                response: Response<List<GithubData>>
+                call: Call<List<GithubDataResponse>>,
+                data: Response<List<GithubDataResponse>>
             ) {
-                completion(RESPONSE_STATE.OK, response.body()!!)
+                completion(RESPONSE_STATE.OK, data.body()!!.toList().map { it.toData() })
             }
 
-            override fun onFailure(call: Call<List<GithubData>>, t: Throwable) {
+            override fun onFailure(call: Call<List<GithubDataResponse>>, t: Throwable) {
                 completion(RESPONSE_STATE.FAIL, listOf(GithubData("Error", t.message?: t.toString())))
             }
         })
