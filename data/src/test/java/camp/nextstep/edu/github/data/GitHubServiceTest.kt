@@ -1,10 +1,9 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.network.GitHubService
-import camp.nextstep.edu.github.data.network.response.Repositories
+import camp.nextstep.edu.github.data.network.response.RepositoriesItem
 import camp.nextstep.edu.github.util.TestGitHubService
 import com.google.common.truth.Truth.assertThat
-import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -31,9 +30,12 @@ class GitHubServiceTest {
             .setBody(json)
         server.enqueue(response)
 
-        val actual: Repositories? = service.getRepositories().body()
+        val actual: List<RepositoriesItem>? = service.getRepositories().body()
 
-        val expected = GsonBuilder().create().fromJson(json, Repositories::class.java)
+        val expected = listOf(
+            RepositoriesItem("defunkt/starling", null),
+            RepositoriesItem("wycats/merb-more", "Merb More: The Full Stack. Take what you need; leave what you don't."),
+        )
         assertThat(actual).isEqualTo(expected)
     }
 }

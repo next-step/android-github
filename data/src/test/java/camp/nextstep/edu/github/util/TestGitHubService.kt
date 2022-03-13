@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.util
 
-import camp.nextstep.edu.github.data.util.GsonConverter
 import camp.nextstep.edu.github.data.network.GitHubService
+import camp.nextstep.edu.github.data.util.GsonConverter
 import okhttp3.mockwebserver.MockWebServer
 import retrofit2.Retrofit
 

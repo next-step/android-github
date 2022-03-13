@@ -1,11 +1,10 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.network.response.Repositories
+import camp.nextstep.edu.github.data.network.response.RepositoriesItem
 import camp.nextstep.edu.github.domain.error.Error
 import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 import camp.nextstep.edu.github.util.TestGitHubService
 import com.google.common.truth.Truth.assertThat
-import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -36,9 +35,10 @@ internal class GitHubRepositoryImplTest {
 
         val actual = gitHubRepository.getRepositories().getOrDefault(emptyList())
 
-        val expected = GsonBuilder().create().fromJson(json, Repositories::class.java)
-            .map { GitHubRepositoryData(it.full_name, it.description ?: "") }
-
+        val expected = listOf(
+            GitHubRepositoryData("defunkt/starling", ""),
+            GitHubRepositoryData("wycats/merb-more", "Merb More: The Full Stack. Take what you need; leave what you don't."),
+        )
         assertThat(actual).isEqualTo(expected)
     }
 
