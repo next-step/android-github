@@ -7,10 +7,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RetrofitManager(
-    private val retrofit : Retrofit = RetrofitClient().getRetrofit(API.BASE_URL).create(Retrofit::class.java)
+    private val githubApiService : GithubApiService = RetrofitClient().getRetrofit(API.BASE_URL).create(GithubApiService::class.java)
 ) {
     fun getRepositories(completion: (RESPONSE_STATE, List<GithubData>) -> Unit) {
-        val call = retrofit.getRepositories()
+        val call = githubApiService.getRepositories()
 
         call.enqueue(object: Callback<List<GithubData>> {
             override fun onResponse(
