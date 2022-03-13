@@ -4,7 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import retrofit2.converter.gson.GsonConverterFactory
 
-object GsonConverter {
+internal object GsonConverter {
     fun getConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create(
             GsonBuilder()
