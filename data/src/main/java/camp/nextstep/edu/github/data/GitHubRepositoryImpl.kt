@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.exception.HttpStatusException
+import camp.nextstep.edu.github.data.exception.HttpResponseFailureException
 import camp.nextstep.edu.github.data.mapper.toDomain
 import camp.nextstep.edu.github.data.network.GitHubService
 import camp.nextstep.edu.github.domain.error.Error
@@ -21,7 +21,7 @@ internal class GitHubRepositoryImpl(private val gitHubService: GitHubService) : 
         return when (val exception = result.exceptionOrNull()) {
             null -> result
             is UnknownHostException -> return Result.failure(Error.NetworkUnavailable)
-            is HttpStatusException -> return Result.failure(Error.NetworkUnavailable)
+            is HttpResponseFailureException -> return Result.failure(Error.NetworkUnavailable)
             else -> Result.failure(exception)
         }
     }
@@ -31,6 +31,6 @@ internal fun <T> Response<T>.getResponse(): T? {
     if(this.isSuccessful) {
        return this.body()
     } else {
-       throw HttpStatusException("statusCode : ${this.code()}, message: ${this.message()}")
+       throw HttpResponseFailureException(this.code(), this.message())
     }
 }

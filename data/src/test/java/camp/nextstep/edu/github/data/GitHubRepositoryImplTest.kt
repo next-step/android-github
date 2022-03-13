@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.exception.HttpStatusException
+import camp.nextstep.edu.github.data.exception.HttpResponseFailureException
 import camp.nextstep.edu.github.data.network.GitHubService
 import camp.nextstep.edu.github.data.network.response.RepositoriesItem
 import camp.nextstep.edu.github.domain.error.Error
@@ -116,10 +116,10 @@ internal class GitHubRepositoryImplTest {
         assertThat(actual).isInstanceOf(Error.NetworkUnavailable.javaClass)
     }
 
-    @DisplayName(" HttpStatusException 이 발생할 때 NetworkUnavailable Error 가 Result 에 전달된다")
+    @DisplayName("HttpResponseFailureException 이 발생할 때 NetworkUnavailable Error 가 Result 에 전달된다")
     @Test
     fun  httpStatusExceptionTest() = runBlocking {
-        coEvery { gitHubService.getRepositories() } throws HttpStatusException("statusCode : 400, message: Problems parsing JSON")
+        coEvery { gitHubService.getRepositories() } throws HttpResponseFailureException(400, "Problems parsing JSON")
 
         val actual = gitHubRepository.getRepositories().exceptionOrNull()!!
 
