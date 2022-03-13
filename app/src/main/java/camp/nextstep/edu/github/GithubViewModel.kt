@@ -14,10 +14,16 @@ class GithubViewModel(
         val githubData: LiveData<List<GithubData>>
             get() = _githubData
 
+    private val _errMessage = MutableLiveData<Event<String>>()
+        val errMessage: LiveData<Event<String>>
+            get() = _errMessage
+
     fun getRepositories() {
-        getRepositoriesUseCase {
-                responseState: RESPONSE_STATE, dataBody: List<GithubData> -> _githubData.value = dataBody
-        }
+        getRepositoriesUseCase( {
+            _githubData.value = it
+        }, {
+            _errMessage.value = Event(it.message.toString())
+        })
     }
 
 }

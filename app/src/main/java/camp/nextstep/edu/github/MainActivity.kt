@@ -2,6 +2,7 @@ package camp.nextstep.edu.github
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 
@@ -26,5 +27,11 @@ class MainActivity : AppCompatActivity() {
             resultAdapter.setResult(it)
             resultAdapter.notifyDataSetChanged()
         }
+
+        viewModel.errMessage.observe(this) {
+            if (it.consumed) return@observe
+            Toast.makeText(this, it.consume(), Toast.LENGTH_LONG).show()
+        }
+
     }
 }

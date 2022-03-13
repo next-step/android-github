@@ -8,7 +8,7 @@ import com.github.dodobest.domain.RetrofitManager
 internal class GithubRepositoryImpl(
     private val retrofitManager: RetrofitManager
 ) : GithubRepository {
-    override fun getRepositories(completion: (RESPONSE_STATE, List<GithubData>) -> Unit) {
-        retrofitManager.getRepositories(completion)
+    override fun getRepositories(onSuccess: (List<GithubData>) -> Unit, onFailure: (Throwable) -> Unit) {
+        retrofitManager.getRepositories(onSuccess, onFailure)
     }
 }
