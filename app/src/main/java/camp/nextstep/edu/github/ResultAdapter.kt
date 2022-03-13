@@ -19,8 +19,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapterViewHolder>() {
     }
 
     override fun onBindViewHolder(holderResultAdapter: ResultAdapterViewHolder, position: Int) {
-        holderResultAdapter.fullName.text = results[position].fullName
-        holderResultAdapter.description.text = results[position].description
+        holderResultAdapter.setNameAndDescription(results[position].fullName, results[position].description)
     }
 
     override fun getItemCount(): Int {
