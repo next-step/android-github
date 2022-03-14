@@ -6,7 +6,9 @@
         <variable
             name="viewModel"
             type="camp.nextstep.edu.github.GithubViewModel" />
-        
+
+        <import type="android.view.View"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,6 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewModel.loadingEvent ? View.VISIBLE : View.GONE}"
             tools:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -31,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_repo"
+            android:visibility="@{viewModel.loadingEvent ? View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

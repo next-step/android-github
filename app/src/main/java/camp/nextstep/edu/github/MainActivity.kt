@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val reposAdapter = RepoAdapter()
 
