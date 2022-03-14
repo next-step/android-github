@@ -8,7 +8,7 @@ class ResultAdapterViewHolder(binding: ItemRepoBinding) : RecyclerView.ViewHolde
     private val fullName: TextView = binding.fullName
     private val description: TextView = binding.description
 
-    fun setNameAndDescription(fullName: String, description: String?) {
+    fun setNameAndDescription(fullName: String?, description: String?) {
         this.fullName.text = fullName
         this.description.text = description
     }

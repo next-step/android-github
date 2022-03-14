@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GithubDataResponse(
     @SerializedName("full_name")
-    val fullName: String,
+    val fullName: String?,
     val description: String?
 ) {
     fun toData() : GithubData {
