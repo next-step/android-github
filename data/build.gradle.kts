@@ -19,4 +19,8 @@ dependencies {
 
         testImplementation(mockWebserver)
     }
+
+    Test.apply {
+        testImplementation(truth)
+    }
 }
