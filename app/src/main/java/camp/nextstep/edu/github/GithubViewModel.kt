@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.dodobest.domain.GithubData
-import com.github.dodobest.domain.RESPONSE_STATE
 import com.github.dodobest.domain.usecase.GetRepositoriesUseCase
 
 class GithubViewModel(

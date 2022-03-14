@@ -1,7 +1,6 @@
 package com.github.dodobest.data.retrofit
 
 import com.github.dodobest.domain.GithubData
-import com.github.dodobest.domain.RESPONSE_STATE
 import com.github.dodobest.domain.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
