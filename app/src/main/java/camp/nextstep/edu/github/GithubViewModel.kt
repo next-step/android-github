@@ -17,6 +17,10 @@ class GithubViewModel(
         val errMessage: LiveData<Event<String>>
             get() = _errMessage
 
+    init {
+        getRepositories()
+    }
+
     fun getRepositories() {
         getRepositoriesUseCase( {
             _githubData.value = it
