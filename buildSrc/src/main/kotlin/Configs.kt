@@ -30,3 +30,9 @@ object TestConfig {
 object CoroutinesConfig {
     const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
 }
+
+object Hilt {
+    private const val hiltVersion = "2.41"
+    const val hilt = "com.google.dagger:hilt-android:$hiltVersion"
+    const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
+}
