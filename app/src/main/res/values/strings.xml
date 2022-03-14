@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-github</string>
+    <string name="network_unavailable_error">network error</string>
 </resources>
