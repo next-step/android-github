@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
 
 
         viewModel.githubData.observe(this) {
-            resultAdapter.setResult(it)
-            resultAdapter.notifyDataSetChanged()
+            resultAdapter.submitList(it)
         }
 
         viewModel.errMessage.observe(this) {
