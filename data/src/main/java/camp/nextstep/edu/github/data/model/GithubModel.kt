@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data.model
 
-import camp.nextstep.edu.github.domain.GitResponseData
+import camp.nextstep.edu.github.domain.Github
 import com.google.gson.annotations.SerializedName
 
 data class GitResponse(
@@ -11,9 +11,9 @@ data class GitResponse(
     val description: String
 )
 
-fun List<GitResponse>.toModelList(): List<GitResponseData> {
+fun List<GitResponse>.toModelList(): List<Github> {
     return this.map {
-        GitResponseData(
+        Github(
             fullName = it.fullName,
             description = it.description
         )

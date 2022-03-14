@@ -12,13 +12,13 @@ internal object NetworkModule {
             .build()
     }
 
-    fun getGitService(): GitService {
+    fun getGitService(): GithubService {
         return Retrofit
             .Builder()
             .baseUrl(BASE_URL)
             .client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(GitService::class.java)
+            .create(GithubService::class.java)
     }
 }
