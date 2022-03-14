@@ -3,7 +3,7 @@ package camp.nextstep.edu.github.data.model
 import camp.nextstep.edu.github.domain.Github
 import com.google.gson.annotations.SerializedName
 
-internal data class GitResponse(
+internal data class GithubModel(
     @SerializedName("full_name")
     val fullName: String,
 
@@ -11,7 +11,7 @@ internal data class GitResponse(
     val description: String
 )
 
-internal fun List<GitResponse>.toModelList(): List<Github> {
+internal fun List<GithubModel>.toModelList(): List<Github> {
     return this.map {
         Github(
             fullName = it.fullName,
