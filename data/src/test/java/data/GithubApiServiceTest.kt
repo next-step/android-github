@@ -1,6 +1,5 @@
 package data
 
-import com.github.dodobest.data.retrofit.API
 import com.github.dodobest.data.retrofit.GithubApiService
 import com.github.dodobest.data.retrofit.GithubDataResponse
 import com.google.common.truth.Truth.assertThat
