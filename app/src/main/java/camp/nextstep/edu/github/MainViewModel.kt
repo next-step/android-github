@@ -14,27 +14,27 @@ class MainViewModel(
 ) : ViewModel() {
     private var job: Job? = null
 
-    private val _repositoryState = MutableLiveData<State>()
+    private val _repositoryState = MutableLiveData<RepositoriesState>()
     val repositorySate
-        get(): LiveData<State> = _repositoryState
+        get(): LiveData<RepositoriesState> = _repositoryState
 
     init {
         fetchRepositories()
     }
 
     private fun fetchRepositories() {
-        _repositoryState.value = State.Loading
+        _repositoryState.value = RepositoriesState.Loading
 
         job = viewModelScope.launch {
             val repository = withContext(ioDispatcher) {
                 return@withContext gitHubRepository.getRepositories()
             }
             repository
-                .onSuccess { repositories -> _repositoryState.value = State.Success(repositories) }
+                .onSuccess { repositories -> _repositoryState.value = RepositoriesState.Success(repositories) }
                 .onFailure { throwable ->
                     when (throwable) {
-                        Error.NetworkUnavailable -> _repositoryState.value = State.Failure(Error.NetworkUnavailable)
-                        else -> _repositoryState.value = State.Failure(throwable)
+                        Error.NetworkUnavailable -> _repositoryState.value = RepositoriesState.Failure(Error.NetworkUnavailable)
+                        else -> _repositoryState.value = RepositoriesState.Failure(throwable)
                     }
                 }
         }
