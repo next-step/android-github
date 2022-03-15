@@ -26,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{viewModel.loadingEvent ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.loadingState ? View.VISIBLE : View.GONE}"
             tools:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_repo"
-            android:visibility="@{viewModel.loadingEvent ? View.GONE : View.VISIBLE}"
+            android:visibility="@{viewModel.loadingState ? View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
