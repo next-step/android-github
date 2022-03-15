@@ -28,14 +28,10 @@ class GithubViewModel @Inject constructor(
     private fun fetchGithubRepos() = viewModelScope.launch {
         _loadingState.value = true
 
-        val result = githubRepository.fetchGithubRepos()
-        if (result.isSuccess) {
-            _reposEvent.postValue(
-                result.getOrElse { emptyList() }
-            )
-            _loadingState.postValue(false)
-            return@launch
-        }
+        githubRepository.fetchGithubRepos()
+            .onSuccess {
+                _reposEvent.postValue(it)
+            }
 
         _loadingState.postValue(false)
     }
