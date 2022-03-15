@@ -1,7 +1,5 @@
-package data
+package com.github.dodobest.data.retrofit
 
-import com.github.dodobest.data.retrofit.GithubApiService
-import com.github.dodobest.data.retrofit.GithubDataResponse
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
 import okhttp3.mockwebserver.MockResponse
