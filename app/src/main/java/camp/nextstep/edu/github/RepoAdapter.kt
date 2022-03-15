@@ -2,27 +2,44 @@ package camp.nextstep.edu.github
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import camp.nextstep.edu.github.databinding.ItemRepoBinding
 import camp.nextstep.edu.github.domain.GithubRepoModel
 
-class RepoAdapter : RecyclerView.Adapter<RepoViewHolder>() {
-    private val repos: MutableList<GithubRepoModel> = mutableListOf()
-
-    fun updateRepos(repos: List<GithubRepoModel>) {
-        this.repos.clear()
-        this.repos.addAll(repos)
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount(): Int = repos.size
+class RepoAdapter : ListAdapter<GithubRepoModel, RepoViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_repo, parent, false)
-        return RepoViewHolder(view)
+        val binding: ItemRepoBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_repo,
+            parent,
+            false
+        )
+
+        return RepoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        holder.tvAuthor.text = repos[position].fullName
-        holder.tvDescription.text = repos[position].description
+        holder.bind(getItem(position))
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GithubRepoModel>() {
+            override fun areItemsTheSame(
+                oldItem: GithubRepoModel,
+                newItem: GithubRepoModel
+            ): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(
+                oldItem: GithubRepoModel,
+                newItem: GithubRepoModel
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

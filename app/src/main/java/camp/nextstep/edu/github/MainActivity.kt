@@ -1,8 +1,8 @@
 package camp.nextstep.edu.github
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.reposEvent.observe(this) {
-            reposAdapter.updateRepos(it)
+            reposAdapter.submitList(it)
         }
     }
 }
