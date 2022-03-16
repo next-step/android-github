@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">android-github</string>
-    <string name="network_unavailable_error">network error</string>
+    <string name="network_unavailable_error">Network error. Check the network and server status.</string>
+    <string name="etc_error">Other errors have occurred.</string>
 </resources>
