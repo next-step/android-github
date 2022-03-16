@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
 import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 
-class RepositoryAdapter(val viewModel: MainViewModel) : ListAdapter<GitHubRepositoryData, RepositoryViewHolder>(RepositoryComparator.COMPARATOR) {
+class RepositoryAdapter : ListAdapter<GitHubRepositoryData, RepositoryViewHolder>(RepositoryComparator.COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         return RepositoryViewHolder.create(parent)
     }

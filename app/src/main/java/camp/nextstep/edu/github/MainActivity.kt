@@ -9,26 +9,24 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import camp.nextstep.edu.github.data.Injector
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import camp.nextstep.edu.github.domain.error.Error
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel
-        by viewModels {
-            MainViewModelFactory(Injector.getGitHubRepository())
-        }
+    @Inject lateinit var repositoryAdapter: RepositoryAdapter
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var repositoryAdapter: RepositoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-
-        repositoryAdapter = RepositoryAdapter(viewModel)
         binding.repositoryAdapter = repositoryAdapter
 
         viewModel.repositorySate.observe(this, Observer {

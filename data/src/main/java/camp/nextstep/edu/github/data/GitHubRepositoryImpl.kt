@@ -8,8 +8,9 @@ import camp.nextstep.edu.github.domain.model.GitHubRepositoryData
 import camp.nextstep.edu.github.domain.repository.GitHubRepository
 import retrofit2.Response
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-internal class GitHubRepositoryImpl(private val gitHubService: GitHubService) : GitHubRepository {
+internal class GitHubRepositoryImpl @Inject constructor(private val gitHubService: GitHubService) : GitHubRepository {
     override suspend fun getRepositories(): Result<List<GitHubRepositoryData>> {
         val result = runCatching {
             gitHubService.getRepositories()
