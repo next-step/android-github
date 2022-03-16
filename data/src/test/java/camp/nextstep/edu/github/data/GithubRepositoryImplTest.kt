@@ -16,7 +16,7 @@ internal class GithubRepositoryImplTest {
 
     @BeforeEach
     fun setUp() {
-        repository = mockk(relaxed = true)
+        repository = GithubRepositoryImpl(mockk(relaxed = true))
     }
 
     @Test

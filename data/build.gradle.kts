@@ -29,6 +29,9 @@ dependencies {
 
     implementation(CoroutinesConfig.core)
 
+    api("com.google.dagger:hilt-core:2.41")
+    kapt("com.google.dagger:hilt-android-compiler:2.41")
+
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.assertj:assertj-core:3.18.0")
