@@ -1,5 +1,6 @@
 package camp.nextstep.edu.github.data
 
+import camp.nextstep.edu.github.data.exception.HttpResponseFailureException
 import camp.nextstep.edu.github.data.network.GitHubService
 import camp.nextstep.edu.github.data.network.response.RepositoriesItem
 import camp.nextstep.edu.github.util.TestGitHubService
@@ -7,6 +8,7 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -84,4 +86,29 @@ class GitHubServiceTest {
         assertThat(result.body()).isEqualTo(null)
         assertThat(result.errorBody()?.string()).isEqualTo(errorBody)
     }
+
+    @DisplayName("Http Response Status 가 200 이외의 응답이 오면 HttpResponseFailureException 이 발생한다")
+    @ParameterizedTest
+    @CsvSource(
+        "400",
+        "401",
+        "404",
+        "403",
+        "500",
+        "503",
+        "507"
+    )
+    fun getResponseExtensionFunctionTest(statusCode: Int) = runBlocking {
+        val serviceResponse = MockResponse()
+            .setResponseCode(statusCode)
+        server.enqueue(serviceResponse)
+
+        val response = service.getRepositories()
+
+        val actual = Assertions.assertThrows(HttpResponseFailureException::class.java) {
+            response.getResponse()
+        }
+        assertThat(actual).isInstanceOf(HttpResponseFailureException::class.java)
+    }
 }
+
