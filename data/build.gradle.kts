@@ -10,4 +10,25 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+
+    Coroutine.apply {
+        implementation(CORE)
+        testImplementation(TEST)
+    }
+
+    Network.apply {
+        implementation(RETROFIT)
+        implementation(CONVERTER_GSON)
+        implementation(OKHTTP)
+        testImplementation(MOCK_WEB_SERVER)
+    }
+
+    Test.apply {
+        testImplementation(JUNIT5_JUPITER_API)
+        testRuntimeOnly(JUNIT5_JUPITER_ENGINE)
+        testImplementation(JUNIT5_JUPITER_PARAMS)
+        testRuntimeOnly(JUNIT5_VINTAGE_ENGINE)
+        testImplementation(TRUTH)
+        testImplementation(MOCKK)
+    }
 }
