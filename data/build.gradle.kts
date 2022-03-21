@@ -1,6 +1,6 @@
 plugins {
     id("java-library")
-    id("kotlin")
+    kotlin("jvm")
 }
 
 java {
@@ -10,4 +10,18 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+
+    Network.apply {
+        implementation(retrofit)
+        implementation(converterGson)
+        implementation(gson)
+        implementation(okHttp)
+
+        testImplementation(mockWebserver)
+    }
+
+    Test.apply {
+        testImplementation(truth)
+        testImplementation(testTruth)
+    }
 }
