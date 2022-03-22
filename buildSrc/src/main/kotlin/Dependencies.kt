@@ -18,6 +18,10 @@ object Androidx {
     val viewModels by lazy { "androidx.fragment:fragment-ktx:${Versions.viewModels}"}
 }
 
+object Javax {
+    val javaxInject by lazy { "javax.inject:javax.inject:1" }
+}
+
 object Network {
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
     val converterGson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.retrofit}" }
