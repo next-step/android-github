@@ -22,6 +22,5 @@ dependencies {
 
     Test.apply {
         testImplementation(truth)
-        testImplementation(testTruth)
     }
 }

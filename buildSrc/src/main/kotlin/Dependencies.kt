@@ -33,7 +33,6 @@ object Test {
     val jUnitJupiter by lazy { "org.junit.jupiter:junit-jupiter:${Versions.jUnit5}" }
     val jUnit by lazy { "junit:junit:${Versions.jUnit}" }
     val truth by lazy { "com.google.truth:truth:${Versions.truth}" }
-    val testTruth by lazy { "'androidx.test.ext:truth:${Versions.testTruth}'"}
 
     // testRuntimeOnly
     val junitVintageEngine by lazy { "org.junit.vintage:junit-vintage-engine:${Versions.jUnit5}" }
