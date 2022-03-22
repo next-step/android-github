@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -62,6 +63,11 @@ dependencies {
         implementation(viewModels)
     }
 
+    Hilt.apply {
+        implementation(hiltAndroid)
+        kapt(hiltAndroidCompiler)
+    }
+
     Test.apply {
         testImplementation(jUnitJupiter)
         testRuntimeOnly(junitVintageEngine) // junit4 지원
@@ -73,4 +79,8 @@ dependencies {
         androidTestImplementation(androidTestCore)
         androidTestRuntimeOnly(androidTestRunner)
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }

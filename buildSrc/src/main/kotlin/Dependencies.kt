@@ -3,6 +3,7 @@ object BuildPlugins {
     val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}" }
     val ktlintGradle by lazy { "org.jlleitschuh.gradle:ktlint-gradle:10.0.0" }
     val gradlePluginsAndroidJunit5 by lazy { "de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1" }
+    val hiltAndroidGradlePlugin by lazy { "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}" }
 }
 
 object Kotlin {
@@ -26,6 +27,12 @@ object Network {
 
     //testImplementation
     val mockWebserver by lazy { "com.squareup.okhttp3:mockwebserver:${Versions.okHttp}" }
+}
+
+object Hilt {
+    val hiltAndroid by lazy { "com.google.dagger:hilt-android:${Versions.hilt}"}
+    val hiltAndroidCompiler by lazy { "com.google.dagger:hilt-android-compiler:${Versions.hilt}" }
+    val hilt by lazy { "com.google.dagger:hilt-core:${Versions.hilt}" }
 }
 
 object Test {

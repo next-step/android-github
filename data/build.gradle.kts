@@ -1,6 +1,8 @@
 plugins {
     id("java-library")
+    id("kotlin")
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -18,6 +20,11 @@ dependencies {
         implementation(okHttp)
 
         testImplementation(mockWebserver)
+    }
+
+    Hilt.apply {
+        implementation(hilt)
+        kapt(hiltAndroidCompiler)
     }
 
     Test.apply {
