@@ -19,17 +19,4 @@ internal object RetrofitClient {
         .build()
 
     fun getRetrofit() : Retrofit = retrofitClient
-
-    fun changeBaseUrl(baseUrl: String) {
-        retrofitClient = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient.Builder()
-                .connectTimeout(5, TimeUnit.SECONDS)
-                .readTimeout(5, TimeUnit.SECONDS)
-                .writeTimeout(5, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-                .build())
-            .build()
-    }
 }
