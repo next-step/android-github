@@ -6,8 +6,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import javax.inject.Inject
 
-internal class RetrofitManagerImpl(
+internal class RetrofitManagerImpl @Inject constructor(
     private val retrofit : Retrofit
 ) : RetrofitManager {
     override fun getRepositories(onSuccess: (List<GithubData>) -> Unit, onFailure: (Throwable) -> Unit) {
