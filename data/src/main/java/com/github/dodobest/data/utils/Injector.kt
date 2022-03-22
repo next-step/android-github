@@ -21,8 +21,4 @@ object Injector {
     fun provideRetrofit(): Retrofit {
         return RetrofitClient.getRetrofit()
     }
-
-    fun provideGithubDataResponse(githubData: GithubData) : GithubDataResponse {
-        return GithubDataResponse(githubData.fullName, githubData.description)
-    }
 }
