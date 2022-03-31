@@ -3,6 +3,7 @@ object BuildPlugins {
     val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}" }
     val ktlintGradle by lazy { "org.jlleitschuh.gradle:ktlint-gradle:10.0.0" }
     val gradlePluginsAndroidJunit5 by lazy { "de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1" }
+    val hiltAndroidGradlePlugin by lazy { "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}" }
 }
 
 object Kotlin {
@@ -17,6 +18,10 @@ object Androidx {
     val viewModels by lazy { "androidx.fragment:fragment-ktx:${Versions.viewModels}"}
 }
 
+object Javax {
+    val javaxInject by lazy { "javax.inject:javax.inject:1" }
+}
+
 object Network {
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
     val converterGson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.retrofit}" }
@@ -28,12 +33,17 @@ object Network {
     val mockWebserver by lazy { "com.squareup.okhttp3:mockwebserver:${Versions.okHttp}" }
 }
 
+object Hilt {
+    val hiltAndroid by lazy { "com.google.dagger:hilt-android:${Versions.hilt}"}
+    val hiltAndroidCompiler by lazy { "com.google.dagger:hilt-android-compiler:${Versions.hilt}" }
+    val hilt by lazy { "com.google.dagger:hilt-core:${Versions.hilt}" }
+}
+
 object Test {
     // testImplementation
     val jUnitJupiter by lazy { "org.junit.jupiter:junit-jupiter:${Versions.jUnit5}" }
     val jUnit by lazy { "junit:junit:${Versions.jUnit}" }
     val truth by lazy { "com.google.truth:truth:${Versions.truth}" }
-    val testTruth by lazy { "'androidx.test.ext:truth:${Versions.testTruth}'"}
 
     // testRuntimeOnly
     val junitVintageEngine by lazy { "org.junit.vintage:junit-vintage-engine:${Versions.jUnit5}" }

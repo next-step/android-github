@@ -9,11 +9,13 @@ object Versions {
     const val appCompat = "1.3.1"
     const val material = "1.4.0"
     const val constraintLayout = "2.1.0"
-    const val testTruth = "1.2.0"
 
     // Network
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.3"
+
+    // Hilt
+    const val hilt = "2.40"
 
     // Test
     const val jUnit5 = "5.7.2"

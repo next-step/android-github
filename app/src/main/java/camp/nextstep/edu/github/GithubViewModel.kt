@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.dodobest.domain.GithubData
 import com.github.dodobest.domain.usecase.GetRepositoriesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class GithubViewModel(
+@HiltViewModel
+class GithubViewModel @Inject constructor(
     private val getRepositoriesUseCase: GetRepositoriesUseCase
 ) : ViewModel() {
     private val _githubData = MutableLiveData<List<GithubData>>(emptyList())
