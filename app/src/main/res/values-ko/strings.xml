@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android-github</string>
+    <string name="network_unavailable_error">네트워크 오류입니다. 네트워크, 서버 상태를 확인하세요.</string>
+    <string name="etc_error">기타 오류가 발생했습니다.</string>
+</resources>
