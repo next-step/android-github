@@ -10,6 +10,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
         classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1")
+        classpath(HILT.GRADLE_PLUGIN)
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
