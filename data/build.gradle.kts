@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
-    id("kotlin")
+    kotlin("jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -21,6 +22,10 @@ dependencies {
         implementation(CONVERTER_GSON)
         implementation(OKHTTP)
         testImplementation(MOCK_WEB_SERVER)
+    }
+    HILT.apply {
+        implementation(CORE)
+        kapt(COMPILER)
     }
 
     Test.apply {
