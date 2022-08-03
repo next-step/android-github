@@ -9,4 +9,12 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+
+    // retrofit
+    val retrofitVersion = "2.9.0"
+    val okhttpVersion = "4.9.3"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
 }
