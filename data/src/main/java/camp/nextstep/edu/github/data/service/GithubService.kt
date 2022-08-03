@@ -4,6 +4,6 @@ import camp.nextstep.edu.github.data.dto.GithubRepositoryDto
 import retrofit2.http.GET
 
 interface GithubService {
-    @GET("/repositories")
+    @GET("repositories")
     fun getRepositories(): List<GithubRepositoryDto>
 }
