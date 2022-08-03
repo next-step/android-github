@@ -8,5 +8,12 @@ java {
 }
 
 dependencies {
+    implementation(KotlinStdLib)
+
+    testImplementation(JunitJupyter)
+    testRuntimeOnly(JunitVintageEngine) // junit4 지원
+    testImplementation(Junit4)
+    testImplementation(Truth)
+
     implementation(project(":domain"))
 }
