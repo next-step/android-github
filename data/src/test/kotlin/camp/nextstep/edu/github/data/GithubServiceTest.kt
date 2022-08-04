@@ -11,7 +11,7 @@ internal class GithubServiceTest {
     fun `full_name, descroption을 받아온다`() {
         // when
         val actual = service.getRepositories()
-        
+
         // then
         val expected = listOf(
             GithubRepository("greedy0110", "hello world")
