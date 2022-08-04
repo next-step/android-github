@@ -1,6 +1,6 @@
 plugins {
     id("kotlin")
-    id("com.google.devtools.ksp").version("1.6.10-1.0.4")
+    id("kotlin-kapt")
 }
 
 repositories {
@@ -9,8 +9,12 @@ repositories {
 
 dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.moshi:moshi:1.13.0")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
     testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")

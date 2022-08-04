@@ -1,17 +1,25 @@
 package camp.nextstep.edu.github.data
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
+import retrofit2.http.GET
 
 internal class GithubService {
-    fun getRepositories(): List<GithubRepository> {
-        TODO()
+
+    private val service: GithubRetrofitService = retrofit.create()
+
+    suspend fun getRepositories(): List<GithubRepository> {
+        return service.getRepositories()
     }
 }
 
-@JsonClass(generateAdapter = true)
-internal data class GithubRepository(
-    @Json(name = "full_name")
-    val fullName: String,
-    val description: String
-)
+internal interface GithubRetrofitService {
+    @GET("/repositories")
+    suspend fun getRepositories(): List<GithubRepository>
+}
+
+internal val retrofit = Retrofit.Builder()
+    .baseUrl("https://api.github.com")
+    .addConverterFactory(MoshiConverterFactory.create())
+    .build()
