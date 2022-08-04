@@ -5,7 +5,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 
-internal class GithubService {
+internal class GithubService(
+    private val retrofit: Retrofit,
+) {
 
     private val service: GithubRetrofitService = retrofit.create()
 

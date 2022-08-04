@@ -5,10 +5,11 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.Test
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 internal class GithubServiceTest {
 
-    private val service = GithubService()
 
     @Test
     fun `full_name, descroption을 받아온다`() = runBlocking {
@@ -19,6 +20,13 @@ internal class GithubServiceTest {
             [{"full_name": "greedy0110", "description": "hello world"}]
         """.trimIndent()))
         server.start()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(server.url("/"))
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+
+        val service = GithubService(retrofit)
 
         // when
         val actual = service.getRepositories()
