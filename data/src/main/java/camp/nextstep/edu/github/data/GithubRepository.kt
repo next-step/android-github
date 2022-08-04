@@ -7,7 +7,6 @@ package camp.nextstep.edu.github.data
 class GithubRepository {
     private val apiService = ApiServiceFactory.apiService
     suspend fun getGithub(): List<GithubResponse> {
-        println("로그: " + apiService.getGithub())
         return apiService.getGithub()
     }
 }
