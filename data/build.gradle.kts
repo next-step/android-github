@@ -9,4 +9,8 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+    
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 }
