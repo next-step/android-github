@@ -15,7 +15,7 @@ import java.io.File
  * Created by jeongjinhong on 2022. 08. 04..
  */
 
-class GithubRepositoryTest {
+class ApiServiceTest {
     private lateinit var server: MockWebServer
     private lateinit var apiService: ApiService
 
@@ -32,7 +32,7 @@ class GithubRepositoryTest {
     }
 
     @Test
-    fun `깃헙 데이터 가져온다`() = runBlocking {
+    fun `깃헙 데이터를 가져온다`() = runBlocking {
         // given
         val response = MockResponse()
             .setBody(File("src/test/java/resources/githubData.json").readText())
