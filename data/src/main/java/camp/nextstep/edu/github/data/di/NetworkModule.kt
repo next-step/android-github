@@ -6,17 +6,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object NetworkModule {
+internal object NetworkModule {
     private val okHttpClient: OkHttpClient =
         OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
 
-    val githubApi: GithubService by lazy {
-        Retrofit
-            .Builder()
-            .baseUrl("https://api.github.com/")
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(GithubService::class.java)
-    }
+    val githubApi: GithubService = Retrofit
+        .Builder()
+        .baseUrl("https://api.github.com/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(GithubService::class.java)
 }
