@@ -8,5 +8,5 @@ import retrofit2.http.GET
  */
 interface GithubService {
     @GET("/repositories")
-    fun getRepositories(): List<RepositoryDto>
+    suspend fun getRepositories(): List<RepositoryDto>
 }
