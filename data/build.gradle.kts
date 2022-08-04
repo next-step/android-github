@@ -1,6 +1,6 @@
 plugins {
     id("kotlin")
-    id("com.google.devtools.ksp").version("1.6.10-1.0.4")
+    id("kotlin-kapt")
 }
 
 repositories {
