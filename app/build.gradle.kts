@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -44,12 +45,14 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.activity:activity-ktx:1.1.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
@@ -60,4 +63,9 @@ dependencies {
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
+
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+
 }

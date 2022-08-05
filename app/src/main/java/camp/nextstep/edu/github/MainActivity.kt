@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import camp.nextstep.edu.github.githubListAdapter.GithubListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var githubListAdapter: GithubListAdapter
@@ -18,6 +20,14 @@ class MainActivity : AppCompatActivity() {
 
         setupViewModel()
         setRecyclerView()
+        observeViewModel()
+        viewModel.loadGithub()
+    }
+
+    private fun observeViewModel() {
+        viewModel.updateGithub.observe(this) {
+            githubListAdapter.submitList(it)
+        }
     }
 
     private fun setRecyclerView() {

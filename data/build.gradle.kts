@@ -24,4 +24,9 @@ dependencies {
     testImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     testRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 
+    implementation("com.google.dagger:hilt-android:2.29-alpha")
+
+    //implementation("com.google.dagger:hilt-compiler:2.38.1")
+    //implementation("com.google.dagger:hilt-core:2.38.1")
+
 }
