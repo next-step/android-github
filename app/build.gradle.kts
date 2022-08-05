@@ -3,15 +3,16 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
@@ -59,5 +60,12 @@ dependencies {
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 
+    implementation("androidx.fragment:fragment-ktx:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+
     implementation(project(":domain"))
+    implementation(project(":data"))
 }

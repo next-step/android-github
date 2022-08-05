@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class NetworkModule {
+internal class NetworkModule {
     @Provides
     @Singleton
     fun provideGithubApi(okHttpClient: OkHttpClient): GithubService =

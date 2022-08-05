@@ -20,14 +20,14 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
     implementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation("com.google.truth:truth:1.1.3")
 
-    implementation("com.google.dagger:hilt-core:${hiltVersion}")
-    kapt("com.google.dagger:hilt-android-compiler:${hiltVersion}")
+    implementation("com.google.dagger:hilt-core:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 }
 
 tasks.test {
