@@ -20,8 +20,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initRecyclerView()
-
         viewModel.getRepositories()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.repos.observe(this) {
+            mainAdapter.submitList(it)
+        }
     }
 
     private fun initRecyclerView() {
