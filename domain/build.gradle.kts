@@ -17,6 +17,8 @@ dependencies {
 
     implementation("com.google.dagger:hilt-core:${hiltVersion}")
     kapt("com.google.dagger:hilt-android-compiler:${hiltVersion}")
+
+    testImplementation("io.mockk:mockk:1.10.6")
 }
 
 tasks.test {
