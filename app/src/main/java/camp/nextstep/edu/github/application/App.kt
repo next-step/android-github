@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

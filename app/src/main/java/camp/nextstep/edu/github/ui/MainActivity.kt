@@ -1,8 +1,9 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import camp.nextstep.edu.github.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
