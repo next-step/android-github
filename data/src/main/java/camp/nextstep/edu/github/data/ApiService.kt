@@ -1,5 +1,6 @@
 package camp.nextstep.edu.github.data
 
+import camp.nextstep.edu.github.domain.GithubResponse
 import retrofit2.http.GET
 
 /**
