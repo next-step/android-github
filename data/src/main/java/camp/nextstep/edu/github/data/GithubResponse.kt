@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.domain
+package camp.nextstep.edu.github.data
 
 import com.google.gson.annotations.SerializedName
 
