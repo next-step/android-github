@@ -3,7 +3,7 @@ package camp.nextstep.edu.github.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import camp.nextstep.edu.github.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
+    private val mainAdapter = MainAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initRecyclerView()
+
         viewModel.getRepositories()
+    }
+
+    private fun initRecyclerView() {
+        binding.rvRepositories.apply {
+            adapter = mainAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
     }
 }
