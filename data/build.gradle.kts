@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    kotlin("kapt")
 }
 
 java {
@@ -24,6 +25,9 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation("com.google.truth:truth:1.1.3")
+
+    implementation("com.google.dagger:hilt-core:${hiltVersion}")
+    kapt("com.google.dagger:hilt-android-compiler:${hiltVersion}")
 }
 
 tasks.test {
