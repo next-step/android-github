@@ -21,4 +21,7 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("io.mockk:mockk:1.10.6")
 
+    testImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
+    testRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
+
 }
