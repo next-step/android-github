@@ -7,5 +7,5 @@ import javax.inject.Inject
 class GetGithubRepositoriesUseCase @Inject constructor(
     private val githubRepository: GithubRepository
 ) {
-    suspend fun invoke(): List<GithubRepositoryInfo> = githubRepository.getRepositories()
+    suspend operator fun invoke(): List<GithubRepositoryInfo> = githubRepository.getRepositories()
 }
