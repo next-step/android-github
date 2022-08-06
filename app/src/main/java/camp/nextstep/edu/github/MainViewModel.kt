@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import camp.nextstep.edu.github.domain.GetGithubDatasUseCase
 import camp.nextstep.edu.github.domain.Github
-import camp.nextstep.edu.github.domain.InjectGithubRepositoryData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,18 +15,18 @@ import javax.inject.Inject
  * Created by jeongjinhong on 2022. 08. 05..
  */
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
-    private val injectGithubRepositoryData: InjectGithubRepositoryData
+class MainViewModel @Inject constructor(
+    private val getGithubDatasUseCase: GetGithubDatasUseCase
 ) : ViewModel() {
 
-    private var _updateGithub: MutableLiveData<List<Github>> =
+    private var _updateGithubs: MutableLiveData<List<Github>> =
         MutableLiveData(listOf())
-    val updateGithub: LiveData<List<Github>>
-        get() = _updateGithub
+    val updateGithubs: LiveData<List<Github>>
+        get() = _updateGithubs
 
     fun loadGithub() {
         viewModelScope.launch {
-            _updateGithub.value = injectGithubRepositoryData.execute()
+            _updateGithubs.value = getGithubDatasUseCase.execute()
         }
     }
 }

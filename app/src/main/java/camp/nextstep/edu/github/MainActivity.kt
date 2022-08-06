@@ -11,23 +11,16 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var githubListAdapter: GithubListAdapter
-    private val viewModel: MainActivityViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupViewModel()
         setRecyclerView()
         observeViewModel()
         viewModel.loadGithub()
-    }
-
-    private fun observeViewModel() {
-        viewModel.updateGithub.observe(this) {
-            githubListAdapter.submitList(it)
-        }
     }
 
     private fun setRecyclerView() {
@@ -35,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = githubListAdapter
     }
 
-    private fun setupViewModel() {
-
+    private fun observeViewModel() {
+        viewModel.updateGithubs.observe(this) {
+            githubListAdapter.submitList(it)
+        }
     }
 }

@@ -3,7 +3,6 @@ package camp.nextstep.edu.github.githubListAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
 import camp.nextstep.edu.github.domain.Github
 
@@ -12,17 +11,15 @@ import camp.nextstep.edu.github.domain.Github
  * Created by jeongjinhong on 2022. 08. 05..
  */
 class GithubListAdapter :
-    ListAdapter<Github, RecyclerView.ViewHolder>(GithubListDiffUtil()) {
+    ListAdapter<Github, GithubListViewHolder>(GithubListDiffUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubListViewHolder {
         val itemRepoBinding =
             ItemRepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GithubListViewHolder(itemRepoBinding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is GithubListViewHolder) {
-            holder.setData(getItem(holder.adapterPosition))
-        }
+    override fun onBindViewHolder(holder: GithubListViewHolder, position: Int) {
+        holder.setData(getItem(holder.adapterPosition))
     }
 }
