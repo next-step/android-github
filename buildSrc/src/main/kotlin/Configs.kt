@@ -1,4 +1,4 @@
-const val kotlinVersion = "1.5.21"
+const val kotlinVersion = "1.6.20"
 const val junit5Version = "5.7.2"
 
 const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
