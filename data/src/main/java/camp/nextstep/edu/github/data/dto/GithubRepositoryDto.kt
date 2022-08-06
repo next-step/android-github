@@ -8,5 +8,5 @@ internal data class GithubRepositoryDto(
     @SerializedName("description") val description: String?,
 ) {
     fun toDomainModel(): GithubRepositoryInfo =
-        GithubRepositoryInfo(fullName = fullName, description = description)
+        GithubRepositoryInfo(fullName = fullName?: "", description = description?: "")
 }

@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         binding.rvRepositories.apply {
             adapter = mainAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
 }

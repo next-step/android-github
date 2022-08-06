@@ -9,7 +9,7 @@ data class GithubRepoUiModel(
 
 fun GithubRepositoryInfo.toUiModel(): GithubRepoUiModel {
     return GithubRepoUiModel(
-        fullName = this.fullName ?: "",
-        description = this.description ?: "",
+        fullName = this.fullName,
+        description = this.description,
     )
 }
