@@ -54,6 +54,7 @@ dependencies {
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
     testImplementation(Truth)
+    testImplementation(CoroutinesTest)
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")

@@ -19,6 +19,7 @@ dependencies {
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
     testImplementation(Truth)
+    testImplementation(CoroutinesTest)
 
     implementation(project(":domain"))
 }
