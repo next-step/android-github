@@ -4,9 +4,14 @@ import camp.nextstep.edu.github.domain.model.GithubRepositoryInfo
 import com.google.gson.annotations.SerializedName
 
 internal data class GithubRepositoryDto(
+    @SerializedName("id") val id: Long?,
     @SerializedName("full_name") val fullName: String?,
     @SerializedName("description") val description: String?,
 ) {
     fun toDomainModel(): GithubRepositoryInfo =
-        GithubRepositoryInfo(fullName = fullName?: "", description = description?: "")
+        GithubRepositoryInfo(
+            id = id ?: 0,
+            fullName = fullName ?: "",
+            description = description ?: "",
+        )
 }

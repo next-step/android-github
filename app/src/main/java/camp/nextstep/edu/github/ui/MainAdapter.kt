@@ -26,7 +26,7 @@ class MainAdapter : ListAdapter<GithubRepoUiModel, MainViewHolder>(diffUtil) {
             override fun areItemsTheSame(
                 oldItem: GithubRepoUiModel,
                 newItem: GithubRepoUiModel,
-            ): Boolean = oldItem.fullName == newItem.fullName
+            ): Boolean = oldItem.id == newItem.id
 
             override fun areContentsTheSame(
                 oldItem: GithubRepoUiModel,
