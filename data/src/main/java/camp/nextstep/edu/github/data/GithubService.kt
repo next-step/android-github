@@ -29,12 +29,12 @@ class GithubService(
 
     private val service: GithubRetrofitService = retrofit.create()
 
-    suspend fun getRepositories(): List<GithubRepository> {
+    suspend fun getRepositories(): List<GitRepo> {
         return service.getRepositories()
     }
 }
 
 internal interface GithubRetrofitService {
     @GET("/repositories")
-    suspend fun getRepositories(): List<GithubRepository>
+    suspend fun getRepositories(): List<GitRepo>
 }
