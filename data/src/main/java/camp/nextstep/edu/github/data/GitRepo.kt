@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GithubRepository(
+data class GitRepo(
     @Json(name = "full_name")
     val fullName: String,
     @Json(name = "description")

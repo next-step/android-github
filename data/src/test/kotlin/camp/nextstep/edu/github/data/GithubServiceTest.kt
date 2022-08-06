@@ -33,7 +33,7 @@ internal class GithubServiceTest {
 
         // then
         val expected = listOf(
-            GithubRepository("greedy0110", "hello world")
+            GitRepo("greedy0110", "hello world")
         )
         assertThat(actual).isEqualTo(expected)
     }
