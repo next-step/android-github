@@ -9,6 +9,7 @@ java {
 
 dependencies {
     implementation(KotlinStdLib)
+    implementation(CoroutinesCore)
 
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
