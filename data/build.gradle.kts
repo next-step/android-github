@@ -10,6 +10,10 @@ java {
 dependencies {
     implementation(KotlinStdLib)
 
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
