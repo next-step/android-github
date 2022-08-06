@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.Github
-import camp.nextstep.edu.github.domain.GithubRepository
+import camp.nextstep.edu.github.domain.InjectGithubRepositoryData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private var githubRepository: GithubRepository
+    private val injectGithubRepositoryData: InjectGithubRepositoryData
 ) : ViewModel() {
 
     private var _updateGithub: MutableLiveData<List<Github>> =
@@ -26,7 +26,7 @@ class MainActivityViewModel @Inject constructor(
 
     fun loadGithub() {
         viewModelScope.launch {
-            _updateGithub.value = githubRepository.getGithub()
+            _updateGithub.value = injectGithubRepositoryData.execute()
         }
     }
 }

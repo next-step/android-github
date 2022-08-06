@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         githubListAdapter = GithubListAdapter()
         binding.recyclerView.adapter = githubListAdapter
-        //githubListAdapter.submitList(listOf(Github("jinhong","testtest"),Github("jinhong","testtest")))
     }
 
     private fun setupViewModel() {

@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -26,7 +27,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.29-alpha")
 
-    //implementation("com.google.dagger:hilt-compiler:2.38.1")
-    //implementation("com.google.dagger:hilt-core:2.38.1")
+    implementation("com.google.dagger:hilt-core:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
 }
