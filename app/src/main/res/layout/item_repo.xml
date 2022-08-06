@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="camp.nextstep.edu.github.data.GitRepo" />
+            type="camp.nextstep.edu.github.domain.GitRepo" />
     </data>
 
     <LinearLayout

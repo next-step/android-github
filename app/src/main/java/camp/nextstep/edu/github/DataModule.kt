@@ -1,6 +1,7 @@
 package camp.nextstep.edu.github
 
-import camp.nextstep.edu.github.data.GithubService
+import camp.nextstep.edu.github.data.Injector
+import camp.nextstep.edu.github.domain.GitRepoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +14,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideGithubService(): GithubService {
-        return GithubService()
+    fun provideGitRepoRepository(): GitRepoRepository {
+        return Injector.getGitRepoRepository()
     }
 }

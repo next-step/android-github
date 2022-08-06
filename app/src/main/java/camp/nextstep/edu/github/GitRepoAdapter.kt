@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import camp.nextstep.edu.github.data.GitRepo
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
+import camp.nextstep.edu.github.domain.GitRepo
 
 class GitRepoAdapter : ListAdapter<GitRepo, GitRepoViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitRepoViewHolder {
