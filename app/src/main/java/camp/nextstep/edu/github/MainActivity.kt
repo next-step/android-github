@@ -17,7 +17,11 @@ import camp.nextstep.edu.github.data.GithubRepository
 import camp.nextstep.edu.github.data.GithubService
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private val gitRepoAdapter by lazy { GitRepoAdapter() }
@@ -65,7 +69,9 @@ class GitRepoAdapter : ListAdapter<GithubRepository, GitRepoViewHolder>(diffCall
     }
 }
 
-class MainViewModel : ViewModel() {
-    private val githubService: GithubService = TODO()
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val githubService: GithubService
+) : ViewModel() {
     val repos: LiveData<List<GithubRepository>> = liveData { emit(githubService.getRepositories()) }
 }

@@ -1,13 +1,31 @@
 package camp.nextstep.edu.github.data
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 
-internal class GithubService(
-    private val retrofit: Retrofit,
+private val OKHTTP = OkHttpClient.Builder()
+    .addInterceptor(
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+    )
+    .build()
+
+private val RETROFIT = Retrofit.Builder()
+    .client(OKHTTP)
+    .baseUrl("https://api.github.com")
+    .addConverterFactory(MoshiConverterFactory.create())
+    .build()
+
+class GithubService(
+    private val retrofit: Retrofit
 ) {
+
+    constructor() : this(RETROFIT)
 
     private val service: GithubRetrofitService = retrofit.create()
 
@@ -20,8 +38,3 @@ internal interface GithubRetrofitService {
     @GET("/repositories")
     suspend fun getRepositories(): List<GithubRepository>
 }
-
-internal val retrofit = Retrofit.Builder()
-    .baseUrl("https://api.github.com")
-    .addConverterFactory(MoshiConverterFactory.create())
-    .build()
