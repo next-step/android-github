@@ -24,6 +24,7 @@ dependencies {
     testImplementation(Junit4)
     testImplementation(Truth)
     testImplementation(CoroutinesTest)
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 
     implementation(project(":domain"))
 }
