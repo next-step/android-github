@@ -48,7 +48,7 @@ internal class GithubServiceTest {
 
 
     private fun getMockFile(): File {
-        return File(javaClass.getResource("/getRepos.json").toURI())
+        return File(javaClass.getResource("/get_repositories_200.json").toURI())
     }
 
     private fun getMockGetRepoJsonString(): String {
