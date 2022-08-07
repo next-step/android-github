@@ -1,5 +1,5 @@
 plugins {
-    id("java-library")
+    id("kotlin")
     id("org.jetbrains.kotlin.jvm")
 }
 
@@ -9,5 +9,5 @@ java {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(":domain"))
 }
