@@ -31,7 +31,7 @@ class GithubRepositoryImplTest {
             .setBody(File("src/test/resources/RepositoryList.json").readText())
         mockServer.enqueue(response)
 
-        val sampleList = listOf(
+        val expected = listOf(
             Repository(
                 fullName = "mojombo/grit",
                 description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
@@ -46,6 +46,6 @@ class GithubRepositoryImplTest {
         val actual = githubRepository.fetchRepositoryList().getOrNull()
 
         // then
-        assertThat(actual).isEqualTo(sampleList)
+        assertThat(actual).isEqualTo(expected)
     }
 }
