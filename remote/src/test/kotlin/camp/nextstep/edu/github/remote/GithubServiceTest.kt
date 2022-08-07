@@ -13,7 +13,7 @@ import java.io.File
 internal class GithubServiceTest {
 
     @Test
-    fun `full_name, descroption을 받아온다`() = runBlocking {
+    fun `Repository를 받아온다`() = runBlocking {
         // given
         val server = MockWebServer()
         // TODO sinseungmin 2022/08/04: 서버 구현체를 너무 많이 알고있는 코드 아님?
