@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 internal data class RepoModel(
-    @field:Json(name="id") val id: Int,
-    @field:Json(name="full_name") val fullName: String,
-    @field:Json(name="description") val description: String?
+    @Json(name="id") val id: Int,
+    @Json(name="full_name") val fullName: String,
+    @Json(name="description") val description: String?
 )
