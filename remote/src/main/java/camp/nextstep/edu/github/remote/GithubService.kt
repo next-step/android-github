@@ -4,5 +4,4 @@ import retrofit2.http.GET
 
 internal interface GithubService {
     @GET("/repositories")
-    suspend fun getRepositories(): List<GetRepositoriesResponse>
-}
+    suspend fun getRepositories(): List<GitRepo>

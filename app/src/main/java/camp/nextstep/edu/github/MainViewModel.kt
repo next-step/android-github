@@ -3,8 +3,8 @@ package camp.nextstep.edu.github
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import camp.nextstep.edu.github.domain.GitRepo
-import camp.nextstep.edu.github.domain.GitRepoRepository
+import camp.nextstep.edu.github.data.GitRepo
+import camp.nextstep.edu.github.data.GitRepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
