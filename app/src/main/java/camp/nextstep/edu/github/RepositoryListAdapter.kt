@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
-import camp.nextstep.edu.github.domain.model.Repository
+import camp.nextstep.edu.github.model.RepositoryItem
 
-class RepositoryListAdapter : ListAdapter<Repository, RepositoryListAdapter.ViewHolder>(
-    object : DiffUtil.ItemCallback<Repository>() {
-        override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {
+class RepositoryListAdapter : ListAdapter<RepositoryItem, RepositoryListAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<RepositoryItem>() {
+        override fun areItemsTheSame(oldItem: RepositoryItem, newItem: RepositoryItem): Boolean {
             return oldItem.fullName == newItem.fullName
         }
 
-        override fun areContentsTheSame(oldItem: Repository, newItem: Repository): Boolean {
+        override fun areContentsTheSame(oldItem: RepositoryItem, newItem: RepositoryItem): Boolean {
             return oldItem == newItem
         }
     }
@@ -22,7 +22,7 @@ class RepositoryListAdapter : ListAdapter<Repository, RepositoryListAdapter.View
 
     class ViewHolder(private val binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Repository) {
+        fun bind(item: RepositoryItem) {
             binding.item = item
             binding.executePendingBindings()
         }
