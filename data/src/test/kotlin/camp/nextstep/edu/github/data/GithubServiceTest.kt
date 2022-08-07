@@ -7,6 +7,7 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 
 internal class GithubServiceTest {
 
@@ -26,7 +27,9 @@ internal class GithubServiceTest {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
-        val service = GithubService(retrofit)
+        val githubRetrofitService: GithubRetrofitService = retrofit.create()
+
+        val service = GithubService(githubRetrofitService)
 
         // when
         val actual = service.getRepositories()
