@@ -10,5 +10,5 @@ internal data class RepoModel(
     @Json(name = "full_name") val fullName: String,
     @Json(name = "description") val description: String?
 ) : DataToDomainMapper<Repo> {
-    override fun toDomain(): Repo = Repo(id, fullName, description)
+    override fun toDomain(): Repo = Repo(id, fullName, description ?: "")
 }
