@@ -2,6 +2,7 @@ package camp.nextstep.edu.github.data.repository
 
 import camp.nextstep.edu.github.data.retrofit.GithubRetrofit
 import camp.nextstep.edu.github.domain.model.Repository
+import camp.nextstep.edu.github.domain.repository.GithubRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
@@ -13,7 +14,7 @@ import java.io.File
 class GithubRepositoryImplTest {
 
     private lateinit var mockServer: MockWebServer
-    private lateinit var githubRepository: GithubRepositoryImpl
+    private lateinit var githubRepository: GithubRepository
 
     @Before
     fun setUp() {
@@ -47,5 +48,20 @@ class GithubRepositoryImplTest {
 
         // then
         assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `빈 목록을 요청하면 성공적으로 빈 목록이 반환된다`() = runTest {
+        // given
+        val response = MockResponse()
+            .setResponseCode(200)
+            .setBody("[]")
+        mockServer.enqueue(response)
+
+        // when
+        val actual = githubRepository.fetchRepositoryList().getOrNull()
+
+        // then
+        assertThat(actual).isEqualTo(emptyList<Repository>())
     }
 }
