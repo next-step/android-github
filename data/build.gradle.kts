@@ -20,9 +20,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
     implementation("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("com.google.dagger:hilt-core:$hiltVersion")
 
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation("com.google.truth:truth:1.1.3")
