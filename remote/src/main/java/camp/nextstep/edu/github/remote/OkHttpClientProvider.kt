@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.remote
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

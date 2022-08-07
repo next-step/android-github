@@ -1,20 +1,16 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.remote
 
-import camp.nextstep.edu.github.domain.GitRepoRepository
+import camp.nextstep.edu.github.data.GitRepoRepository
 import retrofit2.create
 import retrofit2.http.GET
-import camp.nextstep.edu.github.domain.GitRepo as DomainGitRepo
+import camp.nextstep.edu.github.data.GitRepo as DataGitRepo
 
 internal class GithubService(
     private val service: GithubRetrofitService = RetrofitProvider.get().create()
 ) : GitRepoRepository {
 
-    suspend fun getRepositories(): List<GitRepo> {
-        return service.getRepositories()
-    }
-
-    override suspend fun getGitRepos(): List<DomainGitRepo> {
-        return getRepositories().map { with(it) { DomainGitRepo(fullName, description) } }
+    override suspend fun getGitRepos(): List<DataGitRepo> {
+        return service.getRepositories().map { with(it) { DataGitRepo(fullName, description) } }
     }
 }
 

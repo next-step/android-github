@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.remote
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import camp.nextstep.edu.github.data.GitRepo as DataGitRepo
 
 internal class GithubServiceTest {
 
@@ -32,11 +33,11 @@ internal class GithubServiceTest {
         val service = GithubService(githubRetrofitService)
 
         // when
-        val actual = service.getRepositories()
+        val actual = service.getGitRepos()
 
         // then
-        val expected = listOf(
-            GitRepo("greedy0110", "hello world")
+        val expected: List<DataGitRepo> = listOf(
+            DataGitRepo("greedy0110", "hello world")
         )
         assertThat(actual).isEqualTo(expected)
     }

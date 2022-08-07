@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
