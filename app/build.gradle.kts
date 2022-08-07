@@ -51,6 +51,9 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
 
+    kapt(HiltKapt)
+    implementation(HiltAndroid)
+
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)

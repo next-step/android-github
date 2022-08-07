@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -20,6 +21,9 @@ dependencies {
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    kapt(HiltKapt)
+    implementation(HiltCore)
 
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
