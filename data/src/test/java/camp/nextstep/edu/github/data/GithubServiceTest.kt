@@ -45,6 +45,6 @@ class GithubServiceTest {
     }
 
     companion object {
-        private const val JSON_FILE_PATH = "src/test/resources/response.json"
+        private const val JSON_FILE_PATH = "src/test/resources/get_repositories_response_success.json"
     }
 }
