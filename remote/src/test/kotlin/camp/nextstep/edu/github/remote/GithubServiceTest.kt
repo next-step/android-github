@@ -2,6 +2,7 @@ package camp.nextstep.edu.github.remote
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
+import okhttp3.HttpUrl
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.Test
@@ -20,15 +21,8 @@ internal class GithubServiceTest {
         val mockJsonString = getMockGetRepoJsonString()
         server.enqueue(MockResponse().setBody(mockJsonString))
         server.start()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(server.url("/"))
-            .addConverterFactory(MoshiConverterFactory.create())
-            .build()
-
-        val githubRetrofitService: GithubRetrofitService = retrofit.create()
-
-        val service = GithubService(githubRetrofitService)
+        val retrofit = createRetrofit(server.url("/"))
+        val service = createGithubService(retrofit)
 
         // when
         val actual = service.getGitRepos()
@@ -43,5 +37,16 @@ internal class GithubServiceTest {
 
     private fun getMockGetRepoJsonString(): String {
         return getMockFile().readText()
+    }
+
+    private fun createRetrofit(baseUrl: HttpUrl): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+    }
+
+    private fun createGithubService(retrofit: Retrofit): GithubService {
+        return GithubService(retrofit.create())
     }
 }
