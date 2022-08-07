@@ -9,6 +9,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -20,6 +21,10 @@ internal abstract class DataModule {
     ): GithubRepository
 
     companion object {
+
+        @Provides
+        @Named("base_url")
+        fun provideBaseUrl(): String = "https://api.github.com"
 
         @Provides
         fun provideGithubService(

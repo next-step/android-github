@@ -4,9 +4,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Inject
+import javax.inject.Named
 
 internal class GithubRetrofit @Inject constructor(
-    baseUrl: String = "https://api.github.com"
+    @Named("base_url") baseUrl: String
 ) {
 
     private val retrofit = Retrofit.Builder()
