@@ -31,7 +31,7 @@ class GithubServiceTest {
     fun `깃헙 데이터를 잘 읽는다`() = runTest {
         // given
         val response = MockResponse()
-            .setBody(File("src/test/java/resources/githubRepositoriesTestData.json").readText())
+            .setBody(File("src/test/java/resources/get_repositories_response_success.json").readText())
         server.enqueue(response)
 
         // when
