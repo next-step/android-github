@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 internal interface GitHubService {
     @GET("repositories")
-    fun listRepos(): Call<List<RepoModel>>
+    suspend fun listRepos(): List<RepoModel>
 }
 
 object DataModule {
