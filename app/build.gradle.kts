@@ -35,6 +35,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
         viewBinding = true
@@ -44,6 +45,7 @@ android {
 
 dependencies {
     implementation(KotlinStdLib)
+    implementation(CoroutinesAndroid)
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.android.material:material:1.4.0")
@@ -53,6 +55,7 @@ dependencies {
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
     testImplementation(Truth)
+    testImplementation(CoroutinesTest)
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
