@@ -1,9 +1,6 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.GithubService
-import camp.nextstep.edu.github.data.RepositoryDto
 import com.google.common.truth.Truth.assertThat
-import com.squareup.moshi.Moshi
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

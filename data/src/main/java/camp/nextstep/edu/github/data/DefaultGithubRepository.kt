@@ -3,7 +3,7 @@ package camp.nextstep.edu.github.data
 import camp.nextstep.edu.github.domain.GithubRepository
 import camp.nextstep.edu.github.domain.Repository
 
-internal class GithubRepositoryImpl(
+internal class DefaultGithubRepository(
     private val githubService: GithubService,
     private val repositoryMapper: RepositoryMapper,
 ) : GithubRepository {
