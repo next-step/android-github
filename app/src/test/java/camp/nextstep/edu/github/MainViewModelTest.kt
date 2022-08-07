@@ -42,6 +42,19 @@ internal class MainViewModelTest {
         coVerify { repositoryUseCase.invoke() }
     }
 
+    @Test
+    fun `Repository 리스트를 불러오는 것에 실패할 경우 뷰에 전파한다`() = runTest {
+        // given
+        coEvery { repositoryUseCase.invoke() } returns Result.failure(Exception())
+
+        // when
+        viewModel.fetchRepositories()
+
+        // then
+        assertThat(viewModel.loadingFailed.getOrAwaitValue()).isEqualTo(true)
+        coVerify { repositoryUseCase.invoke() }
+    }
+
 
     companion object {
         @OptIn(ExperimentalCoroutinesApi::class)
