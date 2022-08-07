@@ -36,7 +36,7 @@ class GithubServiceTest {
 
         // then
         val expected = listOf(
-            RepositoryDto(
+            RepositoryEntity(
                 fullName = "wisemuji",
                 description = "This is test description"
             ),

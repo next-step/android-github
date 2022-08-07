@@ -26,7 +26,7 @@ class DefaultGithubRepositoryTest {
     @Test
     fun `전체 Repository 리스트를 불러올 수 있다`() = runBlocking {
         // given
-        val entity = RepositoryDto(
+        val entity = RepositoryEntity(
             fullName = "wisemuji",
             description = "This is test description"
         )
