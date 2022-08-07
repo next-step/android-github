@@ -5,6 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 internal data class RepositoryDto(
-    @Json(name = "full_name") val fullName: String,
-    @Json(name = "description") val description: String
+    @Json(name = "full_name") val fullName: String? = null,
+    @Json(name = "description") val description: String? = null
 )
