@@ -24,7 +24,7 @@ internal class GithubServiceTest {
         server.enqueue(MockResponse().setBody(mockJsonString))
         server.start()
         val retrofit = createRetrofit(server.url("/"))
-        val service = createGithubService(retrofit)
+        val service = createGitRepoRepository(retrofit)
 
         // when
         val actual = service.getGitRepos()
@@ -40,7 +40,7 @@ internal class GithubServiceTest {
         server.enqueue(MockResponse().setHttp2ErrorCode(500))
         server.start()
         val retrofit = createRetrofit(server.url("/"))
-        val service = createGithubService(retrofit)
+        val service = createGitRepoRepository(retrofit)
 
         // when, then
         assertThrows<DataException> { service.getGitRepos() }
@@ -62,7 +62,7 @@ internal class GithubServiceTest {
             .build()
     }
 
-    private fun createGithubService(retrofit: Retrofit): GithubService {
-        return GithubService(retrofit.create())
+    private fun createGitRepoRepository(retrofit: Retrofit): RemoteGitRepoRepository {
+        return RemoteGitRepoRepository(retrofit.create())
     }
 }

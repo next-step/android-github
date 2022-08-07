@@ -7,8 +7,8 @@ import retrofit2.create
 import retrofit2.http.GET
 import camp.nextstep.edu.github.data.GitRepo as DataGitRepo
 
-internal class GithubService(
-    private val service: GithubRetrofitService = RetrofitProvider.get().create()
+internal class RemoteGitRepoRepository(
+    private val service: GithubService = RetrofitProvider.get().create()
 ) : GitRepoRepository {
 
     override suspend fun getGitRepos(): List<DataGitRepo> {
@@ -22,13 +22,13 @@ internal class GithubService(
     }
 }
 
-internal interface GithubRetrofitService {
+internal interface GithubService {
     @GET("/repositories")
     suspend fun getRepositories(): List<GitRepo>
 }
 
 object Injector {
     fun getGitRepoRepository(): GitRepoRepository {
-        return GithubService()
+        return RemoteGitRepoRepository()
     }
 }
