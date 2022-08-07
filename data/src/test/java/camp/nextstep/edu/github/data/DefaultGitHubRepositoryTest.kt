@@ -3,7 +3,6 @@ package camp.nextstep.edu.github.data
 import camp.nextstep.edu.github.domain.GithubRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -31,10 +30,9 @@ class DefaultGitHubRepositoryTest {
             .setBody(File("src/test/resources/repositories.json").readText())
             .setResponseCode(200)
         server.enqueue(response)
+        val expected = "mojombo/grit"
+        val actual = repository.loadRepositories().list().firstOrNull()?.fullName
 
-        val actual = repository.loadRepositories()
-
-        assertThat(actual.list().any { it.fullName == "mojombo/grit" }).isEqualTo(true)
-        assertThat(actual.list().any { it.fullName == "wycats/merb-core" }).isEqualTo(true)
+        assertThat(actual).isEqualTo(expected)
     }
 }
