@@ -3,12 +3,10 @@ package camp.nextstep.edu.github.remote
 import camp.nextstep.edu.github.data.DataException
 import camp.nextstep.edu.github.data.GitRepoRepository
 import retrofit2.HttpException
-import retrofit2.create
-import retrofit2.http.GET
 import camp.nextstep.edu.github.data.GitRepo as DataGitRepo
 
 internal class RemoteGitRepoRepository(
-    private val service: GithubService = RetrofitProvider.get().create()
+    private val service: GithubService = RetrofitProvider.getGithubService()
 ) : GitRepoRepository {
 
     override suspend fun getGitRepos(): List<DataGitRepo> {
@@ -20,11 +18,6 @@ internal class RemoteGitRepoRepository(
             throw DataException(e.message.orEmpty())
         }
     }
-}
-
-internal interface GithubService {
-    @GET("/repositories")
-    suspend fun getRepositories(): List<GitRepo>
 }
 
 object Injector {

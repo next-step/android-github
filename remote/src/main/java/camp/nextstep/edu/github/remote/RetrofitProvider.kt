@@ -2,6 +2,7 @@ package camp.nextstep.edu.github.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 
 internal object RetrofitProvider {
     private val retrofit = Retrofit.Builder()
@@ -12,5 +13,9 @@ internal object RetrofitProvider {
 
     fun get(): Retrofit {
         return retrofit
+    }
+
+    fun getGithubService(): GithubService {
+        return retrofit.create()
     }
 }
