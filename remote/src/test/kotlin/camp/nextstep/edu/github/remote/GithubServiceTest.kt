@@ -1,11 +1,13 @@
 package camp.nextstep.edu.github.remote
 
+import camp.nextstep.edu.github.data.DataException
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.HttpUrl
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -30,6 +32,20 @@ internal class GithubServiceTest {
         // then
         assertThat(actual).hasSize(100)
     }
+
+    @Test
+    fun `Repository를 받아온는데 실패한다`(): Unit = runBlocking {
+        // given
+        val server = MockWebServer()
+        server.enqueue(MockResponse().setHttp2ErrorCode(500))
+        server.start()
+        val retrofit = createRetrofit(server.url("/"))
+        val service = createGithubService(retrofit)
+
+        // when, then
+        assertThrows<DataException> { service.getGitRepos() }
+    }
+
 
     private fun getMockFile(): File {
         return File(javaClass.getResource("/getRepos.json").toURI())
