@@ -7,7 +7,7 @@ import javax.inject.Inject
  * Created by jeongjinhong on 2022. 08. 06..
  */
 
-class GetGithubDatasUseCase @Inject constructor(
+class GetGithubListUseCase @Inject constructor(
     private val githubRepository: GithubRepository
 ) {
     suspend fun execute(): List<Github> = githubRepository.getGithub()

@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import camp.nextstep.edu.github.domain.GetGithubDatasUseCase
+import camp.nextstep.edu.github.domain.GetGithubListUseCase
 import camp.nextstep.edu.github.domain.Github
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
@@ -24,7 +24,7 @@ class MainViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val getGithubDatasUseCase = mockk<GetGithubDatasUseCase>(relaxed = true)
+    private val getGithubDatasUseCase = mockk<GetGithubListUseCase>(relaxed = true)
     private lateinit var viewModel: MainViewModel
 
     @Before
@@ -44,7 +44,7 @@ class MainViewModelTest {
             // when
             viewModel.loadGithub()
             // then
-            val actual = viewModel.updateGithubs.value
+            val actual = viewModel.githubs.value
             assertThat(actual).isEqualTo(expected)
         } finally {
             Dispatchers.resetMain()

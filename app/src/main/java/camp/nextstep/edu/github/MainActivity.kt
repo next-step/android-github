@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.updateGithubs.observe(this) {
+        viewModel.githubs.observe(this) {
             githubListAdapter.submitList(it)
         }
     }
