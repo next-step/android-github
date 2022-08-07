@@ -3,7 +3,6 @@ package camp.nextstep.edu.github.data.repository
 import camp.nextstep.edu.github.data.retrofit.GithubRetrofit
 import camp.nextstep.edu.github.domain.model.Repository
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -11,7 +10,6 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class GithubRepositoryImplTest {
 
     private lateinit var mockServer: MockWebServer
