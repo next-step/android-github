@@ -58,6 +58,9 @@ dependencies {
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("io.mockk:mockk:1.12.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
@@ -66,6 +69,8 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
 
 
 }
