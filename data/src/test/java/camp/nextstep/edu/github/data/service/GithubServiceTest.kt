@@ -1,9 +1,6 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.data.service
 
-<<<<<<< HEAD:data/src/test/java/camp/nextstep/edu/github/data/GithubServiceTest.kt
-=======
 import camp.nextstep.edu.github.data.entity.RepositoryEntity
->>>>>>> a2d5102 (1):data/src/test/java/camp/nextstep/edu/github/data/service/GithubServiceTest.kt
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
@@ -49,6 +46,7 @@ class GithubServiceTest {
     }
 
     companion object {
-        private const val JSON_FILE_PATH = "src/test/resources/get_repositories_response_success.json"
+        private const val JSON_FILE_PATH =
+            "src/test/resources/get_repositories_response_success.json"
     }
 }

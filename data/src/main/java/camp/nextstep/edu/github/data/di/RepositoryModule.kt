@@ -1,8 +1,8 @@
 package camp.nextstep.edu.github.data.di
 
-import camp.nextstep.edu.github.data.DefaultGithubRepository
-import camp.nextstep.edu.github.data.GithubService
-import camp.nextstep.edu.github.data.RepositoryMapper
+import camp.nextstep.edu.github.data.repository.DefaultGithubRepository
+import camp.nextstep.edu.github.data.service.GithubService
+import camp.nextstep.edu.github.data.entity.RepositoryMapper
 import camp.nextstep.edu.github.domain.GithubRepository
 import dagger.Module
 import dagger.Provides

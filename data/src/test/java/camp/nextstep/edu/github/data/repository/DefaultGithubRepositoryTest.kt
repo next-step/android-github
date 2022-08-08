@@ -1,5 +1,8 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.data.repository
 
+import camp.nextstep.edu.github.data.service.GithubService
+import camp.nextstep.edu.github.data.entity.RepositoryEntity
+import camp.nextstep.edu.github.data.entity.RepositoryMapper
 import camp.nextstep.edu.github.domain.Repository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery

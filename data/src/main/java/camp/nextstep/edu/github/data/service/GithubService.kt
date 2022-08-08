@@ -1,5 +1,6 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.data.service
 
+import camp.nextstep.edu.github.data.entity.RepositoryEntity
 import retrofit2.http.GET
 
 internal interface GithubService {

@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data.di
 
-import camp.nextstep.edu.github.data.GithubService
+import camp.nextstep.edu.github.data.service.GithubService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
