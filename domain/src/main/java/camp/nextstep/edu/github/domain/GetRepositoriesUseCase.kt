@@ -2,7 +2,7 @@ package camp.nextstep.edu.github.domain
 
 import javax.inject.Inject
 
-class RepositoryUseCase @Inject constructor(
+class GetRepositoriesUseCase @Inject constructor(
     private val repository: GithubRepository
 ) {
 

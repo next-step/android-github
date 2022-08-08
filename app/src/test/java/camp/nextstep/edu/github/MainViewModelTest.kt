@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github
 
 import camp.nextstep.edu.github.domain.Repository
-import camp.nextstep.edu.github.domain.RepositoryUseCase
+import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -19,12 +19,12 @@ internal class MainViewModelTest {
     val instantTaskExecutorExtension = InstantTaskExecutorExtension()
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var repositoryUseCase: RepositoryUseCase
+    private lateinit var getRepositoriesUseCase: GetRepositoriesUseCase
 
     @BeforeEach
     fun setUp() {
-        repositoryUseCase = mockk(relaxed = true)
-        viewModel = MainViewModel(repositoryUseCase)
+        getRepositoriesUseCase = mockk(relaxed = true)
+        viewModel = MainViewModel(getRepositoriesUseCase)
     }
 
     @Test
@@ -32,27 +32,27 @@ internal class MainViewModelTest {
         // given
         val repositories =
             listOf(Repository(fullName = "wisemuji", description = "This is test description"))
-        coEvery { repositoryUseCase.invoke() } returns Result.success(repositories)
+        coEvery { getRepositoriesUseCase.invoke() } returns Result.success(repositories)
 
         // when
         viewModel.fetchRepositories()
 
         // then
         assertThat(viewModel.repositories.getOrAwaitValue()).isEqualTo(repositories)
-        coVerify { repositoryUseCase.invoke() }
+        coVerify { getRepositoriesUseCase.invoke() }
     }
 
     @Test
     fun `Repository 리스트를 불러오는 것에 실패할 경우 뷰에 전파한다`() = runTest {
         // given
-        coEvery { repositoryUseCase.invoke() } returns Result.failure(Exception())
+        coEvery { getRepositoriesUseCase.invoke() } returns Result.failure(Exception())
 
         // when
         viewModel.fetchRepositories()
 
         // then
         assertThat(viewModel.loadingFailed.getOrAwaitValue()).isEqualTo(true)
-        coVerify { repositoryUseCase.invoke() }
+        coVerify { getRepositoriesUseCase.invoke() }
     }
 
 

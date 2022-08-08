@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.Repository
-import camp.nextstep.edu.github.domain.RepositoryUseCase
+import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repositoryUseCase: RepositoryUseCase,
+    private val getRepositoriesUseCase: GetRepositoriesUseCase,
 ) : ViewModel() {
 
     private val _repositories = MutableLiveData<List<Repository>>()
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
         get() = _loadingFailed
 
     fun fetchRepositories() = viewModelScope.launch {
-        repositoryUseCase()
+        getRepositoriesUseCase()
             .onSuccess { _repositories.value = it }
             .onFailure { _loadingFailed.value = true }
     }
