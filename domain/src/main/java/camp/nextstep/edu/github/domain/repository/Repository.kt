@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.domain
+package camp.nextstep.edu.github.domain.repository
 
 data class Repository(
     val fullName: String,

@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data.entity
 
-import camp.nextstep.edu.github.domain.Repository
+import camp.nextstep.edu.github.domain.repository.Repository
 
 internal class RepositoryMapper : Mapper<RepositoryEntity, Repository> {
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
-import camp.nextstep.edu.github.domain.Repository
+import camp.nextstep.edu.github.domain.repository.Repository
 
 class RepositoryAdapter :
     ListAdapter<Repository, RepositoryAdapter.RepositoryViewHolder>(diffCallback()) {

@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github
 
-import camp.nextstep.edu.github.domain.Repository
+import camp.nextstep.edu.github.domain.repository.Repository
 import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
