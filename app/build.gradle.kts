@@ -63,6 +63,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
+    testImplementation("io.mockk:mockk:1.12.4")
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.1.3")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
@@ -70,4 +71,11 @@ dependencies {
     androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junit5Version")
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
+
+    testImplementation("com.google.dagger:hilt-android-testing:$daggerVersion")
+    kaptTest("com.google.dagger:hilt-compiler:$daggerVersion")
+}
+
+kapt {
+    correctErrorTypes = true
 }
