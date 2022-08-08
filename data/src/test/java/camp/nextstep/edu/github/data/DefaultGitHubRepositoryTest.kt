@@ -26,13 +26,17 @@ class DefaultGitHubRepositoryTest {
 
     @Test
     fun `서버로부터 git repo 목록들을 읽어올 수 있어야 한다`() = runTest {
+        //given
         val response = MockResponse()
             .setBody(File("src/test/resources/repositories.json").readText())
             .setResponseCode(200)
         server.enqueue(response)
         val expected = "mojombo/grit"
+
+        //when
         val actual = repository.loadRepositories().list().firstOrNull()?.fullName
 
+        //then
         assertThat(actual).isEqualTo(expected)
     }
 }
