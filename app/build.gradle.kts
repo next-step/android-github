@@ -72,8 +72,7 @@ dependencies {
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 
-    testImplementation("com.google.dagger:hilt-android-testing:$daggerVersion")
-    kaptTest("com.google.dagger:hilt-compiler:$daggerVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 }
 
 kapt {
