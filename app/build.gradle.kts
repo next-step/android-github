@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -61,5 +62,20 @@ dependencies {
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 
+    implementation ("com.google.dagger:hilt-android:2.43.2")
+    kapt ("com.google.dagger:hilt-compiler:2.43.2")
+
+    // For instrumentation tests
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.43.2")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.43.2")
+
+    // For local unit tests
+    testImplementation ("com.google.dagger:hilt-android-testing:2.43.2")
+    kaptTest ("com.google.dagger:hilt-compiler:2.43.2")
+
     implementation(project(":domain"))
+}
+
+kapt {
+    correctErrorTypes = true
 }
