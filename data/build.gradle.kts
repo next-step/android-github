@@ -28,6 +28,7 @@ dependencies {
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
+    testImplementation(MockK)
     testImplementation(Truth)
     testImplementation(CoroutinesTest)
     testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")

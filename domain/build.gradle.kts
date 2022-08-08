@@ -24,6 +24,7 @@ dependencies {
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
+    testImplementation(MockK)
     testImplementation(Truth)
     testImplementation(CoroutinesTest)
 }
