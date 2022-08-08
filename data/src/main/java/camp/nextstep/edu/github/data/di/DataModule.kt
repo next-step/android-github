@@ -1,5 +1,6 @@
 package camp.nextstep.edu.github.data.di
 
+import camp.nextstep.edu.github.data.model.BaseUrl
 import camp.nextstep.edu.github.data.repository.GithubRepositoryImpl
 import camp.nextstep.edu.github.data.retrofit.GithubRetrofit
 import camp.nextstep.edu.github.data.retrofit.GithubService
@@ -9,7 +10,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -23,8 +23,7 @@ internal abstract class DataModule {
     companion object {
 
         @Provides
-        @Named("base_url")
-        fun provideBaseUrl(): String = "https://api.github.com"
+        fun provideBaseUrl(): BaseUrl = BaseUrl("https://api.github.com")
 
         @Provides
         fun provideGithubService(
