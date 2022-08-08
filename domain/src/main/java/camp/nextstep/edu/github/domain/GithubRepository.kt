@@ -5,5 +5,5 @@ package camp.nextstep.edu.github.domain
  * Created by jeongjinhong on 2022. 08. 05..
  */
 interface GithubRepository {
-    suspend fun getGithub(): List<GithubResponse>
+    suspend fun getGithub(): List<Github>
 }

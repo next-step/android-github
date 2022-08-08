@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
+    kotlin("kapt")
 }
 
 java {
@@ -23,5 +24,8 @@ dependencies {
 
     testImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     testRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
+
+    implementation("com.google.dagger:hilt-core:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
 }
