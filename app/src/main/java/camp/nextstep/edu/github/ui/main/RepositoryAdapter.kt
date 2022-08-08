@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

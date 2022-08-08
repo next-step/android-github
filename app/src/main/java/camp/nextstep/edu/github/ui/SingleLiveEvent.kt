@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

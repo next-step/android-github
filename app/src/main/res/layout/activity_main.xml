@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="camp.nextstep.edu.github.MainViewModel" />
+            type="camp.nextstep.edu.github.ui.main.MainViewModel" />
 
     </data>
 

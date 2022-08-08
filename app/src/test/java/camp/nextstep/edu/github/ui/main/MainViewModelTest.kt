@@ -1,7 +1,10 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui.main
 
+import camp.nextstep.edu.github.InstantTaskExecutorExtension
+import camp.nextstep.edu.github.MainCoroutineExtension
 import camp.nextstep.edu.github.domain.repository.Repository
 import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
+import camp.nextstep.edu.github.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
