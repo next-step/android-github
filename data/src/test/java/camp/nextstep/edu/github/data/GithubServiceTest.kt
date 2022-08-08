@@ -1,5 +1,9 @@
 package camp.nextstep.edu.github.data
 
+<<<<<<< HEAD:data/src/test/java/camp/nextstep/edu/github/data/GithubServiceTest.kt
+=======
+import camp.nextstep.edu.github.data.entity.RepositoryEntity
+>>>>>>> a2d5102 (1):data/src/test/java/camp/nextstep/edu/github/data/service/GithubServiceTest.kt
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse

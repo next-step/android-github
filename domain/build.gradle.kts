@@ -17,6 +17,7 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("io.mockk:mockk:1.12.4")
     implementation("com.google.dagger:hilt-core:$hiltVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
 
