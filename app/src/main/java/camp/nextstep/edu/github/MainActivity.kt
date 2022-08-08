@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initList()
         initViewEvent()
+
+        viewModel.fetchGitRepos()
     }
 
     private fun initList() {
