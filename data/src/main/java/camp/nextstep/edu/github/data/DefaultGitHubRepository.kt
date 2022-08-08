@@ -7,6 +7,6 @@ internal class DefaultGitHubRepository(
     private val gitHubService: GitHubService
 ) : GithubRepository {
     override suspend fun loadRepositories(): Repositories = gitHubService.listRepos()
-        .map { it.toDomain() }
+        .map(RepoModel::toDomain)
         .let { Repositories(it) }
 }
