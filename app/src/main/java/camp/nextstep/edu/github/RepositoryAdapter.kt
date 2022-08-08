@@ -32,11 +32,3 @@ class RepositoryAdapter : ListAdapter<Repository, RepositoryViewHolder>(diffUtil
         }
     }
 }
-
-class RepositoryViewHolder(private val binding: ItemRepoBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(repository: Repository) {
-        binding.repository = repository
-    }
-}
