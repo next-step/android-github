@@ -71,3 +71,4 @@ internal class GithubServiceTest {
     private fun createGitRepoRepository(retrofit: Retrofit): RemoteGitRepoRepository {
         return RemoteGitRepoRepository(retrofit.create())
     }
+}
