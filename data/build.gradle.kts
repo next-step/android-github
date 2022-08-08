@@ -18,4 +18,11 @@ dependencies {
     testImplementation("com.google.truth:truth:$truthVersion")
     testImplementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion")
+    testImplementation("io.mockk:mockk:1.12.3")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + "-Xallow-result-return-type"
+    }
 }

@@ -30,7 +30,7 @@ class GitHubServiceTest {
     fun `GitHub Repository 목록을 가져올 수 있어야 한다`() = runTest {
         // given
         val response =
-            MockResponse().setBody(File("src/test/java/camp/nextstep/edu/github/data/gitHubRepository.json").readText())
+            MockResponse().setBody(File("src/test/java/camp/nextstep/edu/github/data/respositories-200.json").readText())
         mockWebServer.enqueue(response)
 
         // when
@@ -41,6 +41,22 @@ class GitHubServiceTest {
             fullName = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
-        assertThat(actual[0]).isEqualTo(expected)
+        assertThat(actual.body()?.get(0)).isEqualTo(expected)
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun `GitHub Repository 목록을 가져오는데 실패한다`() = runTest {
+        // given
+        val response =
+            MockResponse().setBody(File("src/test/java/camp/nextstep/edu/github/data/respositories-404.json").readText())
+                .setResponseCode(404)
+        mockWebServer.enqueue(response)
+
+        // when
+        val actual = service.getGitHubRepositoryList()
+
+        // then
+        assertThat(actual.isSuccessful).isFalse()
     }
 }
