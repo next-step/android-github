@@ -1,9 +1,7 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.data.service
 
-import camp.nextstep.edu.github.data.GithubService
-import camp.nextstep.edu.github.data.RepositoryDto
+import camp.nextstep.edu.github.data.entity.RepositoryEntity
 import com.google.common.truth.Truth.assertThat
-import com.squareup.moshi.Moshi
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -39,7 +37,7 @@ class GithubServiceTest {
 
         // then
         val expected = listOf(
-            RepositoryDto(
+            RepositoryEntity(
                 fullName = "wisemuji",
                 description = "This is test description"
             ),
@@ -48,6 +46,7 @@ class GithubServiceTest {
     }
 
     companion object {
-        private const val JSON_FILE_PATH = "src/test/resources/response.json"
+        private const val JSON_FILE_PATH =
+            "src/test/resources/get_repositories_response_success.json"
     }
 }
