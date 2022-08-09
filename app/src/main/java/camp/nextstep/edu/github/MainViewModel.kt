@@ -16,14 +16,14 @@ class MainViewModel @Inject constructor(
     private val githubRepository: GithubRepository
 ) : ViewModel() {
 
-    private val _repositoryListFlow = MutableStateFlow<List<RepositoryItem>>(emptyList())
-    val repositoryListFlow = _repositoryListFlow.asStateFlow()
+    private val _repositoryList = MutableStateFlow<List<RepositoryItem>>(emptyList())
+    val repositoryList = _repositoryList.asStateFlow()
 
     fun loadRepositoryList() {
         viewModelScope.launch {
             githubRepository.fetchRepositoryList()
                 .onSuccess { repositoryList ->
-                    _repositoryListFlow.value = repositoryList.map { it.toItem() }
+                    _repositoryList.value = repositoryList.map { it.toItem() }
                 }
         }
     }

@@ -17,7 +17,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            submitList="@{viewModel.repositoryListFlow}"
+            submitList="@{viewModel.repositoryList}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

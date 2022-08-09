@@ -44,7 +44,7 @@ class MainViewModelTest {
             RepositoryItem("fullName1", "description1"),
             RepositoryItem("fullName2", "null"),
         )
-        val actual = viewModel.repositoryListFlow.value
+        val actual = viewModel.repositoryList.value
         assertThat(actual).isEqualTo(expected)
     }
 }
