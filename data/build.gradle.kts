@@ -10,4 +10,5 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 }

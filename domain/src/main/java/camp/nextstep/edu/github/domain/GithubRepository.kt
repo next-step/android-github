@@ -1,5 +1,6 @@
 package camp.nextstep.edu.github.domain
 
+
 interface GithubRepository {
-    suspend fun getGithubService(): GithubService
+    suspend fun getRepositories(): List<Repo>
 }
