@@ -1,7 +1,6 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.remote.di
 
-import camp.nextstep.edu.github.data.GitRepoRepository
-import camp.nextstep.edu.github.remote.Injector
+import camp.nextstep.edu.github.remote.GithubService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,12 +9,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
-
+class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -40,7 +39,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideGitRepoRepository(retrofit: Retrofit): GitRepoRepository {
-        return Injector.getGitRepoRepository(retrofit)
+    internal fun provideGithubService(retrofit: Retrofit): GithubService {
+        return retrofit.create()
     }
 }
