@@ -26,6 +26,9 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("io.mockk:mockk:1.12.3")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
+
+    implementation("com.google.dagger:hilt-core:$daggerVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$daggerVersion")
 }
 
 tasks.withType<Test> {
