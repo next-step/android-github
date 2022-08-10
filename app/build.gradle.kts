@@ -6,6 +6,7 @@ import Versions.Compose.composeVersion
 import Versions.Compose.composeNavVersion
 import Versions.Hilt.hiltVersion
 import Versions.Hilt.hiltNavComposeVersion
+import Versions.KotlinX.coroutineVersion
 import Versions.Test.espressoVersion
 import Versions.Test.junit5Version
 import Versions.Test.mannodermausJunit5Version
