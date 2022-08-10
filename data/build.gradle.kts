@@ -15,6 +15,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.7.1")
     implementation("com.squareup.okhttp3:mockwebserver:4.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("com.google.dagger:hilt-core:2.42")
 
     testImplementation("com.google.truth:truth:1.1.3")
 }

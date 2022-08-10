@@ -4,8 +4,9 @@ import camp.nextstep.edu.github.data.service.GitHubService
 import camp.nextstep.edu.github.data.toDomain
 import camp.nextstep.edu.github.domain.GitHubRepos
 import camp.nextstep.edu.github.domain.MainRepository
+import javax.inject.Inject
 
-internal class DefaultMainRepository(
+internal class DefaultMainRepository @Inject constructor(
     private val gitHubService: GitHubService
 ) : MainRepository {
     override suspend fun getGitHubRepositories() : GitHubRepos {
