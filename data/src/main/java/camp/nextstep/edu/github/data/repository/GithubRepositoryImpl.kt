@@ -4,8 +4,9 @@ import camp.nextstep.edu.github.data.mapper.toDomain
 import camp.nextstep.edu.github.data.retrofit.GithubService
 import camp.nextstep.edu.github.domain.model.Repository
 import camp.nextstep.edu.github.domain.repository.GithubRepository
+import javax.inject.Inject
 
-internal class GithubRepositoryImpl(
+internal class GithubRepositoryImpl @Inject constructor(
     private val githubService: GithubService
 ) : GithubRepository {
 

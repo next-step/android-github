@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -21,9 +22,13 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
+    kapt(HiltKapt)
+    implementation(HiltCore)
+
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
+    testImplementation(MockK)
     testImplementation(Truth)
     testImplementation(CoroutinesTest)
     testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")

@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -17,9 +18,13 @@ dependencies {
     implementation(KotlinStdLib)
     implementation(CoroutinesCore)
 
+    kapt(HiltKapt)
+    implementation(HiltCore)
+
     testImplementation(JunitJupyter)
     testRuntimeOnly(JunitVintageEngine) // junit4 지원
     testImplementation(Junit4)
+    testImplementation(MockK)
     testImplementation(Truth)
     testImplementation(CoroutinesTest)
 }
