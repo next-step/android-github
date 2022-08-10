@@ -5,11 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object DataInjector {
-    fun provideGithubRepository(): GithubRepository {
-        return GithubRepositoryImpl(provideGithubService())
+    fun provideGithubRepository(baseUrl: String): GithubRepository {
+        return GithubRepositoryImpl(provideGithubService(baseUrl))
     }
 
-    private fun provideGithubService(baseUrl: String = "https://api.github.com/"): GithubService =
+    private fun provideGithubService(baseUrl: String): GithubService =
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())

@@ -18,7 +18,7 @@ class GithubRepositoryImplTest {
     @BeforeEach
     fun setUp() {
         server = MockWebServer()
-        repository = DataInjector.provideGithubRepository()
+        repository = DataInjector.provideGithubRepository("https://api.github.com/")
     }
 
     @Test
