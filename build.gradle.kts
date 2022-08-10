@@ -1,14 +1,15 @@
+
 plugins {
-    id("com.android.application") version gradleVersion apply false
-    id("com.android.library") version gradleVersion apply false
-    id("org.jetbrains.kotlin.android") version kotlinVersion apply false
+    id("com.android.application") version Versions.gradleVersion apply false
+    id("com.android.library") version Versions.gradleVersion apply false
+    id("org.jetbrains.kotlin.android") version Versions.kotlinVersion apply false
 }
 
 buildscript {
     dependencies {
-        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
-        classpath(kotlin("gradle-plugin", version = kotlinVersion))
-        classpath(kotlin("serialization", version = kotlinVersion))
+        classpath("com.google.dagger:hilt-android-gradle-plugin:${Versions.Hilt.hiltVersion}")
+        classpath(kotlin("gradle-plugin", version = Versions.kotlinVersion))
+        classpath(kotlin("serialization", version = Versions.kotlinVersion))
     }
 }
 

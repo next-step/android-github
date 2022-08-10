@@ -1,3 +1,5 @@
+import Versions.Hilt.javaxInjectVersion
+
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
@@ -11,5 +13,5 @@ java {
 
 dependencies {
     //힐트
-    implementation ("javax.inject:javax.inject:1")
+    implementation ("javax.inject:javax.inject:$javaxInjectVersion")
 }

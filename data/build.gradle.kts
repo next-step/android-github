@@ -1,3 +1,12 @@
+import Versions.Hilt.hiltVersion
+import Versions.KotlinX.coroutineVersion
+import Versions.Retrofit.moshiVersion
+import Versions.Retrofit.retrofitVersion
+import Versions.Test.archCoreTestingVersion
+import Versions.Test.junitVersion
+import Versions.Test.mockWebServerVersion
+import Versions.Test.truthVersion
+
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
@@ -21,10 +30,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
 
-    implementation("junit:junit:4.13.2")
+    implementation("junit:junit:$junitVersion")
 
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
-    testImplementation("com.google.truth:truth:1.1.3")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    testImplementation("com.squareup.okhttp3:mockwebserver:$mockWebServerVersion")
+    testImplementation("com.google.truth:truth:$truthVersion")
+    testImplementation("androidx.arch.core:core-testing:$archCoreTestingVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion")
 }
