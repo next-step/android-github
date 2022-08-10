@@ -3,12 +3,11 @@ package camp.nextstep.edu.github.data
 import camp.nextstep.edu.github.domain.GithubRepository
 import camp.nextstep.edu.github.domain.Repo
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
 import java.io.File
 
 
@@ -23,7 +22,7 @@ class GithubRepositoryImplTest {
     }
 
     @Test
-    fun `Github Repository 로드하여 첫번째 Repo 객체를 검증한다`() = runBlocking {
+    fun `Github Repository 로드하여 첫번째 Repo 객체를 검증한다`() = runTest {
         val response = MockResponse()
             .setBody(File("src/test/resources/repositories.json").readText())
             .setResponseCode(200)
