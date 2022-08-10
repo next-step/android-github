@@ -47,7 +47,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion = composeVersion
     }
 
     packagingOptions {
@@ -59,20 +59,20 @@ android {
 
 dependencies {
     //힐트 의존성 추가
-    kapt("com.google.dagger:hilt-android-compiler:2.42")
-    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //compose
-    implementation("androidx.activity:activity-compose:1.4.0") // Integration with activities
-    implementation("androidx.compose.material:material:1.1.1") // Compose Material Design
-    implementation("androidx.compose.animation:animation:1.1.1") // Animations
-    implementation("androidx.compose.ui:ui-tooling:1.1.1")// Tooling support (Previews, etc.)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1") // Integration with ViewModels
+    implementation("androidx.activity:activity-compose:1.5.1") // Integration with activities
+    implementation("androidx.compose.material:material:$composeVersion") // Compose Material Design
+    implementation("androidx.compose.animation:animation:$composeVersion") // Animations
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")// Tooling support (Previews, etc.)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1") // Integration with ViewModels
 
     //kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.core:core-ktx:$kotlinVersion")
 
     //androidx
     implementation("androidx.appcompat:appcompat:1.3.1")
@@ -95,4 +95,5 @@ dependencies {
 
 
     implementation(project(":domain"))
+    implementation(project(":data"))
 }
