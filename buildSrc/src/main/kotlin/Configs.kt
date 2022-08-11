@@ -5,7 +5,7 @@ object Versions {
     object Test {
         const val junit5Version = "5.7.2"
         const val junitVersion = "4.13.2"
-        const val truthVersion = "1.1.4"
+        const val truthVersion = "1.1.3"
         const val mockWebServerVersion = "4.10.0"
         const val mannodermausJunit5Version = "1.3.0"
         const val espressoVersion = "3.4.0"
