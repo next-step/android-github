@@ -3,7 +3,7 @@
     <data>
         <variable
             name="gitHubRepoViewData"
-            type="camp.nextstep.edu.github.GitHubRepoViewData" />
+            type="camp.nextstep.edu.github.model.GitHubRepoViewData" />
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
