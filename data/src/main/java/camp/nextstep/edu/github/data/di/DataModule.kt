@@ -17,7 +17,11 @@ import javax.inject.Singleton
 internal object DataModule {
     @Provides
     @Singleton
-    fun provideGithubService(): GithubService = Retrofit.Builder().baseUrl("https://api.github.com/").addConverterFactory(MoshiConverterFactory.create()).build().create(GithubService::class.java)
+    fun provideGithubService(): GithubService = Retrofit.Builder()
+        .baseUrl("https://api.github.com/")
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build()
+        .create(GithubService::class.java)
 }
 
 @Module
