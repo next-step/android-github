@@ -1,6 +1,8 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
-    id ("java-library")
     id ("kotlin")
+    kotlin ("kapt")
 }
 
 java {
@@ -10,4 +12,5 @@ java {
 
 dependencies {
     implementation("com.google.dagger:hilt-core:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:2.42")
 }
