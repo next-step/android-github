@@ -7,11 +7,13 @@ import Versions.Compose.composePaging
 import Versions.Compose.composeVersion
 import Versions.Hilt.hiltNavComposeVersion
 import Versions.Hilt.hiltVersion
+import Versions.KotlinX.coroutineVersion
 import Versions.Test.espressoVersion
 import Versions.Test.junit5Version
 import Versions.Test.junitExtensionsVersion
 import Versions.Test.junitVersion
 import Versions.Test.mannodermausJunit5Version
+import Versions.Test.mockkVersion
 import Versions.Test.truthVersion
 import Versions.kotlinVersion
 
@@ -90,7 +92,7 @@ dependencies {
     implementation("androidx.compose.animation:animation:$composeVersion") // Animations
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")// Tooling support (Previews, etc.)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$composeNavVersion") // Integration with ViewModels
-    implementation ("androidx.paging:paging-compose:$composePaging")
+    implementation("androidx.paging:paging-compose:$composePaging")
 
     //kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
@@ -114,7 +116,8 @@ dependencies {
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
     testImplementation("junit:junit:$junitVersion")
     testImplementation("com.google.truth:truth:$truthVersion")
-
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion")
 
     implementation(project(":domain"))
     implementation(project(":data"))

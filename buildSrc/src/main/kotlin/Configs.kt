@@ -11,6 +11,7 @@ object Versions {
         const val espressoVersion = "3.4.0"
         const val archCoreTestingVersion = "2.1.0"
         const val junitExtensionsVersion = "1.1.4"
+        const val mockkVersion = "1.12.4"
     }
 
     object Retrofit {
