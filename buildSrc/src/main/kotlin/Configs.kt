@@ -28,6 +28,7 @@ object Versions {
         const val composeVersion = "1.2.0"
         const val composeActivityVersion = "1.5.1"
         const val composeNavVersion = "2.5.1"
+        const val composePaging = "1.0.0-alpha15"
 
     }
 

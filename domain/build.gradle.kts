@@ -1,4 +1,5 @@
 import Versions.Hilt.javaxInjectVersion
+import Versions.KotlinX.coroutineVersion
 
 plugins {
     id("java-library")
@@ -14,4 +15,7 @@ java {
 dependencies {
     //힐트
     implementation ("javax.inject:javax.inject:$javaxInjectVersion")
+
+    //coroutine
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
 }

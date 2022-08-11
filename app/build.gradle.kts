@@ -2,17 +2,17 @@ import Versions.AndroidX.appcompatVersion
 import Versions.AndroidX.constraintLayoutVersion
 import Versions.AndroidX.materialVersion
 import Versions.Compose.composeActivityVersion
-import Versions.Compose.composeVersion
 import Versions.Compose.composeNavVersion
-import Versions.Hilt.hiltVersion
+import Versions.Compose.composePaging
+import Versions.Compose.composeVersion
 import Versions.Hilt.hiltNavComposeVersion
-import Versions.KotlinX.coroutineVersion
+import Versions.Hilt.hiltVersion
 import Versions.Test.espressoVersion
 import Versions.Test.junit5Version
-import Versions.Test.mannodermausJunit5Version
-import Versions.Test.junitVersion
-import Versions.Test.truthVersion
 import Versions.Test.junitExtensionsVersion
+import Versions.Test.junitVersion
+import Versions.Test.mannodermausJunit5Version
+import Versions.Test.truthVersion
 import Versions.kotlinVersion
 
 plugins {
@@ -61,6 +61,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
     }
 
     composeOptions {
@@ -86,6 +90,7 @@ dependencies {
     implementation("androidx.compose.animation:animation:$composeVersion") // Animations
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")// Tooling support (Previews, etc.)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$composeNavVersion") // Integration with ViewModels
+    implementation ("androidx.paging:paging-compose:$composePaging")
 
     //kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
