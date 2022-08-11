@@ -1,8 +1,8 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.model.GitHubRepositoryEntity
-import camp.nextstep.edu.github.domain.GitHubRepo
-import camp.nextstep.edu.github.domain.GitHubRepos
+import camp.nextstep.edu.github.domain.model.GitHubRepo
+import camp.nextstep.edu.github.domain.model.GitHubRepos
 
 
 internal fun List<GitHubRepositoryEntity>.toDomain() : GitHubRepos = GitHubRepos(
