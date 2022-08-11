@@ -15,5 +15,5 @@ internal fun GitHubRepositoryEntity.toDomain() : GitHubRepo =
     GitHubRepo(
         id = this.id,
         fullName = this.fullName,
-        description = this.description
+        description = this.description ?: ""
     )
