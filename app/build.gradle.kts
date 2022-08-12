@@ -61,3 +61,7 @@ dependencies {
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 }
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
