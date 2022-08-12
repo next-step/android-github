@@ -30,7 +30,7 @@ class GitHubServiceTest {
     fun `getRepositories 요청`() {
         // given
         val response = MockResponse()
-            .setBody(File("src/test/resources/getGitHubRepositories.json").readText())
+            .setBody(File("src/test/resources/get_repositories_response_success.json").readText())
         server.enqueue(response)
 
         // when
