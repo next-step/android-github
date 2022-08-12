@@ -2,10 +2,8 @@ package com.nextstep.edu.github
 
 import camp.nextstep.edu.github.data.GithubApi
 import camp.nextstep.edu.github.data.GithubRepositoryResponse
-import camp.nextstep.edu.github.domain.GithubRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
