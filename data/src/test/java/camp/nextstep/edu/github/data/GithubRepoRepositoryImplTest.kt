@@ -38,14 +38,11 @@ internal class GithubRepoRepositoryImplTest {
     fun `mock서버 Repository의 첫번째 데이터는 예상 데이터와 같다`() = runTest {
         val response =
             MockResponse()
-                .setBody(File("src/test/java/camp/nextstep/edu/github/data/res/repositories.json").readText())
+                .setBody(File("src/test/resources/request_repositories_200.json").readText())
                 .setResponseCode(200)
         server.enqueue(response)
-        val expected = GithubRepositoryData(
-            fullName = "mojombo/grit",
-            description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby.",
-        )
-        val actual = repository.getRepositories().firstOrNull()
-        assertThat(expected).isEqualTo(actual)
+        val expected = 100
+        val actual = repository.getRepositories().size
+        assertThat(actual).isEqualTo(expected)
     }
 }
