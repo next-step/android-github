@@ -1,5 +1,5 @@
 package camp.nextstep.edu.github.domain
 
-data class Repositories(private val repoList: List<Repo>) {
+data class GithubRepositories(private val repoList: List<GithubRepo>) {
     fun list() = repoList.toList()
 }

@@ -1,27 +1,16 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
-        classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1")
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+plugins {
+    id("com.android.application") version Versions.gradleVersion apply false
+    id("com.android.library") version Versions.gradleVersion apply false
+    id("org.jetbrains.kotlin.android") version Versions.kotlinVersion apply false
+    id("com.google.dagger.hilt.android") version Versions.Hilt.hiltVersion apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
+buildscript {
+    dependencies {
+        classpath(kotlin("gradle-plugin", version = Versions.kotlinVersion))
+        classpath(kotlin("serialization", version = Versions.kotlinVersion))
     }
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
 
 tasks.register("clean", Delete::class) {
