@@ -8,5 +8,5 @@ java {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(":domain"))
 }
