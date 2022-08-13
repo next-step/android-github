@@ -8,6 +8,6 @@ internal class GithubRepoRepositoryImpl(private val githubNetworkService: Github
     override suspend fun getRepositories(): List<GithubRepositoryData> {
         return githubNetworkService
             .getRepositories()
-            .map { GithubRepositoryData(it.fullName, it.description ?: "") }
+            .map(GithubDataMapper::repositoryDTOtoRepositoryData)
     }
 }
