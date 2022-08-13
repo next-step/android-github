@@ -9,10 +9,7 @@ import camp.nextstep.edu.github.ui.theme.DarkColorPalette
 import camp.nextstep.edu.github.ui.theme.LightColorPalette
 
 fun ComponentActivity.setThemeContent(content: @Composable () -> Unit) = setContent {
-    val colors = when(isSystemInDarkTheme()) {
-        true -> DarkColorPalette
-        false -> LightColorPalette
-    }
+    val colors = if (isSystemInDarkTheme()) DarkColorPalette else LightColorPalette
 
     MaterialTheme(colors = colors, content = content)
 }
