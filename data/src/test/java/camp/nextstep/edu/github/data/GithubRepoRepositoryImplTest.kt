@@ -25,7 +25,7 @@ internal class GithubRepoRepositoryImplTest {
                 .baseUrl(server.url(""))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(GithubService::class.java)
+                .create(GithubNetworkService::class.java)
         repository = GithubRepoRepositoryImpl(service)
     }
 

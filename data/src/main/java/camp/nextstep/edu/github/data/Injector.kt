@@ -4,6 +4,6 @@ import camp.nextstep.edu.github.domain.GithubRepoRepository
 
 object Injector {
     fun provideGithubRepository(): GithubRepoRepository {
-        return GithubRepoRepositoryImpl(GithubNetworkRequest.getGithubService())
+        return GithubRepoRepositoryImpl(GithubNetwork.getGithubService())
     }
 }
