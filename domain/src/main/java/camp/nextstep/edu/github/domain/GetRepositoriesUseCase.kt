@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetRepositoriesUseCase @Inject constructor(
     private val githubRepository: GithubRepository
 ) {
-    suspend operator fun invoke(): Flow<GithubRepositories> {
+    operator fun invoke(): Flow<GithubRepositories> {
         return flow { emit(githubRepository.loadRepositories()) }
     }
 }
