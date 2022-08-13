@@ -34,7 +34,7 @@ private fun GithubListState(uiState: GithubRepositoriesUiState) {
 fun GithubListEffect(effect: GithubRepositoriesUiEffect) {
     when (effect) {
         is GithubRepositoriesUiEffect.Loading -> Loading()
-        is GithubRepositoriesUiEffect.NotLoading -> {}
+        is GithubRepositoriesUiEffect.NotLoading -> Unit
     }
 }
 
