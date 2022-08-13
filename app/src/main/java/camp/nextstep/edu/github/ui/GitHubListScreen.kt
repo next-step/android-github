@@ -53,7 +53,7 @@ fun GithubList(state: GithubRepositoriesUiState.LoadedGithubRepositories) {
 
 @Composable
 fun GitHubEmpty() {
-    Text("EMPTY")
+    Text(stringResource(R.string.msg_empty))
 }
 
 @Composable
@@ -68,8 +68,8 @@ fun GithubListItem(fullName: String, description: String) {
     ) {
         Box(contentAlignment = Alignment.CenterStart) {
             Column {
-                Text(stringResource(R.string.label_formatted_repository_fullname, fullName))
-                Text(stringResource(R.string.label_formatted_repository_description, description))
+                Text(stringResource(R.string.msg_formatted_repository_fullname, fullName))
+                Text(stringResource(R.string.msg_formatted_repository_description, description))
             }
         }
     }
@@ -90,7 +90,7 @@ fun GithubListLoadingError() {
                 .height(100.dp),
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Text("LoadingError!!")
+                Text(stringResource(R.string.msg_loading_error))
             }
         }
     }
@@ -111,7 +111,7 @@ fun Loading() {
                 .height(100.dp),
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Text("Loading...")
+                Text(stringResource(R.string.msg_loading))
             }
         }
     }

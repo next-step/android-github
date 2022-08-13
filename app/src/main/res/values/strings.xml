@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">android-github</string>
-    <string name="label_formatted_repository_fullname">Repository = %s</string>
-    <string name="label_formatted_repository_description">Description = %s</string>
+    <string name="msg_formatted_repository_fullname">Repository = %s</string>
+    <string name="msg_formatted_repository_description">Description = %s</string>
+    <string name="msg_loading_error">Loading Error!!</string>
+    <string name="msg_loading">Loading…</string>
+    <string name="msg_empty">EMPTY…</string>
 </resources>
