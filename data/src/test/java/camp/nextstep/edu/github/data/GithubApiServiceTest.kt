@@ -30,7 +30,7 @@ class GithubApiServiceTest {
     }
 
     @Test
-    fun 저장소를_불러올_수_있어야_한다() = runTest {
+    fun apiService에서_요청시_저장소를_불러올_수_있어야_한다() = runTest {
         //given
         val jsonPath = javaClass.getResource("/repository-200.json").path
         val response = MockResponse()
