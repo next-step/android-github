@@ -5,7 +5,7 @@ import camp.nextstep.edu.github.domain.RepositoryVO
 
 internal class GithubRepositoryImpl(private val apiService: ApiService) : GithubRepository {
     override suspend fun getRepositories(): List<RepositoryVO> {
-        val list: List<RepositoryDTO> = apiService.getRepositories()
-        return list.map { RepositoryVO(it.fullName, it.description) }
+        val repositories: List<RepositoryDTO> = apiService.getRepositories()
+        return repositories.map { RepositoryVO(it.fullName, it.description) }
     }
 }
