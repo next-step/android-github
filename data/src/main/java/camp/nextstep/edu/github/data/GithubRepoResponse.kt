@@ -8,6 +8,6 @@ internal data class GithubRepoResponse(
     val name: String,
     @SerializedName("description")
     val description: String?
-) {
-    fun toDomainModel(): GithubRepo = GithubRepo(name, description)
+): DataToDomainMapper<GithubRepo> {
+    override fun toDomain(): GithubRepo = GithubRepo(name, description)
 }

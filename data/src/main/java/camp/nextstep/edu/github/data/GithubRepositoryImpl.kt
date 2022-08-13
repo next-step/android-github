@@ -7,6 +7,6 @@ internal class GithubRepositoryImpl(
     private val apiService: GithubApiService
 ): GithubRepository {
     override suspend fun getRepo(): List<GithubRepo> {
-        return apiService.repositories().map { it.toDomainModel() }
+        return apiService.repositories().map(GithubRepoResponse::toDomain)
     }
 }
