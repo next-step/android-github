@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: RepositoryViewModel by viewModels()
@@ -20,5 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.loadRepositories()
+
+        binding.recyclerview.adapter = adapter
     }
 }

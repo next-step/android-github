@@ -3,16 +3,16 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
-    id("com.google.dagger.hilt.android")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -46,10 +46,10 @@ android {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation ("androidx.fragment:fragment-ktx:1.5.1")
+    implementation ("androidx.fragment:fragment-ktx:1.5.2")
 
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
@@ -74,6 +74,7 @@ dependencies {
     kaptTest ("com.google.dagger:hilt-compiler:2.43.2")
 
     implementation(project(":domain"))
+    implementation(project(":data"))
 }
 
 kapt {
