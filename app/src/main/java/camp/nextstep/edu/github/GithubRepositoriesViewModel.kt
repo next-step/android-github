@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,16 +26,13 @@ class GithubRepositoriesViewModel @Inject constructor(
     }
 
     private fun eventLoadRepositories() {
-        startLoading()
-        viewModelScope.launch {
-            getRepositoryUseCase()
-                .map(GithubRepositoriesUiState::LoadedGithubRepositories)
-                .catch { sendUiStateLoadError() }
-                .collect(::updateUiState)
-                .also { stopLoading() }
-        }.invokeOnCompletion {
-            stopLoading()
-        }
+        getRepositoryUseCase()
+            .map(GithubRepositoriesUiState::LoadedGithubRepositories)
+            .catch { sendUiStateLoadError() }
+            .onStart { startLoading() }
+            .onCompletion { stopLoading() }
+            .onEach(::updateUiState)
+            .launchIn(viewModelScope)
     }
 
     private fun sendUiStateLoadError() {
