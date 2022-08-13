@@ -35,6 +35,8 @@ class GithubApiServiceTest {
         val jsonPath = javaClass.getResource("/repository-200.json").path
         val response = MockResponse()
             .setBody(File(jsonPath).readText())
+            .setResponseCode(200)
+
         server.enqueue(response)
 
         val expected = GithubRepoResponse(
