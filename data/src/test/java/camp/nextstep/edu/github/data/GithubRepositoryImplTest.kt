@@ -1,5 +1,6 @@
 package camp.nextstep.edu.github.data
 
+import camp.nextstep.edu.github.domain.GithubRepository
 import camp.nextstep.edu.github.domain.RepositoryVO
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.GsonBuilder
@@ -11,12 +12,13 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.io.FileReader
 
 internal class GithubRepositoryImplTest {
 
     private lateinit var server: MockWebServer
-    private lateinit var repo: GithubRepositoryImpl
+    private lateinit var repo: GithubRepository
 
     @Before
     fun setUp() {
@@ -40,7 +42,7 @@ internal class GithubRepositoryImplTest {
     fun `repositories path를 가진 api를 호출했을 때, 정상적으로 호출 후 응답이 내려온다`() = runBlocking {
         server.enqueue(
             MockResponse().setResponseCode(200).setBody(
-                """[{"full_name": "mojombo/grit","description": "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."}]"""
+                File("src/test/java/res/response-200.json").readText()
             )
         )
         val actual = repo.getRepositories().first()

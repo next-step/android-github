@@ -1,7 +1,6 @@
 plugins {
     id("kotlin")
     id("kotlin-kapt")
-//    id("dagger.hilt.android.plugin")
 }
 
 java {
@@ -12,10 +11,6 @@ java {
 dependencies {
     implementation(project(":domain"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    implementation("org.junit.jupiter:junit-jupiter:$junit5Version")
-    runtimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
-    implementation("junit:junit:4.13.2")
-    implementation("com.google.truth:truth:1.1.3")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
