@@ -8,12 +8,14 @@
     android:paddingVertical="8dp">
 
     <TextView
+        android:id="@+id/tv_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         tools:text="Author/Repository" />
 
     <TextView
+        android:id="@+id/tv_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
