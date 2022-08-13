@@ -4,7 +4,7 @@ import camp.nextstep.edu.github.domain.GetRepositoriesUseCase
 import camp.nextstep.edu.github.domain.GithubRepo
 import camp.nextstep.edu.github.domain.GithubRepositories
 import com.google.common.truth.Truth.assertThat
-import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +35,7 @@ class GithubRepositoriesViewModelTest {
     @Test
     fun `Github Repo 목록 로딩 이벤트가 발생하면 목록을 가져올 수 있어야 한다`() {
         //given
-        coEvery { useCase.invoke() } returns flow {
+        every { useCase.invoke() } returns flow {
             emit(GithubRepositories(listOf(GithubRepo(fullName = "next-step", name = "nextstep", description = "next step git", id = 1))))
         }
         val expected = "next-step"
