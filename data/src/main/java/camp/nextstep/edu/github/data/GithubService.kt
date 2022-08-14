@@ -9,4 +9,8 @@ import retrofit2.http.GET
 interface GithubService {
     @GET("/repositories")
     suspend fun getRepositories(): List<RepositoryDto>
+
+    companion object {
+        const val BASE_URL = "https://api.github.com"
+    }
 }

@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    kotlin("kapt")
 }
 
 java {
@@ -27,4 +28,8 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+
+    implementation("com.google.dagger:hilt-core:2.43.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.43.2")
+
 }

@@ -3,15 +3,16 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "camp.nextstep.edu.github"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -44,10 +45,12 @@ android {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.5.0")
+    implementation("com.google.android.material:material:1.6.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.fragment:fragment-ktx:1.5.2")
+
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
@@ -59,5 +62,21 @@ dependencies {
     androidTestImplementation("de.mannodermaus.junit5:android-test-core:1.2.2")
     androidTestRuntimeOnly("de.mannodermaus.junit5:android-test-runner:1.2.2")
 
+    implementation ("com.google.dagger:hilt-android:2.43.2")
+    kapt ("com.google.dagger:hilt-compiler:2.43.2")
+
+    // For instrumentation tests
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.43.2")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.43.2")
+
+    // For local unit tests
+    testImplementation ("com.google.dagger:hilt-android-testing:2.43.2")
+    kaptTest ("com.google.dagger:hilt-compiler:2.43.2")
+
     implementation(project(":domain"))
+    implementation(project(":data"))
+}
+
+kapt {
+    correctErrorTypes = true
 }
