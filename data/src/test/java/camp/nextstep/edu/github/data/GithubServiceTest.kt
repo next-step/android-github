@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
-class GithubNetworkTest {
+class GithubServiceTest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
