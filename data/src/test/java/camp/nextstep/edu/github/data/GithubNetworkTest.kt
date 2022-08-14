@@ -38,7 +38,7 @@ class GithubNetworkTest {
     @Test
     fun 깃헙_저장소가_비어있으면_비어있는_리스트가_보여진다() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/empty.json").readText())
+        val response = MockResponse().setBody(File("src/test/resources/repositories/empty.json").readText())
         mockWebServer.enqueue(response)
 
         // when
@@ -55,7 +55,7 @@ class GithubNetworkTest {
     fun 깃헙_저장소에_값이_있으면_모든_값이_보여진다() = runTest {
         // given
         val response =
-            MockResponse().setBody(File("src/test/resources/get_github_storage_response.json").readText())
+            MockResponse().setBody(File("src/test/resources/repositories/200.json").readText())
         mockWebServer.enqueue(response)
 
         // when
@@ -67,12 +67,4 @@ class GithubNetworkTest {
         assertThat(actual).isEqualTo(expected)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun 깃헙_저장소의_값을_불러오는데_실패() = runTest {
-        val response = MockResponse().setResponseCode(500)
-        mockWebServer.enqueue(response)
-
-        val actual = githubService.getRepositories()
-    }
 }
