@@ -65,6 +65,14 @@ class GithubNetworkTest {
         // then
         val expected = listOf(GithubRemoteStorageResponse("KimSangmin", "test"))
         assertThat(actual).isEqualTo(expected)
+    }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun 깃헙_저장소의_값을_불러오는데_실패() = runTest {
+        val response = MockResponse().setResponseCode(500)
+        mockWebServer.enqueue(response)
+
+        val actual = githubService.getRepositories()
     }
 }

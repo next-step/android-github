@@ -10,7 +10,7 @@ data class GithubRemoteStorageResponse(
     @SerializedName("description")
     val description: String?
 ) : DataToDomainMapper<GithubRemoteStorage> {
-    override fun mapper(): GithubRemoteStorage = GithubRemoteStorage(
+    override fun toDomain(): GithubRemoteStorage = GithubRemoteStorage(
         fullName = fullName,
         description = description
     )
