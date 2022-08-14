@@ -12,7 +12,6 @@ dependencies {
     implementation(project(":domain"))
 
     val retrofitVersion = "2.9.0"
-    val coroutinesVersion = "1.6.4"
     val junitVersion = "5.8.2"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
