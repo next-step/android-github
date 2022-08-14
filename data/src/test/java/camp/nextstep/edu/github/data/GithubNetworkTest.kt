@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.model.GithubRemoteStorageResponse
+import camp.nextstep.edu.github.data.model.GithubStorageResponse
 import camp.nextstep.edu.github.data.service.GithubService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -46,7 +46,7 @@ class GithubNetworkTest {
         advanceUntilIdle()
 
         // then
-        val expected = listOf<GithubRemoteStorageResponse>()
+        val expected = listOf<GithubStorageResponse>()
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -63,7 +63,7 @@ class GithubNetworkTest {
         advanceUntilIdle()
 
         // then
-        val expected = listOf(GithubRemoteStorageResponse("KimSangmin", "test"))
+        val expected = listOf(GithubStorageResponse("KimSangmin", "test"))
         assertThat(actual).isEqualTo(expected)
     }
 
