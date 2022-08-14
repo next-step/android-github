@@ -1,7 +1,5 @@
-package com.nextstep.edu.github
+package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.GithubApi
-import camp.nextstep.edu.github.data.GithubRepositoryResponse
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -36,7 +34,7 @@ internal class NetworkTest {
         mockWebServer.enqueue(response)
 
         // when
-        val actual = githubApi.getGithubRepositories()
+        val actual = githubApi.getGithubRepositories().body()
 
         // then
         val expected = listOf<GithubRepositoryResponse>()
@@ -50,7 +48,7 @@ internal class NetworkTest {
         mockWebServer.enqueue(response)
 
         // when
-        val actual = githubApi.getGithubRepositories()
+        val actual = githubApi.getGithubRepositories().body()
 
         // then
         val expected = listOf(
