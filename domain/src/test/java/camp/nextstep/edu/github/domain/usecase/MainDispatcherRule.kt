@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.data
+package camp.nextstep.edu.github.domain.usecase
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,7 +11,7 @@ import org.junit.runner.Description
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainDispatcherRule constructor(
-    val testDispatcher: TestDispatcher = StandardTestDispatcher(),
+    private val testDispatcher: TestDispatcher = StandardTestDispatcher(),
 ) : TestWatcher() {
 
     override fun starting(description: Description) {
