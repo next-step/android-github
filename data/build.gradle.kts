@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 dependencies {
@@ -7,6 +8,9 @@ dependencies {
 
     implementation ("com.squareup.retrofit2:retrofit:$retrofit2Version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit2Version")
+
+    kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
+    implementation ("com.google.dagger:hilt-core:$hiltVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
