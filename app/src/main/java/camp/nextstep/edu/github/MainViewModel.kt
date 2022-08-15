@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.GithubRepoRepository
 import camp.nextstep.edu.github.domain.GithubRepositoryData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(private val githubRepoRepository: GithubRepoRepository) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val githubRepoRepository: GithubRepoRepository) : ViewModel() {
     private val _repositoryData: MutableLiveData<List<GithubRepositoryData>> = MutableLiveData()
     val repositoryData: LiveData<List<GithubRepositoryData>>
         get() = _repositoryData

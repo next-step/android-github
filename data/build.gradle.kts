@@ -20,6 +20,9 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.10")
 
+    implementation("com.google.dagger:hilt-core:2.43.2")
+    kapt("com.google.dagger:hilt-compiler:2.43.2")
+
     testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
