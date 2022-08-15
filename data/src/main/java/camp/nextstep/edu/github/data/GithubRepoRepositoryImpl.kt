@@ -6,9 +6,19 @@ import javax.inject.Inject
 
 internal class GithubRepoRepositoryImpl @Inject constructor(private val githubNetworkService: GithubNetworkService) :
     GithubRepoRepository {
-    override suspend fun getRepositories(): List<GithubRepositoryResponse> {
-        return githubNetworkService
-            .getRepositories()
-            .map(GithubRepositoryDTO::toDomain)
+    override suspend fun getRepositories(): Result<List<GithubRepositoryResponse>> {
+        val result = getRepositoriesResult()
+        if (result.isFailure)
+            return Result.failure(result.exceptionOrNull()!!)
+        return Result.success(result.getOrNull()!!.map(GithubRepositoryDTO::toDomain))
     }
+
+    private suspend fun getRepositoriesResult() =
+        runCatching {
+            githubNetworkService.getRepositories()
+        }.onSuccess {
+            Result.success(it)
+        }.onFailure {
+            Result.failure<GithubRepositoryDTO>(it)
+        }
 }

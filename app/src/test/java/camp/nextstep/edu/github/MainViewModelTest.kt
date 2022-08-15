@@ -31,7 +31,9 @@ internal class MainViewModelTest {
         viewModel = MainViewModel(mockRepository)
         val firstResponse =
             GithubRepositoryResponse(fullName = "first", description = "firstDescription")
-        coEvery { mockRepository.getRepositories() } returns listOf(firstResponse)
+        coEvery { mockRepository.getRepositories() } returns Result.success(
+            listOf(firstResponse)
+        )
 
         //when RepositoryResponse를 요청하면
         viewModel.loadRepositoryResponse()

@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = this@MainActivity
         setContentView(binding.root)
     }
 
