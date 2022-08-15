@@ -5,11 +5,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-internal object APIClient {
+internal object RetrofitProvider {
 
     private const val GITHUB_BASE_URL = "https://api.github.com"
 
-    val retrofit = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .client(getOkHttpClient())
         .baseUrl(GITHUB_BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -21,4 +21,6 @@ internal object APIClient {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
     }
+
+    operator fun invoke(): Retrofit = retrofit
 }

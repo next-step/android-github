@@ -1,8 +1,9 @@
 package camp.nextstep.edu.github.data.di
 
-import camp.nextstep.edu.github.data.service.APIClient.retrofit
-import camp.nextstep.edu.github.data.service.GithubService
+import camp.nextstep.edu.github.data.service.GithubAPI
+import camp.nextstep.edu.github.data.service.RetrofitProvider
 
 object RetrofitInjector {
-    fun providesGithubService(): GithubService = retrofit.create(GithubService::class.java)
+    fun providesGithubAPI(): GithubAPI =
+        RetrofitProvider().create(GithubAPI::class.java)
 }

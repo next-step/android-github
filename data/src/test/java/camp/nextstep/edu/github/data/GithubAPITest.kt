@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.model.GithubStorageResponse
-import camp.nextstep.edu.github.data.service.GithubService
+import camp.nextstep.edu.github.data.service.GithubAPI
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -15,23 +15,23 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
-class GithubServiceTest {
+class GithubAPITest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var githubService: GithubService
+    private lateinit var githubAPI: GithubAPI
 
     @Before
     fun setUp() {
         mockWebServer = MockWebServer()
 
-        githubService = Retrofit.Builder()
+        githubAPI = Retrofit.Builder()
             .baseUrl(mockWebServer.url(""))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(GithubService::class.java)
+            .create(GithubAPI::class.java)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -42,7 +42,7 @@ class GithubServiceTest {
         mockWebServer.enqueue(response)
 
         // when
-        val actual = githubService.getRepositories()
+        val actual = githubAPI.getRepositories()
         advanceUntilIdle()
 
         // then
@@ -59,7 +59,7 @@ class GithubServiceTest {
         mockWebServer.enqueue(response)
 
         // when
-        val actual = githubService.getRepositories()
+        val actual = githubAPI.getRepositories()
         advanceUntilIdle()
 
         // then
