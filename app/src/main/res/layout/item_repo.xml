@@ -5,7 +5,7 @@
     <data>
         <variable
             name="repositoryData"
-            type="camp.nextstep.edu.github.domain.GithubRepositoryData" />
+            type="camp.nextstep.edu.github.domain.GithubRepositoryResponse" />
     </data>
 
     <LinearLayout

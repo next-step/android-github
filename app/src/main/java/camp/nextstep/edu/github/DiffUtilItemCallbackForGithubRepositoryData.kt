@@ -1,19 +1,19 @@
 package camp.nextstep.edu.github
 
 import androidx.recyclerview.widget.DiffUtil
-import camp.nextstep.edu.github.domain.GithubRepositoryData
+import camp.nextstep.edu.github.domain.GithubRepositoryResponse
 
-class DiffUtilItemCallbackForGithubRepositoryData : DiffUtil.ItemCallback<GithubRepositoryData>() {
+class DiffUtilItemCallbackForGithubRepositoryData : DiffUtil.ItemCallback<GithubRepositoryResponse>() {
     override fun areItemsTheSame(
-        oldItem: GithubRepositoryData,
-        newItem: GithubRepositoryData
+        oldItem: GithubRepositoryResponse,
+        newItem: GithubRepositoryResponse
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
-        oldItem: GithubRepositoryData,
-        newItem: GithubRepositoryData
+        oldItem: GithubRepositoryResponse,
+        newItem: GithubRepositoryResponse
     ): Boolean {
         return oldItem == newItem
     }
