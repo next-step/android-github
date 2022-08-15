@@ -7,6 +7,6 @@ import camp.nextstep.edu.github.domain.repository.GithubRepository
 internal class GithubRepositoryImpl(
     private val githubRemoteDataSource: GithubRemoteDataSource
 ) : GithubRepository {
-    override suspend fun getRepositories(): List<GithubStorage> =
+    override suspend fun getRepositories(): Result<List<GithubStorage>> =
         githubRemoteDataSource.getRepositories()
 }
