@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github.domain
+package camp.nextstep.edu.github
 
 sealed class UiState<out T> {
 

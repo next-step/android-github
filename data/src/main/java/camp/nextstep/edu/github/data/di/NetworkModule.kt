@@ -17,13 +17,9 @@ internal object NetworkModule {
     @Singleton
     fun providesGithubApi(): GithubApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(provideMoshiConverterFactory())
+        .addConverterFactory(MoshiConverterFactory.create())
         .build()
         .create(GithubApi::class.java)
-
-    @Provides
-    @Singleton
-    fun provideMoshiConverterFactory(): MoshiConverterFactory = MoshiConverterFactory.create()
 
     private const val BASE_URL = "https://api.github.com"
 

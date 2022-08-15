@@ -1,9 +1,10 @@
 package camp.nextstep.edu.github.domain
 
-import kotlinx.coroutines.flow.Flow
+import kotlin.Result
+
 
 interface NetworkRepository {
 
-    fun getGithubRepositories(): Flow<UiState<List<GithubRepository>>>
+    suspend fun getGithubRepositories(): Result<List<GithubRepository>>
 
 }
