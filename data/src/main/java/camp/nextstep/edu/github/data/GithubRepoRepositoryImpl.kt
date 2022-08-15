@@ -9,6 +9,6 @@ internal class GithubRepoRepositoryImpl @Inject constructor(private val githubNe
     override suspend fun getRepositories(): List<GithubRepositoryData> {
         return githubNetworkService
             .getRepositories()
-            .map(GithubDataMapper::repositoryDTOtoRepositoryData)
+            .map(GithubRepositoryDTO::toDomain)
     }
 }
