@@ -18,10 +18,11 @@ class MainViewModel @Inject constructor(private val githubRepoRepository: Github
     val repositoryResponseList: LiveData<List<GithubRepositoryUiModel>>
         get() = _repositoryResponseList
 
-    fun loadRepositoryData() {
+    fun loadRepositoryResponse() {
         viewModelScope.launch {
             _repositoryResponseList.value =
-                githubRepoRepository.getRepositories().map(GithubRepositoryResponse::toUiModel)
+                githubRepoRepository.getRepositories()
+                    .map(GithubRepositoryResponse::toUiModel)
         }
     }
 }

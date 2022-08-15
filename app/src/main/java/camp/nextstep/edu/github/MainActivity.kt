@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setUpBinding()
         setUpGithubRepositoryList()
-        viewModel.loadRepositoryData()
+        viewModel.loadRepositoryResponse()
     }
 
     private fun setUpBinding() {
