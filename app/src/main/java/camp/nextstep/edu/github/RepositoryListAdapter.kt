@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
-import camp.nextstep.edu.github.domain.GithubRepositoryResponse
 
-class RepositoryListAdapter(diffUtilItemCallbackForGithubRepositoryData: DiffUtilItemCallbackForGithubRepositoryData = DiffUtilItemCallbackForGithubRepositoryData()) :
-    ListAdapter<GithubRepositoryResponse, RepositoryViewHolder>(
+class RepositoryListAdapter(diffUtilItemCallbackForGithubRepositoryData: DiffUtilItemCallbackForGithubRepositoryUiModel = DiffUtilItemCallbackForGithubRepositoryUiModel()) :
+    ListAdapter<GithubRepositoryUiModel, RepositoryViewHolder>(
         diffUtilItemCallbackForGithubRepositoryData
     ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {

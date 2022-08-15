@@ -25,6 +25,6 @@ class MainActivity : AppCompatActivity() {
     private fun setUpGithubRepositoryList() {
         val adapter = RepositoryListAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.repositoryData.observe(this@MainActivity, adapter::submitList)
+        viewModel.repositoryResponseList.observe(this@MainActivity, adapter::submitList)
     }
 }
