@@ -40,6 +40,7 @@ class GithubApiServiceTest {
         server.enqueue(response)
 
         val expected = GithubRepoResponse(
+            id = 1,
             name = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
