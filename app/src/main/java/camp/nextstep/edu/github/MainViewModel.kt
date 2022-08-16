@@ -18,12 +18,14 @@ class MainViewModel @Inject constructor(
     private val _repositories = MutableStateFlow<UiState<List<GithubRepository>>>(UiState.Loading)
     val repositories = _repositories.asStateFlow()
 
+    init {
+        fetchRepositories()
+    }
+
     fun fetchRepositories() = viewModelScope.launch {
-        if (_repositories.value !is UiState.Success) {
-            networkRepository.getGithubRepositories()
-                .onSuccess { _repositories.emit(UiState.Success(it)) }
-                .onFailure { _repositories.emit(UiState.Error(it)) }
-        }
+        networkRepository.getGithubRepositories()
+            .onSuccess { _repositories.emit(UiState.Success(it)) }
+            .onFailure { _repositories.emit(UiState.Error(it)) }
     }
 
 }

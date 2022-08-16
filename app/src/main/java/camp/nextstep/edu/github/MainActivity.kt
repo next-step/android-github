@@ -28,14 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        initView()
         initAdapter()
         bindView()
         observeData()
-    }
-
-    private fun initView() {
-        mainViewModel.fetchRepositories()
     }
 
     private fun initAdapter() {
