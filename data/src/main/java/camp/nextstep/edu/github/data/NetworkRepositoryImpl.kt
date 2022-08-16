@@ -10,7 +10,6 @@ internal class NetworkRepositoryImpl @Inject constructor(
 
     override suspend fun getGithubRepositories(): Result<List<GithubRepository>> {
         return runCatching {
-            println("TestTest ghgigaigai")
             githubApi.getGithubRepositories().body()?.map { it.toDomain() } ?: throw Exception()
         }
     }
