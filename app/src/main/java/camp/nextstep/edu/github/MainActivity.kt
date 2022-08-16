@@ -2,7 +2,6 @@ package camp.nextstep.edu.github
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleError(throwable: Throwable?) {
-        Toast.makeText(applicationContext, "$throwable", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "${throwable?.message}", Toast.LENGTH_SHORT).show()
     }
 
 }

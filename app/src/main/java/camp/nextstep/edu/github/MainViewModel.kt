@@ -1,6 +1,5 @@
 package camp.nextstep.edu.github
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.GithubRepository

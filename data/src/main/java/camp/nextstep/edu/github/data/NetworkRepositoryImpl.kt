@@ -10,7 +10,7 @@ internal class NetworkRepositoryImpl @Inject constructor(
 
     override suspend fun getGithubRepositories(): Result<List<GithubRepository>> {
         return runCatching {
-            githubApi.getGithubRepositories().body()?.map { it.toDomain() } ?: throw Exception()
+            githubApi.getGithubRepositories().body()?.map { it.toDomain() } ?: throw Exception("네트워크 상태가 좋지 않습니다.")
         }
     }
 
