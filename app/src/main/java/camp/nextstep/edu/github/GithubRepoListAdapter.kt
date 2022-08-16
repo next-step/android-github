@@ -32,7 +32,7 @@ class GithubRepoListAdapter: ListAdapter<GithubRepo, GithubRepoListAdapter.Githu
 
     class GithubRepoDiffUtil: DiffUtil.ItemCallback<GithubRepo>() {
         override fun areItemsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean =
-            newItem == oldItem
+            newItem.id == oldItem.id
 
         override fun areContentsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean =
             newItem == oldItem
