@@ -1,5 +1,5 @@
 package camp.nextstep.edu.github.data
 
-interface DataToDomainMapper<T> {
+internal interface DataToDomainMapper<T> {
     fun toDomain(): T
 }
