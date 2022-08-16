@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel:MainViewModel by viewModels()
 
-    private val repoAdapter by lazy { GithubRepoListAdapter() }
+    private val repoAdapter = GithubRepoListAdapter()
 
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
