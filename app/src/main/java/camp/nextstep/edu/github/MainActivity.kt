@@ -21,9 +21,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.lifecycleOwner = this
-
         binding.recyclerView.adapter = repoAdapter
+
         observeData()
+
+        viewModel.fetchGithubRepo()
     }
 
     private fun observeData() {

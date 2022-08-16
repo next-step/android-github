@@ -19,10 +19,6 @@ class MainViewModel @Inject constructor(
     private val _gitRepo: MutableLiveData<GithubRepositories> = MutableLiveData()
     val gitRepo: LiveData<GithubRepositories> = _gitRepo
 
-    init {
-        fetchGithubRepo()
-    }
-
     fun fetchGithubRepo() = viewModelScope.launch {
         _gitRepo.value = githubRepository.getRepo()
     }
