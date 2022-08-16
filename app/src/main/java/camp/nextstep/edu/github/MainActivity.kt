@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.gitRepo.observe(this) {
-            repoAdapter.submitList(it.list())
+            repoAdapter.submitList(it.list)
         }
     }
 }
