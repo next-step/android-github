@@ -1,17 +1,13 @@
 package camp.nextstep.edu.github
 
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import camp.nextstep.edu.github.domain.GithubRepository
 import camp.nextstep.edu.github.extension.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
-import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
