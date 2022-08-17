@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
 }
 
@@ -40,6 +41,9 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -51,6 +55,9 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원
