@@ -1,13 +1,9 @@
 package camp.nextstep.edu.github
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import camp.nextstep.edu.github.domain.GithubRepository
 import camp.nextstep.edu.github.extension.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,7 +12,7 @@ import org.junit.Test
 class MainViewModelTest {
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainViewModelTestRule = MainViewModelTestRule()
 
     lateinit var viewModel: MainViewModel
     lateinit var fakeRepository: GithubRepository
@@ -25,7 +21,6 @@ class MainViewModelTest {
     fun setUp() {
         fakeRepository = FakeGithubRepository()
         viewModel = MainViewModel(fakeRepository)
-        Dispatchers.setMain(UnconfinedTestDispatcher())
     }
 
     @Test
