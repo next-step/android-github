@@ -6,12 +6,12 @@ import com.google.gson.annotations.SerializedName
 
 data class GithubStorageResponse(
     @SerializedName("full_name")
-    val fullName: String,
+    val author: String,
     @SerializedName("description")
     val description: String?
 ) : DataToDomainMapper<GithubStorage> {
     override fun toDomain(): GithubStorage = GithubStorage(
-        fullName = fullName,
+        author = author,
         description = description
     )
 }
