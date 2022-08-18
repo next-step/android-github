@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingHorizontal="16dp"
-    android:paddingVertical="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        tools:text="Author/Repository" />
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <variable
+            name="githubStorage"
+            type="camp.nextstep.edu.github.domain.model.GithubStorage" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        tools:text="Description" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{githubStorage.author}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            tools:text="Author/Repository" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:text="@{githubStorage.description}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            tools:text="Description" />
+    </LinearLayout>
+</layout>
