@@ -79,7 +79,7 @@ class GithubRemoteDataSourceTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun 깃헙_저장소에서_값을_불러오는데_실패하면() = runTest {
+    fun 깃헙_저장소에서_값을_불러오는데_실패하면_isFailure가_true로_반환한다() = runTest {
         // given
         val response =
             MockResponse().setResponseCode(400)

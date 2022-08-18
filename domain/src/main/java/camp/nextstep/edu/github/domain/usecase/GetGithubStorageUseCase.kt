@@ -1,13 +1,14 @@
 package camp.nextstep.edu.github.domain.usecase
 
+import camp.nextstep.edu.github.domain.model.NetworkState
 import camp.nextstep.edu.github.domain.repository.GithubRepository
 
 class GetGithubStorageUseCase(
     private val githubRepository: GithubRepository
 ) {
-    suspend fun invoke(): Unit = githubRepository.getRepositories()
+    suspend fun invoke() = githubRepository.getRepositories()
         .fold(
-            onSuccess = { storages -> println("getGithubStorageUseCase $storages") },
-            onFailure = { throwable -> println("getGithubStorageUseCase: ${throwable.message}") }
+            onSuccess = { storages -> NetworkState.Success(storages) },
+            onFailure = { throwable -> NetworkState.Error(throwable) }
         )
 }
