@@ -6,8 +6,9 @@ import camp.nextstep.edu.github.domain.model.GithubStorage
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-internal class GithubRemoteDataSourceImpl(
+internal class GithubRemoteDataSourceImpl @Inject constructor(
     private val githubAPI: GithubAPI,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : GithubRemoteDataSource {

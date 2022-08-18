@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.datasource.GithubRemoteDataSource
-import camp.nextstep.edu.github.data.di.DataSourceInjector
+import camp.nextstep.edu.github.data.datasource.GithubRemoteDataSourceImpl
 import camp.nextstep.edu.github.data.model.GithubStorageResponse
 import camp.nextstep.edu.github.data.service.GithubAPI
 import camp.nextstep.edu.github.domain.model.GithubStorage
@@ -37,7 +37,7 @@ class GithubRemoteDataSourceTest {
             .build()
             .create(GithubAPI::class.java)
 
-        githubRemoteDataSource = DataSourceInjector.providesGithubRemoteDataSource(
+        githubRemoteDataSource = GithubRemoteDataSourceImpl(
             githubAPI,
             mainDispatcherRule.testDispatcher
         )

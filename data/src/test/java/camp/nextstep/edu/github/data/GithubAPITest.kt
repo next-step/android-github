@@ -38,7 +38,8 @@ class GithubAPITest {
     @Test
     fun 깃헙_저장소가_비어있으면_비어있는_리스트가_보여진다() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/repositories/empty.json").readText())
+        val response =
+            MockResponse().setBody(File("src/test/resources/repositories/empty.json").readText())
         mockWebServer.enqueue(response)
 
         // when

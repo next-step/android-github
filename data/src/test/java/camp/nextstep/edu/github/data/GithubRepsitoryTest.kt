@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.datasource.GithubRemoteDataSource
-import camp.nextstep.edu.github.data.di.RepositoryInjector
+import camp.nextstep.edu.github.data.repository.GithubRepositoryImpl
 import camp.nextstep.edu.github.domain.repository.GithubRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -23,7 +23,7 @@ class GithubRepsitoryTest {
     @Before
     fun setUp() {
         githubRemoteDataSource = mockk()
-        githubRepository = RepositoryInjector.provideRepositoryInjector(githubRemoteDataSource)
+        githubRepository = GithubRepositoryImpl(githubRemoteDataSource)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
