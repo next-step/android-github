@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -9,7 +10,8 @@ java {
 
 dependencies {
 
-    implementation("com.google.dagger:hilt-core:${hiltVersion}")
+    implementation("com.google.dagger:hilt-core:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     testImplementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")

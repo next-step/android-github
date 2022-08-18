@@ -49,6 +49,7 @@ android {
 dependencies {
 
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("androidx.core:core-ktx:1.8.0")
@@ -58,6 +59,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("androidx.fragment:fragment-ktx:$fragmentKTXVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Version") // junit4 지원

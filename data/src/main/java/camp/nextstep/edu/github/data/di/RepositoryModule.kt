@@ -6,13 +6,15 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface RepositoryModule {
+internal abstract class RepositoryModule {
 
+    @Singleton
     @Binds
-    fun bindGithubRepository(
+    abstract fun bindsGithubRepository(
         githubRepositoryImpl: GithubRepositoryImpl
     ): GithubRepository
 }

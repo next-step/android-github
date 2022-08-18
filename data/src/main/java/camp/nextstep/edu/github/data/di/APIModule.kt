@@ -12,8 +12,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal object APIModule {
 
-    @Provides
     @Singleton
-    fun providesGithubAPI(retrofit: Retrofit): GithubAPI =
+    @Provides
+    fun provideGithubAPI(retrofit: Retrofit): GithubAPI =
         retrofit.create(GithubAPI::class.java)
 }

@@ -16,13 +16,16 @@ internal object RetrofitModule {
 
     private const val GITHUB_BASE_URL = "https://api.github.com"
 
+    @Provides
+    fun provideInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            )
+            .addInterceptor(httpLoggingInterceptor)
             .build()
     }
 
