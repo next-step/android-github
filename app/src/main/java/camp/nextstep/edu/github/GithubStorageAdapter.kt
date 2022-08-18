@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
 import camp.nextstep.edu.github.domain.model.GithubStorage
+import javax.inject.Inject
 
-class GithubStorageAdapter :
+class GithubStorageAdapter @Inject constructor() :
     ListAdapter<GithubStorage, GithubStorageAdapter.ViewHolder>(GithubStorageDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
