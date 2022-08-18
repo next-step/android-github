@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
     private val _loadingEvent = MutableStateFlow(false)
     val loadingEvent = _loadingEvent.asStateFlow()
 
-    private val _errorEvent = MutableSharedFlow<Throwable>(replay = 1)
+    private val _errorEvent = MutableSharedFlow<Throwable>()
     val errorEvent = _errorEvent.asSharedFlow()
 
     fun updateGithubStorage(githubStorages: List<GithubStorage>) {
@@ -42,12 +42,8 @@ class MainViewModel @Inject constructor(
         _errorEvent.emit(error)
     }
 
-    private fun getGithubStorage() = viewModelScope.launch {
+    fun getGithubStorage() = viewModelScope.launch {
         _uiState.value = NetworkState.Loading
         _uiState.value = getGithubStorageUseCase.invoke()
-    }
-
-    init {
-        getGithubStorage()
     }
 }

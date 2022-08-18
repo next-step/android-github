@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         observeUIState()
         observeErrorEvent()
         observeGithubStorageEvent()
+
+        mainVM.getGithubStorage()
     }
 
     private fun initRecyclerView() {
