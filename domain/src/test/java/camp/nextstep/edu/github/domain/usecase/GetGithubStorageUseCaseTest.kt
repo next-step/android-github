@@ -1,9 +1,9 @@
 package camp.nextstep.edu.github.domain.usecase
 
-import camp.nextstep.edu.github.domain.di.UseCaseInjector
-import camp.nextstep.edu.github.domain.model.GithubStorage
 import camp.nextstep.edu.github.domain.repository.GithubRepository
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -22,7 +22,7 @@ internal class GetGithubStorageUseCaseTest {
     @Before
     fun setUp() {
         githubRepository = mockk()
-        getGithubStorageUseCase = UseCaseInjector.provideGetGithubStorageUseCase(githubRepository)
+        getGithubStorageUseCase = GetGithubStorageUseCase(githubRepository)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
