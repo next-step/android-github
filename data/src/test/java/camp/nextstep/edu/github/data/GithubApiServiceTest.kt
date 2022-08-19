@@ -30,14 +30,17 @@ class GithubApiServiceTest {
     }
 
     @Test
-    fun 저장소를_불러올_수_있어야_한다() = runTest {
+    fun apiService에서_요청시_저장소를_불러올_수_있어야_한다() = runTest {
         //given
         val jsonPath = javaClass.getResource("/repository-200.json").path
         val response = MockResponse()
             .setBody(File(jsonPath).readText())
+            .setResponseCode(200)
+
         server.enqueue(response)
 
         val expected = GithubRepoResponse(
+            id = 1,
             name = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
