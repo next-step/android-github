@@ -1,12 +1,12 @@
 package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.domain.GithubRepoRepository
-import camp.nextstep.edu.github.domain.GithubRepositoryResponse
+import camp.nextstep.edu.github.domain.GithubRepository
 import javax.inject.Inject
 
 internal class GithubRepoRepositoryImpl @Inject constructor(private val githubNetworkService: GithubNetworkService) :
     GithubRepoRepository {
-    override suspend fun getRepositories(): Result<List<GithubRepositoryResponse>> {
+    override suspend fun getRepositories(): Result<List<GithubRepository>> {
         val result = getRepositoriesResult()
         if (result.isFailure)
             return Result.failure(result.exceptionOrNull()!!)

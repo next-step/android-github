@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.GithubRepoRepository
-import camp.nextstep.edu.github.domain.GithubRepositoryResponse
+import camp.nextstep.edu.github.domain.GithubRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,7 +37,7 @@ class MainViewModel @Inject constructor(private val githubRepoRepository: Github
             _isLoadingVisible.value = false
             if (repoRepositoryResult.isSuccess) {
                 repoRepositoryResult.getOrNull()
-                    ?.map(GithubRepositoryResponse::toUiModel)
+                    ?.map(GithubRepository::toUiModel)
                     .also(_repositoryResponseList::setValue)
                 return@launch
             }

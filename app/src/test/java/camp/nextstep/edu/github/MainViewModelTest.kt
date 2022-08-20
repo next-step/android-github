@@ -2,7 +2,7 @@ package camp.nextstep.edu.github
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import camp.nextstep.edu.github.domain.GithubRepoRepository
-import camp.nextstep.edu.github.domain.GithubRepositoryResponse
+import camp.nextstep.edu.github.domain.GithubRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -30,7 +30,7 @@ internal class MainViewModelTest {
         val mockRepository = mockk<GithubRepoRepository>()
         viewModel = MainViewModel(mockRepository)
         val firstResponse =
-            GithubRepositoryResponse(fullName = "first", description = "firstDescription")
+            GithubRepository(fullName = "first", description = "firstDescription")
         coEvery { mockRepository.getRepositories() } returns Result.success(
             listOf(firstResponse)
         )
