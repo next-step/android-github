@@ -33,15 +33,14 @@ class MainViewModel @Inject constructor(private val githubRepoRepository: Github
     fun loadRepositoryResponse() =
         viewModelScope.launch {
             _isLoadingVisible.value = true
-            val repoRepositoryResult = githubRepoRepository.getRepositories()
+            githubRepoRepository.getRepositories()
+                .onSuccess {
+                    it.map(GithubRepository::toUiModel)
+                        .also(_repositoryResponseList::setValue)
+                }.onFailure {
+                    _isErrorVisible.value = true
+                    _errorMessage.value = it.message ?: ""
+                }
             _isLoadingVisible.value = false
-            if (repoRepositoryResult.isSuccess) {
-                repoRepositoryResult.getOrNull()
-                    ?.map(GithubRepository::toUiModel)
-                    .also(_repositoryResponseList::setValue)
-                return@launch
-            }
-            _isErrorVisible.value = true
-            _errorMessage.value = repoRepositoryResult.exceptionOrNull()?.message ?: ""
         }
 }
