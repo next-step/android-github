@@ -35,7 +35,7 @@ internal class GetGithubStorageUseCaseTest {
         // given
         coEvery { githubRepository.getRepositories() } returns runCatching { listOf() }
         // when
-        getGithubStorageUseCase.invoke()
+        getGithubStorageUseCase()
         // then
         coVerify { githubRepository.getRepositories() }
     }
@@ -46,7 +46,7 @@ internal class GetGithubStorageUseCaseTest {
         // given
         coEvery { githubRepository.getRepositories() } returns Result.failure(Throwable())
         // when
-        val actual = getGithubStorageUseCase.invoke()
+        val actual = getGithubStorageUseCase()
         advanceUntilIdle()
         // then
         Truth.assertThat(actual).isInstanceOf(NetworkState.Error::class.java)
@@ -59,7 +59,7 @@ internal class GetGithubStorageUseCaseTest {
         val githubStorages = mockk<List<GithubStorage>>()
         coEvery { githubRepository.getRepositories() } returns Result.success(githubStorages)
         // when
-        val actual = getGithubStorageUseCase.invoke()
+        val actual = getGithubStorageUseCase()
         advanceUntilIdle()
         // then
         Truth.assertThat(actual).isInstanceOf(NetworkState.Success::class.java)

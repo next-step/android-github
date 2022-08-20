@@ -44,6 +44,6 @@ class MainViewModel @Inject constructor(
 
     fun getGithubStorage() = viewModelScope.launch {
         _uiState.value = NetworkState.Loading
-        _uiState.value = getGithubStorageUseCase.invoke()
+        _uiState.value = getGithubStorageUseCase()
     }
 }

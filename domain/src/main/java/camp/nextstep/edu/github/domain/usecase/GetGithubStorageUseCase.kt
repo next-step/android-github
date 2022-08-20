@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetGithubStorageUseCase @Inject constructor(
     private val githubRepository: GithubRepository
 ) {
-    suspend fun invoke() = githubRepository.getRepositories()
+    suspend operator fun invoke() = githubRepository.getRepositories()
         .fold(
             onSuccess = { storages -> NetworkState.Success(storages) },
             onFailure = { throwable -> NetworkState.Error(throwable) }

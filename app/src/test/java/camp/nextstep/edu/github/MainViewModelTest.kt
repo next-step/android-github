@@ -47,7 +47,7 @@ class MainViewModelTest {
             )
         )
 
-        coEvery { getGithubStorageUseCase.invoke() } returns NetworkState.Success(repositories)
+        coEvery { getGithubStorageUseCase() } returns NetworkState.Success(repositories)
         //when
         mainViewModel.getGithubStorage()
         advanceUntilIdle()
@@ -62,7 +62,7 @@ class MainViewModelTest {
         getGithubStorageUseCase = mockk()
         mainViewModel = MainViewModel(getGithubStorageUseCase)
 
-        coEvery { getGithubStorageUseCase.invoke() } returns NetworkState.Error(Throwable())
+        coEvery { getGithubStorageUseCase() } returns NetworkState.Error(Throwable())
         //when
         mainViewModel.getGithubStorage()
         advanceUntilIdle()
