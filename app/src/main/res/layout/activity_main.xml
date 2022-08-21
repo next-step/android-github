@@ -25,10 +25,10 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <TextView
+            android:id="@+id/textView_error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.errorMessage}"
-            android:visibility="@{viewModel.isErrorVisible()? View.VISIBLE : View.GONE}"
+            android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
