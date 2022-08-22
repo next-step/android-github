@@ -32,7 +32,7 @@ class MainViewModelTest {
     @Test
     fun 데이터를_호출하면_NetworkState_Loading_데이터가_수신된다() = runTest {
         //when
-        mainViewModel.getGithubStorage()
+        mainViewModel.loadGithubStorage()
         //then
         val actual = mainViewModel.uiState.first()
         assertThat(actual).isInstanceOf(UIState.Loading::class.java)
@@ -49,7 +49,7 @@ class MainViewModelTest {
         )
         coEvery { getGithubStorageUseCase() } returns Result.success(repositories)
         //when
-        mainViewModel.getGithubStorage()
+        mainViewModel.loadGithubStorage()
         advanceUntilIdle()
         //then
         val actual = mainViewModel.uiState.first() as UIState.Success<*>
@@ -61,7 +61,7 @@ class MainViewModelTest {
         //given
         coEvery { getGithubStorageUseCase() } returns Result.failure(Throwable())
         //when
-        mainViewModel.getGithubStorage()
+        mainViewModel.loadGithubStorage()
         advanceUntilIdle()
         //then
         val actual = mainViewModel.uiState.first()

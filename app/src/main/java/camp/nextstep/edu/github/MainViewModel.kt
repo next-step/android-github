@@ -18,7 +18,7 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UIState>(UIState.Loading)
     val uiState = _uiState.asStateFlow()
 
-    fun getGithubStorage() = viewModelScope.launch {
+    fun loadGithubStorage() = viewModelScope.launch {
         _uiState.value = UIState.Loading
         _uiState.value = getGithubStorageUseCase().fold(
             onSuccess = { storages -> UIState.Success(storages) },

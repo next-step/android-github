@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
         observeUIState()
-        mainViewModel.getGithubStorage()
+        mainViewModel.loadGithubStorage()
     }
 
     private fun initRecyclerView() {
