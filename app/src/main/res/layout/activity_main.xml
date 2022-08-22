@@ -10,7 +10,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="mainVM"
+            name="mainViewModel"
             type="camp.nextstep.edu.github.MainViewModel" />
     </data>
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{mainVM.uiState instanceof UIState.Loading ? View.VISIBLE : View.GONE}" />
+            android:visibility="@{mainViewModel.uiState instanceof UIState.Loading ? View.VISIBLE : View.GONE}" />
 
     </FrameLayout>
 </layout>

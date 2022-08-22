@@ -17,7 +17,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainVM: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     @Inject
     lateinit var githubStorageAdapter: GithubStorageAdapter
@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             lifecycleOwner = this@MainActivity
-            mainVM = this@MainActivity.mainVM
+            mainViewModel = this@MainActivity.mainViewModel
         }
         setContentView(binding.root)
 
         initRecyclerView()
         observeUIState()
-        mainVM.getGithubStorage()
+        mainViewModel.getGithubStorage()
     }
 
     private fun initRecyclerView() {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeUIState() = lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
-            mainVM.uiState.collect { uiState ->
+            mainViewModel.uiState.collect { uiState ->
                 when (uiState) {
                     is UIState.Loading -> {}
                     is UIState.Success<*> -> {
