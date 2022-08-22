@@ -12,15 +12,13 @@ import camp.nextstep.edu.github.domain.model.GithubStorage
 import camp.nextstep.edu.github.model.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
 
-    @Inject
-    lateinit var githubStorageAdapter: GithubStorageAdapter
+    private val githubStorageAdapter: GithubStorageAdapter by lazy { GithubStorageAdapter() }
 
     private lateinit var binding: ActivityMainBinding
 
