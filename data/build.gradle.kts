@@ -18,6 +18,7 @@ dependencies {
     implementation("com.squareup.okhttp3:mockwebserver:4.10.0")
     implementation( "com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation("com.google.dagger:hilt-core:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
