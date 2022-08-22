@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import camp.nextstep.edu.github.domain.model.GithubStorage
-import camp.nextstep.edu.github.domain.model.NetworkState
+import camp.nextstep.edu.github.model.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
         observeUIState()
-        observeErrorEvent()
-        observeGithubStorageEvent()
-
         mainVM.getGithubStorage()
     }
 
@@ -44,41 +41,26 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerview.adapter = githubStorageAdapter
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun observeUIState() = lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             mainVM.uiState.collect { uiState ->
                 when (uiState) {
-                    is NetworkState.Loading -> {
-                        mainVM.updateLoadingEvent(true)
+                    is UIState.Loading -> {}
+                    is UIState.Success<*> -> {
+                        @Suppress("UNCHECKED_CAST")
+                        githubStorageAdapter.submitList(uiState.data as List<GithubStorage>)
                     }
-                    is NetworkState.Success<*> -> {
-                        mainVM.updateLoadingEvent(false)
-                        mainVM.updateGithubStorage(uiState.data as List<GithubStorage>)
-                    }
-                    is NetworkState.Error -> {
-                        mainVM.updateLoadingEvent(false)
-                        mainVM.updateErrorEvent(uiState.throwable)
+                    is UIState.Error -> {
+                        showToast(uiState.throwable.message)
                     }
                 }
             }
         }
     }
 
-    private fun observeErrorEvent() = lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) {
-            mainVM.errorEvent.collect { networkState ->
-                Toast.makeText(this@MainActivity, networkState.message, Toast.LENGTH_SHORT).show()
-            }
+    private fun showToast(message: String?) {
+        if (message != null) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun observeGithubStorageEvent() = lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.STARTED) {
-            mainVM.githubStorages.collect { githubStorages ->
-                githubStorageAdapter.submitList(githubStorages)
-            }
-        }
-    }
-
 }

@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="camp.nextstep.edu.github.model.UIState" />
+
         <import type="android.view.View" />
 
         <variable
@@ -27,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{mainVM.loadingEvent ? View.VISIBLE : View.GONE}" />
+            android:visibility="@{mainVM.uiState instanceof UIState.Loading ? View.VISIBLE : View.GONE}" />
 
     </FrameLayout>
 </layout>
