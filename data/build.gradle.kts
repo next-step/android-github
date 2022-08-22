@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -13,11 +14,15 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.code.gson:gson:2.9.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     // define a BOM and its version
     implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttpVersion"))
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    implementation("com.google.dagger:hilt-core:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     testImplementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")

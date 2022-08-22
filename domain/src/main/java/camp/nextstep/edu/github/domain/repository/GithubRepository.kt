@@ -1,7 +1,7 @@
 package camp.nextstep.edu.github.domain.repository
 
-import camp.nextstep.edu.github.domain.model.GithubRemoteStorage
+import camp.nextstep.edu.github.domain.model.GithubStorage
 
 interface GithubRepository {
-    suspend fun getRepositories(): List<GithubRemoteStorage>
+    suspend fun getRepositories(): Result<List<GithubStorage>>
 }
