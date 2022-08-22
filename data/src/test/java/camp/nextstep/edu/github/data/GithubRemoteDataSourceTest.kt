@@ -86,10 +86,10 @@ class GithubRemoteDataSourceTest {
         mockWebServer.enqueue(response)
 
         // when
-        val actual = githubRemoteDataSource.getRepositories().isFailure
+        val actual = githubRemoteDataSource.getRepositories()
         advanceUntilIdle()
 
         // then
-        assertThat(actual).isEqualTo(true)
+        assertThat(actual.isFailure).isEqualTo(true)
     }
 }
