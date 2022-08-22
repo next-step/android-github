@@ -1,15 +1,11 @@
 package camp.nextstep.edu.github.domain.usecase
 
-import camp.nextstep.edu.github.domain.model.NetworkState
+import camp.nextstep.edu.github.domain.model.GithubStorage
 import camp.nextstep.edu.github.domain.repository.GithubRepository
 import javax.inject.Inject
 
 class GetGithubStorageUseCase @Inject constructor(
-    private val githubRepository: GithubRepository
+    private val githubRepository: GithubRepository,
 ) {
-    suspend operator fun invoke() = githubRepository.getRepositories()
-        .fold(
-            onSuccess = { storages -> NetworkState.Success(storages) },
-            onFailure = { throwable -> NetworkState.Error(throwable) }
-        )
+    suspend operator fun invoke(): Result<List<GithubStorage>> = githubRepository.getRepositories()
 }
