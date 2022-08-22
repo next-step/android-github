@@ -33,12 +33,12 @@ class GithubStorageAdapter @Inject constructor() :
 class GithubStorageDiffCallback : DiffUtil.ItemCallback<GithubStorage>() {
     override fun areItemsTheSame(
         oldItem: GithubStorage,
-        newItem: GithubStorage
-    ): Boolean = oldItem.author == newItem.author
+        newItem: GithubStorage,
+    ): Boolean = oldItem.hashCode() == newItem.hashCode()
 
 
     override fun areContentsTheSame(
         oldItem: GithubStorage,
-        newItem: GithubStorage
+        newItem: GithubStorage,
     ): Boolean = oldItem == newItem
 }
