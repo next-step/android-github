@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
-import camp.nextstep.edu.github.domain.model.GithubStorage
 import camp.nextstep.edu.github.model.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -44,9 +43,8 @@ class MainActivity : AppCompatActivity() {
             mainViewModel.uiState.collect { uiState ->
                 when (uiState) {
                     is UIState.Loading -> {}
-                    is UIState.Success<*> -> {
-                        @Suppress("UNCHECKED_CAST")
-                        githubStorageAdapter.submitList(uiState.data as List<GithubStorage>)
+                    is UIState.Success -> {
+                        githubStorageAdapter.submitList(uiState.data)
                     }
                     is UIState.Error -> {
                         showToast(uiState.throwable.message)

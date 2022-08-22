@@ -3,7 +3,9 @@ package camp.nextstep.edu.github
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import camp.nextstep.edu.github.domain.usecase.GetGithubStorageUseCase
+import camp.nextstep.edu.github.model.GithubStorageModel
 import camp.nextstep.edu.github.model.UIState
+import camp.nextstep.edu.github.model.mapper.toPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,13 +17,13 @@ class MainViewModel @Inject constructor(
     private val getGithubStorageUseCase: GetGithubStorageUseCase,
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UIState>(UIState.Loading)
+    private val _uiState = MutableStateFlow<UIState<List<GithubStorageModel>>>(UIState.Loading)
     val uiState = _uiState.asStateFlow()
 
     fun loadGithubStorage() = viewModelScope.launch {
         _uiState.value = UIState.Loading
         _uiState.value = getGithubStorageUseCase().fold(
-            onSuccess = { storages -> UIState.Success(storages) },
+            onSuccess = { storages -> UIState.Success(storages.toPresentation()) },
             onFailure = { throwable -> UIState.Error(throwable) }
         )
     }

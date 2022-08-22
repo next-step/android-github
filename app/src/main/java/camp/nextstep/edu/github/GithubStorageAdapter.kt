@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepoBinding
-import camp.nextstep.edu.github.domain.model.GithubStorage
+import camp.nextstep.edu.github.model.GithubStorageModel
 
 class GithubStorageAdapter :
-    ListAdapter<GithubStorage, GithubStorageAdapter.ViewHolder>(GithubStorageDiffCallback()) {
+    ListAdapter<GithubStorageModel, GithubStorageAdapter.ViewHolder>(GithubStorageDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         LayoutInflater.from(parent.context).inflate(R.layout.item_repo, parent, false)
@@ -22,22 +22,22 @@ class GithubStorageAdapter :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemRepoBinding.bind(view)
-        fun bind(githubStorage: GithubStorage) {
+        fun bind(githubStorage: GithubStorageModel) {
             binding.githubStorage = githubStorage
         }
 
     }
 }
 
-class GithubStorageDiffCallback : DiffUtil.ItemCallback<GithubStorage>() {
+class GithubStorageDiffCallback : DiffUtil.ItemCallback<GithubStorageModel>() {
     override fun areItemsTheSame(
-        oldItem: GithubStorage,
-        newItem: GithubStorage,
+        oldItem: GithubStorageModel,
+        newItem: GithubStorageModel,
     ): Boolean = oldItem.hashCode() == newItem.hashCode()
 
 
     override fun areContentsTheSame(
-        oldItem: GithubStorage,
-        newItem: GithubStorage,
+        oldItem: GithubStorageModel,
+        newItem: GithubStorageModel,
     ): Boolean = oldItem == newItem
 }

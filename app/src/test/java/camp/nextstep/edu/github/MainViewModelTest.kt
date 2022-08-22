@@ -2,6 +2,7 @@ package camp.nextstep.edu.github
 
 import camp.nextstep.edu.github.domain.model.GithubStorage
 import camp.nextstep.edu.github.domain.usecase.GetGithubStorageUseCase
+import camp.nextstep.edu.github.model.GithubStorageModel
 import camp.nextstep.edu.github.model.UIState
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
@@ -52,8 +53,14 @@ class MainViewModelTest {
         mainViewModel.loadGithubStorage()
         advanceUntilIdle()
         //then
-        val actual = mainViewModel.uiState.first() as UIState.Success<*>
-        assertThat(actual.data).isEqualTo(repositories)
+        val expected = listOf(
+            GithubStorageModel(
+                author = "Kim Sang Min",
+                description = "my nickname is sangmee"
+            )
+        )
+        val actual = mainViewModel.uiState.first() as UIState.Success
+        assertThat(actual.data).isEqualTo(expected)
     }
 
     @Test
