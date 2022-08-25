@@ -1,2 +1,6 @@
 const val kotlinVersion = "1.7.0"
-const val junit5Version = "5.7.2"
+const val junit5Version = "5.8.2"
+const val coroutinesVersion = "1.6.4"
+const val hiltVersion = "2.43.2"
+const val retrofitVersion = "2.9.0"
+const val mockkVersion = "1.10.6"

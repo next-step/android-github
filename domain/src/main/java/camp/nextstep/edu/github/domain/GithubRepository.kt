@@ -1,6 +1,6 @@
 package camp.nextstep.edu.github.domain
 
-data class GithubRepositoryData(
+data class GithubRepository(
     val fullName: String,
     val description: String
 )

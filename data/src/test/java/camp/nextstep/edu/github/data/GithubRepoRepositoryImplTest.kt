@@ -36,11 +36,15 @@ internal class GithubRepoRepositoryImplTest {
     @Test
     fun `mock서버 Repository의 첫번째 데이터는 예상 데이터와 같다`() = runTest {
         val response = MockResponse()
-                .setBody(File("src/test/resources/repositories/result_200_size_100.json").readText())
-                .setResponseCode(200)
+            .setBody(File("src/test/resources/repositories/result_200_size_100.json").readText())
+            .setResponseCode(200)
         server.enqueue(response)
-        val expected = 100
-        val actual = repository.getRepositories().size
-        assertThat(actual).isEqualTo(expected)
+        val expectedSize = 100
+        val actual = repository.getRepositories()
+        val actualSuccess = actual.isSuccess
+        val actualRepositorySize = actual.getOrNull()?.size ?: -1
+        assertThat(actualSuccess).isTrue()
+
+        assertThat(actualRepositorySize).isEqualTo(expectedSize)
     }
 }
