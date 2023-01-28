@@ -1,2 +1,7 @@
-const val kotlinVersion = "1.5.21"
-const val junit5Version = "5.7.2"
+object Version {
+    const val androidGradlePlugin = "7.4.0"
+    const val kotlin = "1.8.0"
+    const val compileSdk = 33
+    const val minSdk = 26
+    const val targetSdk = 33
+}
