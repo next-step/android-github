@@ -40,7 +40,7 @@ class GitHubRepositoryImplTest {
         server.successTest("1.json")
 
         val actual = retrofitService.getGitHubRepository().execute().body()
-        val expected = GitHubInfoResponse(fullName = "퓨유울네임", description = "디이이이스크립숀")
+        val expected = listOf(GitHubInfoResponse(fullName = "퓨유울네임", description = "디이이이스크립숀"))
 
         expect.that(actual).isEqualTo(expected)
     }
