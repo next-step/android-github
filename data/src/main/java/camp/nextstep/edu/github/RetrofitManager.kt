@@ -9,7 +9,7 @@ internal object RetrofitManager {
     private const val BASE_URL = "https://api.github.com"
     private val gson = GsonBuilder().setLenient().create()
 
-    val retrofitService: RetrofitService = Retrofit.Builder()
+    val retrofitService: GithubService = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create(gson))
         .baseUrl(BASE_URL)
         .build()

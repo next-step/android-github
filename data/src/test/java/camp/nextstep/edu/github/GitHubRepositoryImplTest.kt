@@ -1,6 +1,8 @@
 package camp.nextstep.edu.github
 
 import com.google.common.truth.Expect
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
@@ -14,12 +16,11 @@ import java.io.File
 
 class GitHubRepositoryImplTest {
 
-    // soft assertion {실패 한 경우 모든 케이스 출력 ??}
     @get:Rule
     val expect: Expect = Expect.create()
 
     private lateinit var server: MockWebServer
-    private lateinit var retrofitService: RetrofitService
+    private lateinit var retrofitService: GithubService
 
     @Before
     fun setUp() {
@@ -34,12 +35,13 @@ class GitHubRepositoryImplTest {
             .create()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `목웹서버 테스트`() {
+    fun `GithubRepository 통신 테스트`() = runTest {
         // given
         server.successTest("1.json")
 
-        val actual = retrofitService.getGitHubRepository().execute().body()
+        val actual = retrofitService.getGitHubRepositories()
         val expected = listOf(GitHubInfoResponse(fullName = "퓨유울네임", description = "디이이이스크립숀"))
 
         expect.that(actual).isEqualTo(expected)

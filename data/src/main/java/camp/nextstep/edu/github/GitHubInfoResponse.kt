@@ -2,22 +2,22 @@ package camp.nextstep.edu.github
 
 import com.google.gson.annotations.SerializedName
 
-data class GitHubInfoResponse(
+internal data class GitHubInfoResponse(
     @SerializedName("full_name")
     val fullName: String,
 
     @SerializedName("description")
     val description: String
 ) {
-    fun fromGitHubInfoModel(): GitHubInfoModel {
-        return GitHubInfoModel(
+    fun toGitHubInfoModel(): GitHubRepositoryInfo {
+        return GitHubRepositoryInfo(
             fullName = fullName,
             description = description
         )
     }
 
     companion object {
-        fun GitHubInfoModel.toGitHubInfoResponse(): GitHubInfoResponse {
+        fun GitHubRepositoryInfo.fromGitHubInfoResponse(): GitHubInfoResponse {
             return GitHubInfoResponse(
                 fullName = fullName,
                 description = description

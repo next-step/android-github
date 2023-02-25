@@ -3,7 +3,7 @@ package camp.nextstep.edu.github
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface RetrofitService {
+internal interface GithubService {
     @GET(URL.repositories)
-    fun getGitHubRepository(): Call<List<GitHubInfoResponse>>
+    suspend fun getGitHubRepositories(): List<GitHubInfoResponse>
 }
