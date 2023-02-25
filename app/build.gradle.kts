@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -58,4 +59,15 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.3")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("com.google.dagger:hilt-android:2.45")
+    annotationProcessor("com.google.dagger:hilt-compiler:2.45")
+
+    // For instrumentation tests
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.45")
+    androidTestAnnotationProcessor("com.google.dagger:hilt-compiler:2.45")
+
+    // For local unit tests
+    testImplementation("com.google.dagger:hilt-android-testing:2.45")
+    testAnnotationProcessor("com.google.dagger:hilt-compiler:2.45")
 }
