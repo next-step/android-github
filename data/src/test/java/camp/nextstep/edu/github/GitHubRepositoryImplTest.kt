@@ -37,13 +37,15 @@ class GitHubRepositoryImplTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `GithubRepository 통신 테스트`() = runTest {
+    fun `유닛_테스트_용_깃허브_저장소_가져오기()`() = runTest {
         // given
         server.successTest("1.json")
 
+        // when
         val actual = retrofitService.getGitHubRepositories()
         val expected = listOf(GitHubInfoResponse(fullName = "퓨유울네임", description = "디이이이스크립숀"))
 
+        //then
         expect.that(actual).isEqualTo(expected)
     }
 }
