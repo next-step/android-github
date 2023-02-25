@@ -1,5 +1,5 @@
 package camp.nextstep.edu.github
 
 interface GitHubRepository {
-    suspend fun getGitHubInfo() : List<GitHubRepositoryInfo>
+    suspend fun getGitHubRepositoryInfo() : List<GitHubRepositoryInfo>
 }

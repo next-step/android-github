@@ -9,7 +9,7 @@ internal data class GitHubInfoResponse(
     @SerializedName("description")
     val description: String
 ) {
-    fun toGitHubInfoModel(): GitHubRepositoryInfo {
+    fun toDomainModel(): GitHubRepositoryInfo {
         return GitHubRepositoryInfo(
             fullName = fullName,
             description = description
