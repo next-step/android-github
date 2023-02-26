@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @dagger.Module
 @InstallIn(SingletonComponent::class)
-internal class RepositoryModule {
+internal object RepositoryModule {
 
     @Provides
     fun githubRepository(githubService: GithubService) : GitHubRepository {
