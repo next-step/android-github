@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 internal data class GitHubInfoResponse(
     @SerializedName("full_name")
-    val fullName: String,
+    val fullName: String?,
 
     @SerializedName("description")
-    val description: String
+    val description: String?
 ) {
     fun toDomainModel(): GitHubRepositoryInfo {
         return GitHubRepositoryInfo(
-            fullName = fullName,
-            description = description
+            fullName = fullName ?: "",
+            description = description ?: ""
         )
     }
 
