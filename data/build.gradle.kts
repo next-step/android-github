@@ -37,6 +37,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.COROUTINE_ANDROID}")
 
     //Mock server
-    implementation("com.squareup.okhttp3:mockwebserver:${Version.MOCK_WEB_SERVER}")
+    testImplementation("com.squareup.okhttp3:mockwebserver:${Version.MOCK_WEB_SERVER}")
 
 }
