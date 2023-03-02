@@ -8,5 +8,5 @@ data class Repository(
     @field:Json(name = "full_name")
     val fullName: String,
     @field:Json(name = "description")
-    val description: String
+    val description: String?
 )
