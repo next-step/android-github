@@ -1,34 +1,37 @@
-//package camp.nextstep.edu.github
-//
-//import android.os.Build
-//import com.google.common.truth.Truth
-//import dagger.hilt.android.testing.HiltAndroidRule
-//import dagger.hilt.android.testing.HiltAndroidTest
-//import dagger.hilt.android.testing.HiltTestApplication
-//import io.mockk.coEvery
-//import kotlinx.coroutines.runBlocking
-//import org.junit.Before
-//import org.junit.Rule
-//import org.junit.Test
-//import org.junit.runner.RunWith
-//import org.robolectric.RobolectricTestRunner
-//import org.robolectric.annotation.Config
-//import javax.inject.Inject
-//
-//
-//@HiltAndroidTest
-//@RunWith(RobolectricTestRunner::class)
-//@Config(application = HiltTestApplication::class)
-//class MainViewModelTest {
-//    @get:Rule
-//    val hiltRule = HiltAndroidRule(this)
-//
+package camp.nextstep.edu.github
+
+import com.google.common.truth.Truth
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.HiltTestApplication
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
+import javax.inject.Inject
+
+
+@HiltAndroidTest
+@RunWith(RobolectricTestRunner::class)
+@Config(application = HiltTestApplication::class)
+class MainViewModelTest {
+    @get:Rule
+    val hiltRule = HiltAndroidRule(this)
+
 //    @get:Rule
 //    val mainDispatcherRule = MainDispatcherRule()
-//
-//    @Inject
-//    lateinit var githubRepository: GitHubRepository
-//
+
+    @set:Inject
+    lateinit var githubRepository: GitHubRepository
+
+    @Test
+    fun `Repository 주입 테스트`() {
+        Truth.assertThat(::githubRepository.isInitialized).isEqualTo(false)
+        hiltRule.inject()
+        Truth.assertThat(::githubRepository.isInitialized).isEqualTo(true)
+    }
+
 //    private lateinit var viewModel: MainViewModel
 //
 //    @Before
@@ -44,6 +47,7 @@
 //            GitHubRepositoryInfo("First full name", "First description"),
 //            GitHubRepositoryInfo("Second full name", "Second description")
 //        )
+//
 //        coEvery { githubRepository.getGitHubRepositoryInfo() } returns data
 //
 //        // when
@@ -52,4 +56,4 @@
 //        // then
 //        Truth.assertThat(actual).isEqualTo(data)
 //    }
-//}
+}
