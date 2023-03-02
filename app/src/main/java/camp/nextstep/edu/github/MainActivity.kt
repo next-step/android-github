@@ -10,18 +10,28 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    val githubAdapter: GitHubRepositoryInfoAdapter by lazy { GitHubRepositoryInfoAdapter() }
+    private lateinit var githubAdapter: GitHubRepositoryInfoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.view = this
         setContentView(binding.root)
+        initAdapter()
         addObservers()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getGithubRepositoryInfo()
+    }
+
+    private fun initAdapter() {
+        githubAdapter = GitHubRepositoryInfoAdapter()
+        binding.rvGitHubRepositoryInfo.adapter = githubAdapter
+    }
+
     private fun addObservers() {
-        mainViewModel.githubRepositoryInfoLiveData.observe(this) {
+        mainViewModel.githubRepositoryInfo.observe(this) {
             githubAdapter.submitList(it)
         }
     }
