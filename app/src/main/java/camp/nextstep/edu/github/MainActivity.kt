@@ -3,6 +3,7 @@ package camp.nextstep.edu.github
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,12 +18,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initAdapter()
+        addLifecycleScope()
         addObservers()
     }
 
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.getGithubRepositoryInfo()
+    private fun addLifecycleScope() {
+        lifecycleScope.launchWhenResumed {
+            mainViewModel.getGithubRepositoryInfo()
+        }
     }
 
     private fun initAdapter() {
