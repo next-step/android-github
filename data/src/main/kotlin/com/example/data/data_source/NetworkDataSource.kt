@@ -1,4 +1,7 @@
 package com.example.data.data_source
 
-class NetworkDataSource {
+import com.example.data.model.NetworkRepositoryResource
+
+internal interface NetworkDataSource {
+    suspend fun getRepositories(): List<NetworkRepositoryResource>
 }
