@@ -6,10 +6,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class NetworkRepositoryResource(
-    @SerialName("full_name") val fullName: String,
-    val description: String
+    @SerialName("full_name") val fullName: String? = "",
+    val description: String? = ""
 ) {
 
-    fun toRepositoryResource(): RepositoryResource = RepositoryResource(fullName, description)
+    fun toRepositoryResource(): RepositoryResource =
+        RepositoryResource(fullName ?: "", description ?: "")
 
 }
