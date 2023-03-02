@@ -11,8 +11,8 @@ class MainViewModel @Inject constructor(
     private val gitHubRepository: GitHubRepository,
 ) : ViewModel() {
 
-    private val _githubRepositoryInfo = MutableLiveData<List<GitHubRepositoryInfo>>()
-    val githubRepositoryInfo: LiveData<List<GitHubRepositoryInfo>> get() = _githubRepositoryInfo
+    private val _githubRepositoryInfo = MutableLiveData<List<GitHubRepositoryInfo>?>()
+    val githubRepositoryInfo: LiveData<List<GitHubRepositoryInfo>?> get() = _githubRepositoryInfo
 
     suspend fun getGithubRepositoryInfo() {
         _githubRepositoryInfo.value = gitHubRepository.getGitHubRepositoryInfo()
