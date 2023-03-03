@@ -1,6 +1,6 @@
 package com.example.data.repository
 
-import com.example.data.data_source.NetworkDataSource
+import com.example.data.datasource.NetworkDataSource
 import com.example.domain.model.RepositoryResource
 import com.example.domain.repository.GitHubRepository
 

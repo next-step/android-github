@@ -1,4 +1,4 @@
-package com.example.data.data_source
+package com.example.data.datasource
 
 import com.example.data.model.NetworkRepositoryResource
 
