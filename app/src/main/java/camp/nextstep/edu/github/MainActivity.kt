@@ -2,10 +2,31 @@ package camp.nextstep.edu.github
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import camp.nextstep.edu.github.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel: RepositoryViewModel by viewModels()
+    private val adapter = RepositoryAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        init()
+        observeRepositories()
+    }
+
+    private fun init() {
+        binding.lifecycleOwner = this
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun observeRepositories() {
+        viewModel.repositories.observe(this) {
+            adapter.submitList(it)
+        }
     }
 }
