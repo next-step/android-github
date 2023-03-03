@@ -35,9 +35,7 @@ class RetrofitNetworkApiTest {
     @Test
     fun `빈 배열 JSON이 들어오면 빈 배열을 반환한다`() = runBlocking {
         // given
-        val response = MockResponse().setBody(
-            File("src/test/resources/empty_response.json").readText()
-        )
+        val response = MockResponse().setBody("""[]""")
         server.enqueue(response)
         // when
         val actual = service.getRepositories()
