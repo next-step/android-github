@@ -3,9 +3,7 @@ package com.example.data
 import com.example.data.retrofit.RetrofitNetworkApi
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.mockwebserver.MockResponse
@@ -21,12 +19,6 @@ class RetrofitNetworkApiTest {
     private lateinit var server: MockWebServer
     private lateinit var service: RetrofitNetworkApi
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val testDispatcher = StandardTestDispatcher()
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val testScope = TestScope(testDispatcher)
-
     @Before
     fun setUp() {
         val contentType = "application/json".toMediaType()
@@ -41,7 +33,7 @@ class RetrofitNetworkApiTest {
     }
 
     @Test
-    fun `빈 배열 JSON이 들어오면 빈 배열을 반환한다`() = testScope.runTest {
+    fun `빈 배열 JSON이 들어오면 빈 배열을 반환한다`() = runBlocking {
         // given
         val response = MockResponse().setBody(
             File("src/test/resources/empty_response.json").readText()
@@ -55,7 +47,7 @@ class RetrofitNetworkApiTest {
     }
 
     @Test
-    fun `일반적인 JSON이 들어오면 정상적인 모델을 반환한다`() = testScope.runTest {
+    fun `일반적인 JSON이 들어오면 정상적인 모델을 반환한다`() = runBlocking {
         // given
         val response = MockResponse().setBody(
             File("src/test/resources/normal_response.json").readText()
@@ -72,7 +64,7 @@ class RetrofitNetworkApiTest {
     }
 
     @Test
-    fun `필드가 null인 JSON이 들어오면 null이 된다`() = testScope.runTest {
+    fun `필드가 null인 JSON이 들어오면 null이 된다`() = runBlocking {
         // given
         val response = MockResponse().setBody(
             File("src/test/resources/lack_response.json").readText()
@@ -89,7 +81,7 @@ class RetrofitNetworkApiTest {
     }
 
     @Test
-    fun `필드가 없는 JSON이 들어오면 emptyString이 된다`() = testScope.runTest {
+    fun `필드가 없는 JSON이 들어오면 emptyString이 된다`() = runBlocking {
         // given
         val response = MockResponse().setBody(
             File("src/test/resources/lack_response2.json").readText()
