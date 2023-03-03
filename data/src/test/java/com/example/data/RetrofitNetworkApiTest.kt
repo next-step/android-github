@@ -2,7 +2,6 @@ package com.example.data
 
 import com.example.data.retrofit.RetrofitNetworkApi
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -14,6 +13,7 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.create
 import java.io.File
+import com.google.common.truth.Truth.assertThat
 
 class RetrofitNetworkApiTest {
     private lateinit var server: MockWebServer
@@ -41,7 +41,7 @@ class RetrofitNetworkApiTest {
         val actual = service.getRepositories()
 
         // then
-        assertTrue(actual.isEmpty())
+        assertThat(actual.isEmpty()).isTrue()
     }
 
     @Test
@@ -55,10 +55,9 @@ class RetrofitNetworkApiTest {
         val actual = service.getRepositories()
 
         // then
-        assertTrue(actual.size == 1)
-        assertTrue(actual[0].fullName == "mojombo/grit")
-        assertTrue(actual[0].description == "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby.")
-
+        assertThat(actual.size).isEqualTo(1)
+        assertThat(actual[0].fullName).isEqualTo("mojombo/grit")
+        assertThat(actual[0].description).isEqualTo("**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby.")
     }
 
     @Test
@@ -72,9 +71,9 @@ class RetrofitNetworkApiTest {
         val actual = service.getRepositories()
 
         // then
-        assertTrue(actual.size == 1)
-        assertTrue(actual[0].fullName == null)
-        assertTrue(actual[0].description == null)
+        assertThat(actual.size).isEqualTo(1)
+        assertThat(actual[0].fullName).isEqualTo(null)
+        assertThat(actual[0].description).isEqualTo(null)
 
     }
 
@@ -89,9 +88,9 @@ class RetrofitNetworkApiTest {
         val actual = service.getRepositories()
 
         // then
-        assertTrue(actual.size == 1)
-        assertTrue(actual[0].fullName == "")
-        assertTrue(actual[0].description == "")
+        assertThat(actual.size).isEqualTo(1)
+        assertThat(actual[0].fullName).isEqualTo("")
+        assertThat(actual[0].description).isEqualTo("")
 
     }
 }
