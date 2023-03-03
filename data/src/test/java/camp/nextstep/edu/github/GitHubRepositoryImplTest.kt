@@ -37,7 +37,7 @@ class GitHubRepositoryImplTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `유닛_테스트_용_깃허브_저장소_가져오기()`() = runTest {
+    fun `깃허브_저장소_가져오기()`() = runTest {
         // given
         server.successTest("1.json")
 

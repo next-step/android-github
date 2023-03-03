@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    id("kotlin-kapt")
 }
 
 java {
@@ -17,5 +18,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.1.3")
 
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    implementation("com.google.dagger:hilt-core:2.45")
+    kapt("com.google.dagger:hilt-compiler:2.45")
 }

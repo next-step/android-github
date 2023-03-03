@@ -1,9 +1,9 @@
 package camp.nextstep.edu.github
 
 internal class GitHubRepositoryImpl(
-    private val retrofitService: GithubService
+    private val githubService: GithubService
 ) : GitHubRepository {
-    override suspend fun getGitHubInfo(): List<GitHubRepositoryInfo> {
-        return retrofitService.getGitHubRepositories().map { it.toGitHubInfoModel() }
+    override suspend fun getGitHubRepositoryInfo(): List<GitHubRepositoryInfo> {
+        return githubService.getGitHubRepositories().map { it.toDomainModel() }
     }
 }
