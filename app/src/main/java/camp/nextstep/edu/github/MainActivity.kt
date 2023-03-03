@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private lateinit var githubAdapter: GitHubRepositoryInfoAdapter
+    private val githubAdapter: GitHubRepositoryInfoAdapter = GitHubRepositoryInfoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        githubAdapter = GitHubRepositoryInfoAdapter()
         binding.rvGitHubRepositoryInfo.adapter = githubAdapter
     }
 
