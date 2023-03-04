@@ -13,11 +13,12 @@ class MainViewModel(
     private val gitHubSearchRepository: GithubSearchRepository
 ) : ViewModel() {
     private val _repositories = MutableLiveData<List<Repository>>()
-    private val repositories: LiveData<List<Repository>>
+    val repositories: LiveData<List<Repository>>
         get() = _repositories
 
-    fun searchRepositories(query: String) = viewModelScope.launch(Dispatchers.IO) {
-        _repositories.value = gitHubSearchRepository.searchGitHubs()
+    fun searchRepositories() = viewModelScope.launch(Dispatchers.IO) {
+        val repositories = gitHubSearchRepository.searchGitHubs()
+        _repositories.postValue(repositories)
 
     }
 }

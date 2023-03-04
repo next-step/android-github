@@ -43,12 +43,15 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}")
     implementation("androidx.core:core-ktx:${Version.CORE_KTX}")
     implementation("androidx.appcompat:appcompat:${Version.APP_COMPAT}")
     implementation("com.google.android.material:material:${Version.MATERIAL}")
     implementation("androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT}")
     implementation("androidx.fragment:fragment-ktx:${Version.FRAGMENT_KTX}")
+    implementation(project(mapOf("path" to ":data")))
 
     // Junit
     testImplementation("junit:junit:${Version.JUNIT4}")
