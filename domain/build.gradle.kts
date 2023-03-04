@@ -17,4 +17,8 @@ dependencies{
 
     // Mockk
     testImplementation("io.mockk:mockk:${Version.MOCKK}")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:${Version.RETROFIT}")
+    implementation("com.squareup.retrofit2:converter-moshi:${Version.CONVERTER_MOSHI}")
 }

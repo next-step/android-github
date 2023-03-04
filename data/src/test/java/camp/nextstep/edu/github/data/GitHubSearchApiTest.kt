@@ -2,7 +2,7 @@ package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.Constants.BASE_URL
 import camp.nextstep.edu.github.data.api.GitHubSearchApi
-import camp.nextstep.edu.github.data.model.Repository
+import camp.nextstep.edu.github.data.model.RepositoryEntity
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.runBlocking
@@ -38,17 +38,17 @@ class GitHubSearchApiTest {
         server.enqueue(response)
 
         // when
-        val actual: List<Repository>? = runBlocking {
+        val actual: List<RepositoryEntity>? = runBlocking {
             api.searchGithub()
-        }.body()
+        }
 
         // then
         val repositories = listOf(
-            Repository(
+            RepositoryEntity(
                 "mojombo/grit",
                 "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
             ),
-            Repository(
+            RepositoryEntity(
                 "wycats/merb-core",
                 "Merb Core: All you need. None you don't."
             )
