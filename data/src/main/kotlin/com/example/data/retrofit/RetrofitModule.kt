@@ -11,6 +11,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -38,6 +39,7 @@ internal object RetrofitModule {
     }
 
     @Provides
+    @Singleton
     fun buildRetrofitNetworkApi(): RetrofitNetworkApi =
         buildRetrofit().create(RetrofitNetworkApi::class.java)
 }
