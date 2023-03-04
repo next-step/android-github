@@ -19,9 +19,17 @@ class RepositoryViewModel @Inject constructor(
     val repositories: LiveData<List<RepositoryResource>>
         get() = _repositories
 
+    private val _exception = MutableLiveData("")
+    val exception: LiveData<String>
+        get() = _exception
+
     init {
         viewModelScope.launch {
-            _repositories.value = getRepositoryUseCase.invoke()
+            kotlin.runCatching { getRepositoryUseCase.invoke() }
+                .onSuccess { _repositories.value = it }
+                .onFailure {
+                    _exception.value = it.message ?: ""
+                }
         }
     }
 }

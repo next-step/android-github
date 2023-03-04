@@ -2,6 +2,7 @@ package camp.nextstep.edu.github
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import camp.nextstep.edu.github.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         init()
         observeRepositories()
+        observeException()
     }
 
     private fun init() {
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity() {
     private fun observeRepositories() {
         viewModel.repositories.observe(this) {
             adapter.submitList(it)
+        }
+    }
+
+    private fun observeException() {
+        viewModel.exception.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }
 }
