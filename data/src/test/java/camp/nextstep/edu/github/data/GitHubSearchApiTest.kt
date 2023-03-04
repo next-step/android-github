@@ -10,7 +10,6 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
@@ -38,11 +37,10 @@ class GitHubSearchApiTest {
             .setBody(File("src/test/resources/search_response.json").readText())
         server.enqueue(response)
 
-        var actual: Response<List<Repository>>? = null
         // when
-        runBlocking {
-            actual = api.searchGithub()
-        }
+        val actual: List<Repository>? = runBlocking {
+            api.searchGithub()
+        }.body()
 
         // then
         val repositories = listOf(
@@ -55,6 +53,6 @@ class GitHubSearchApiTest {
                 "Merb Core: All you need. None you don't."
             )
         )
-        assertThat(actual?.body()?.slice(0..1)).isEqualTo(repositories)
+        assertThat(actual?.slice(0..1)).isEqualTo(repositories)
     }
 }
