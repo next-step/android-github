@@ -1,6 +1,6 @@
 object Version {
     const val androidGradlePlugin = "7.4.0"
-    const val kotlin = "1.8.0"
+    const val kotlin = "1.7.0"
     const val compileSdk = 33
     const val minSdk = 26
     const val targetSdk = 33
@@ -26,9 +26,11 @@ object Version {
     // Library
     const val RETROFIT = "2.9.0"
     const val MOSHI = "1.13.0"
+    const val CONVERTER_MOSHI= "2.9.0"
     const val OKHTTP = "4.9.3"
     const val LIFECYCLE = "2.4.1"
-    const val COROUTINE = "1.6.0"
+    const val COROUTINE = "1.6.2"
+    const val COROUTINE_ANDROID = "1.6.4"
     const val COIL = "1.4.0"
     const val RECYCLERVIEW = "1.2.1"
     const val NAVIGATION = "2.4.1"
@@ -41,4 +43,7 @@ object Version {
     const val ACTIVITY_KTX = "1.4.0"
     const val FRAGMENT_KTX = "1.5.5"
     const val HILT_EXTENSION = "1.0.0"
+    const val MOCK_WEB_SERVER = "4.10.0"
+
+
 }
