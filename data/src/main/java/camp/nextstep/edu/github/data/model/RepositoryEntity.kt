@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-internal data class RepositoryEntity(
+data class RepositoryEntity(
     @field:Json(name = "full_name")
     val fullName: String,
     @field:Json(name = "description")
