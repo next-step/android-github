@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
     id("kotlin-kapt")
+    kotlin("kapt")
 
 }
 
@@ -39,4 +40,11 @@ dependencies {
     //Mock server
     testImplementation("com.squareup.okhttp3:mockwebserver:${Version.MOCK_WEB_SERVER}")
 
+
+    // Hilt
+    implementation( "com.google.dagger:hilt-core:2.45")
+    kapt( "com.google.dagger:hilt-compiler:2.45")
+}
+kapt {
+    correctErrorTypes = true
 }

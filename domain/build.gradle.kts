@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
+    id("kotlin-kapt")
 }
 
 java {
@@ -8,7 +9,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-dependencies{
+dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}")
 
     // Junit
@@ -21,4 +22,8 @@ dependencies{
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:${Version.RETROFIT}")
     implementation("com.squareup.retrofit2:converter-moshi:${Version.CONVERTER_MOSHI}")
+
+    //Hilt
+    implementation( "com.google.dagger:hilt-core:2.45")
+    kapt( "com.google.dagger:hilt-compiler:2.45")
 }
