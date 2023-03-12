@@ -19,18 +19,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        bindView()
+        setupRecyclerView()
+        observerLiveData()
+        searchRepository()
+    }
+
+    private fun bindView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.lifecycleOwner = this
         binding.vm = viewModel
-        setupRecyclerView()
-        observerLiveData()
+    }
+
+    private fun searchRepository() {
         viewModel.searchRepositories()
     }
 
     private fun setupRecyclerView() {
         searchAdapter = RepositoriesSearchAdapter()
-        binding.rvSearchResult.apply {
+        with(binding.rvSearchResult) {
             layoutManager =
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
             adapter = searchAdapter

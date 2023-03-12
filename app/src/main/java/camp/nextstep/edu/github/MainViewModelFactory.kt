@@ -8,10 +8,8 @@ class MainViewModelFactory(
     private val searchRepository: GithubSearchRepository,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            MainViewModel(searchRepository) as T
-        } else {
-            throw IllegalArgumentException()
-        }
+        require(modelClass.isAssignableFrom(MainViewModel::class.java))
+        @Suppress("UNCHECKED_CAST")
+        return MainViewModel(searchRepository) as T
     }
 }

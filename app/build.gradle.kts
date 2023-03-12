@@ -52,7 +52,6 @@ dependencies {
     implementation("com.google.android.material:material:${Version.MATERIAL}")
     implementation("androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT}")
     implementation("androidx.fragment:fragment-ktx:${Version.FRAGMENT_KTX}")
-    implementation(project(mapOf("path" to ":data")))
 
     // Junit
     testImplementation("junit:junit:${Version.JUNIT4}")
