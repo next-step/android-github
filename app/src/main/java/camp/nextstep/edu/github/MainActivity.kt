@@ -18,16 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        bindView()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initView()
         setupRecyclerView()
         observerLiveData()
         searchRepository()
     }
 
-    private fun bindView() {
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    private fun initView() {
         binding.lifecycleOwner = this
         binding.vm = viewModel
     }
