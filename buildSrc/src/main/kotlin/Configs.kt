@@ -39,7 +39,7 @@ object Version {
     const val DATASTORE = "1.0.0"
     const val PAGING = "3.1.1"
     const val WORKMANGER = "2.7.1"
-    const val HILT = "2.41"
+    const val HILT ="2.34.1"
     const val ACTIVITY_KTX = "1.4.0"
     const val FRAGMENT_KTX = "1.5.5"
     const val HILT_EXTENSION = "1.0.0"

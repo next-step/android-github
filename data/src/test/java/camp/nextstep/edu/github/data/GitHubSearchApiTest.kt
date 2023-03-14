@@ -2,7 +2,7 @@ package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.Constants.BASE_URL
 import camp.nextstep.edu.github.data.api.GitHubSearchApi
-import camp.nextstep.edu.github.data.model.Repository
+import camp.nextstep.edu.github.data.model.RepositoryEntity
 import com.google.common.truth.Truth.assertThat
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.runBlocking
@@ -10,7 +10,6 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
@@ -38,23 +37,22 @@ class GitHubSearchApiTest {
             .setBody(File("src/test/resources/search_response.json").readText())
         server.enqueue(response)
 
-        var actual: Response<List<Repository>>? = null
         // when
-        runBlocking {
-            actual = api.searchGithub()
+        val actual: List<RepositoryEntity>? = runBlocking {
+            api.searchGithub()
         }
 
         // then
         val repositories = listOf(
-            Repository(
+            RepositoryEntity(
                 "mojombo/grit",
                 "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
             ),
-            Repository(
+            RepositoryEntity(
                 "wycats/merb-core",
                 "Merb Core: All you need. None you don't."
             )
         )
-        assertThat(actual?.body()?.slice(0..1)).isEqualTo(repositories)
+        assertThat(actual?.slice(0..1)).isEqualTo(repositories)
     }
 }

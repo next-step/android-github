@@ -23,7 +23,7 @@ internal object RetrofitInstance {
             .build()
     }
 
-    // GitHubSearchApi 의 instance를 만든다.
+
     val api: GitHubSearchApi by lazy {
         retrofit.create(GitHubSearchApi::class.java)
     }

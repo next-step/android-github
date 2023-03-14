@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -43,6 +44,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}")
     implementation("androidx.core:core-ktx:${Version.CORE_KTX}")
     implementation("androidx.appcompat:appcompat:${Version.APP_COMPAT}")
@@ -76,4 +79,19 @@ dependencies {
     // Mockk
     testImplementation("io.mockk:mockk:${Version.MOCKK}")
     androidTestImplementation("io.mockk:mockk-android:${Version.MOCKK}")
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:${Version.HILT}")
+    implementation("com.google.dagger:hilt-android:2.44")
+
+    implementation("com.google.dagger:hilt-android:2.45")
+    implementation( "com.google.dagger:hilt-core:2.45")
+    kapt("com.google.dagger:hilt-compiler:2.45")
+    // For local unit tests
+    testImplementation("com.google.dagger:hilt-android-testing:2.45")
+    testAnnotationProcessor("com.google.dagger:hilt-compiler:2.45")
+
+}
+kapt {
+    correctErrorTypes = true
 }
