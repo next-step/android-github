@@ -1,6 +1,9 @@
 package camp.nextstep.edu.github.domain
 
+import com.google.gson.annotations.SerializedName
+
 data class GithubRepository(
-    val full_name: String,
+    @SerializedName("full_name")
+    val fullName: String,
     val description: String
 )

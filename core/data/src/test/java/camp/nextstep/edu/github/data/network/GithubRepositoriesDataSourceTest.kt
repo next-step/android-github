@@ -11,32 +11,25 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 class GithubRepositoriesDataSourceTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var api: GitHubService
-    private lateinit var sut : GithubRepositoriesDataSource
+    private lateinit var dataSource: GithubRepositoriesDataSource
+
+    private val client = OkHttpClient.Builder()
+        .connectTimeout(1, TimeUnit.SECONDS)
+        .readTimeout(1, TimeUnit.SECONDS)
+        .writeTimeout(1, TimeUnit.SECONDS)
+        .build()
 
     @Before
     fun setUp() {
         mockWebServer = MockWebServer()
-
-        val client = OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.SECONDS)
-            .readTimeout(1, TimeUnit.SECONDS)
-            .writeTimeout(1, TimeUnit.SECONDS)
-            .build()
-
-        api = Retrofit.Builder()
-            .baseUrl(mockWebServer.url(""))
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(GitHubService::class.java)
-
-        sut = GithubRepositoriesDataSource(api)
     }
+
     @After
     fun tearDown() {
         mockWebServer.shutdown()
@@ -44,15 +37,31 @@ class GithubRepositoriesDataSourceTest {
 
     @Test
     fun `GitHub repository들을 불러옴`() = runTest {
-        val response = MockResponse().setBody("""
-            [{
-            	"full_name": "nextStep",
-            	"description": "android-github"
-            }]
-        """.trimIndent()).setResponseCode(200)
+        api = Retrofit.Builder()
+            .baseUrl(mockWebServer.url(""))
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GitHubService::class.java)
+        val body = File("src/test/resources/response.json").readText()
+        val response = MockResponse().setBody(body).setResponseCode(200)
         mockWebServer.enqueue(response)
-        val actual = api.getRepositories()[0]
+        dataSource = GithubRepositoriesDataSource(api)
+        val actual = dataSource.fetchRepositories()[0]
         val expected = GithubRepository("nextStep", "android-github")
         assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `GitHub repository 실제 데이터 체크`() = runTest {
+        api = Retrofit.Builder()
+            .baseUrl(mockWebServer.url("https://api.github.com/"))
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GitHubService::class.java)
+        dataSource = GithubRepositoriesDataSource(api)
+        val actual = dataSource.fetchRepositories()
+        assertThat(actual).hasSize(100)
     }
 }
