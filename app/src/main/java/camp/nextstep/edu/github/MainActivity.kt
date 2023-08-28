@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
@@ -42,13 +41,9 @@ class MainActivity : AppCompatActivity() {
         composable(route = "Main") {
             val state by viewModel.collectAsState()
             viewModel.collectSideEffect {
+                navController.navigate(route = "Main")
             }
             GithubRepositoryPage(state)
         }
     }
-}
-
-@Composable
-fun GithubMain() {
-    val navController = rememberNavController()
 }

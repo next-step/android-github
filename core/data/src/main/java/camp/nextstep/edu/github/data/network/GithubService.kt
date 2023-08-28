@@ -4,6 +4,6 @@ import camp.nextstep.edu.github.domain.GithubRepository
 import retrofit2.http.GET
 
 interface GithubService {
-    @GET("/repositories")
+    @GET("repositories")
     suspend fun getRepositories(): List<GithubRepository>
 }

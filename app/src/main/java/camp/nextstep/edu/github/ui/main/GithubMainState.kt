@@ -5,5 +5,5 @@ import camp.nextstep.edu.github.ui.UiStatus
 
 data class GithubMainState(
     val status: UiStatus? = null,
-    val repositories: List<GithubRepository>? = emptyList()
+    val repositories: List<GithubRepository> = emptyList()
 )
