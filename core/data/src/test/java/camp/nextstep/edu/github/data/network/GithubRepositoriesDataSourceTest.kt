@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 class GithubRepositoriesDataSourceTest {
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var api: GitHubService
+    private lateinit var api: GithubService
     private lateinit var dataSource: GithubRepositoriesDataSource
 
     private val client = OkHttpClient.Builder()
@@ -36,13 +36,13 @@ class GithubRepositoriesDataSourceTest {
     }
 
     @Test
-    fun `GitHub repository들을 불러옴`() = runTest {
+    fun `Github repository들을 불러옴`() = runTest {
         api = Retrofit.Builder()
             .baseUrl(mockWebServer.url(""))
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(GitHubService::class.java)
+            .create(GithubService::class.java)
         val body = File("src/test/resources/response.json").readText()
         val response = MockResponse().setBody(body).setResponseCode(200)
         mockWebServer.enqueue(response)
@@ -53,13 +53,16 @@ class GithubRepositoriesDataSourceTest {
     }
 
     @Test
-    fun `GitHub repository 실제 데이터 체크`() = runTest {
+    fun `Github repository 실제 데이터 체크`() = runTest {
         api = Retrofit.Builder()
             .baseUrl(mockWebServer.url("https://api.github.com/"))
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(GitHubService::class.java)
+            .create(GithubService::class.java)
+        val body = File("src/test/resources/response.json").readText()
+        val response = MockResponse().setBody(body).setResponseCode(200)
+        mockWebServer.enqueue(response)
         dataSource = GithubRepositoriesDataSource(api)
         val actual = dataSource.fetchRepositories()
         assertThat(actual).hasSize(100)
