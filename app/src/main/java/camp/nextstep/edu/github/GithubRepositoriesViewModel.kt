@@ -7,7 +7,6 @@ import camp.nextstep.edu.github.ui.UiStatus
 import camp.nextstep.edu.github.ui.main.GithubMainSideEffect
 import camp.nextstep.edu.github.ui.main.GithubMainState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.syntax.simple.intent
@@ -30,17 +29,15 @@ class GithubRepositoriesViewModel @Inject constructor(
             reduce { state.copy(status = UiStatus.Loading) }
             viewModelScope.launch {
                 runCatching {
-                    async {
-                        val repositories = dataSource.fetchRepositories()
-                        reduce {
-                            state.copy(
-                                status = UiStatus.Success,
-                                repositories = repositories
-                            )
-                        }
+                    val repositories = dataSource.fetchRepositories()
+                    reduce {
+                        state.copy(
+                            status = UiStatus.Success,
+                            repositories = repositories
+                        )
                     }
                 }.getOrElse {
-                    reduce { state.copy(status = UiStatus.Failed("로딩 실패")) }
+                    reduce { state.copy(status = UiStatus.Failed("Error : ${it.message}")) }
                 }
             }
         }
