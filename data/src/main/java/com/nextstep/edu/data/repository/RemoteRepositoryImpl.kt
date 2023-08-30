@@ -5,7 +5,7 @@ import com.nextstep.edu.data.model.RepositoryResponse
 import com.nextstep.edu.domain.repository.RemoteRepository
 import com.nextstep.edu.domain.model.Repository
 
-class RemoteRepositoryImpl(
+internal class RemoteRepositoryImpl(
     private val githubService: GithubService
 ): RemoteRepository {
     override suspend fun getRepositories(): List<Repository> {
