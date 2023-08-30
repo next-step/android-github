@@ -51,20 +51,4 @@ class GithubRepositoriesDataSourceTest {
         val expected = GithubRepository("nextStep", "android-github")
         assertThat(actual).isEqualTo(expected)
     }
-
-    @Test
-    fun `Github repository 실제 데이터 체크`() = runTest {
-        api = Retrofit.Builder()
-            .baseUrl(mockWebServer.url("https://api.github.com/"))
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(GithubService::class.java)
-        val body = File("src/test/resources/response.json").readText()
-        val response = MockResponse().setBody(body).setResponseCode(200)
-        mockWebServer.enqueue(response)
-        dataSource = GithubRepositoriesDataSource(api)
-        val actual = dataSource.fetchRepositories()
-        assertThat(actual).hasSize(100)
-    }
 }

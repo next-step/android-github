@@ -12,32 +12,30 @@ import java.util.concurrent.TimeUnit
 
 @InstallIn(SingletonComponent::class)
 @Module
-abstract class NetworkModule {
+object NetworkModule {
 
-    companion object {
-        private const val BASE_URL = "https://api.github.com/"
+    private const val BASE_URL = "https://api.github.com/"
 
-        @Provides
-        fun provideClient(): OkHttpClient {
-            return OkHttpClient.Builder()
-                .connectTimeout(1, TimeUnit.SECONDS)
-                .readTimeout(1, TimeUnit.SECONDS)
-                .writeTimeout(1, TimeUnit.SECONDS)
-                .build()
-        }
+    @Provides
+    fun provideClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(1, TimeUnit.SECONDS)
+            .readTimeout(1, TimeUnit.SECONDS)
+            .writeTimeout(1, TimeUnit.SECONDS)
+            .build()
+    }
 
-        @Provides
-        fun provideGithubService(retrofit: Retrofit): GithubService {
-            return retrofit.create(GithubService::class.java)
-        }
+    @Provides
+    fun provideGithubService(retrofit: Retrofit): GithubService {
+        return retrofit.create(GithubService::class.java)
+    }
 
-        @Provides
-        fun provideRetrofit(client: OkHttpClient): Retrofit {
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        }
+    @Provides
+    fun provideRetrofit(client: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 }
