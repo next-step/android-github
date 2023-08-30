@@ -23,3 +23,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:${Version.junit}")
     testImplementation("com.google.truth:truth:${Version.truth}")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}
