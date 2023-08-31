@@ -8,13 +8,13 @@
 
         <variable
             name="viewmodel"
-            type="camp.nextstep.edu.github.GithubViewModel" />
+            type="camp.nextstep.edu.github.ui.GithubViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GithubActivity">
+        tools:context=".ui.GithubActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

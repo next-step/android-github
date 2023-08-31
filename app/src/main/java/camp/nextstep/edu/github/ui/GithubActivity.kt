@@ -1,9 +1,10 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import camp.nextstep.edu.github.R
 import camp.nextstep.edu.github.databinding.ActivityGithubBinding
 import dagger.hilt.android.AndroidEntryPoint
 

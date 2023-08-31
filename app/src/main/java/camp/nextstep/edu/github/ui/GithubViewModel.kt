@@ -1,9 +1,10 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import camp.nextstep.edu.github.util.Event
 import com.nextstep.edu.domain.model.Repository
 import com.nextstep.edu.domain.usecase.GetRepositoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,4 +1,4 @@
-package camp.nextstep.edu.github
+package camp.nextstep.edu.github.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import camp.nextstep.edu.github.R
 import camp.nextstep.edu.github.databinding.ItemRepositoryBinding
 import com.nextstep.edu.domain.model.Repository
 
-class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(RepositoryDiffCallback) {
+class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(
+    RepositoryDiffCallback
+) {
 
     init { setHasStableIds(true) }
 
