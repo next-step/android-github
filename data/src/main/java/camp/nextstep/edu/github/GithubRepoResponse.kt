@@ -10,4 +10,4 @@ data class GithubRepoResponse(
 	val description: String,
 )
 
-fun GithubRepoResponse.asResource(): GithubRepoResource = GithubRepoResource(fullName = fullName, description = description¡)
+fun GithubRepoResponse.asResource(): GithubRepoResource = GithubRepoResource(fullName = fullName, description = description)
