@@ -22,7 +22,7 @@ class GithubViewModel @Inject constructor(
     private val _repositories: MutableLiveData<List<Repository>> = MutableLiveData()
     val repositories: LiveData<List<Repository>> = _repositories
 
-    init {
+    fun getRepositories() {
         viewModelScope.launch {
             getRepositoryUseCase()
                 .onSuccess { _repositories.value = it }

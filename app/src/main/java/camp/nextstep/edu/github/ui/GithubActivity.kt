@@ -25,6 +25,8 @@ class GithubActivity : AppCompatActivity() {
         initAdapter()
         observeRepositories()
         observeError()
+
+        viewModel.getRepositories()
     }
 
     private fun initAdapter() {
