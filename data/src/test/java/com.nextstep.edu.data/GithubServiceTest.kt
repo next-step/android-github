@@ -45,6 +45,7 @@ class GithubServiceTest {
 
         // then : 결과의 첫번째는 mojombo/grit의 정보이다.
         val expected = RepositoryResponse(
+            id = 1,
             fullName = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
@@ -63,6 +64,7 @@ class GithubServiceTest {
 
         // then : 결과의 두번째는 wycats/merb-core의 정보이다.
         val expected = RepositoryResponse(
+            id = 26,
             fullName = "wycats/merb-core",
             description = "Merb Core: All you need. None you don't."
         )

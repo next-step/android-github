@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName
 import com.nextstep.edu.domain.model.Repository
 
 internal data class RepositoryResponse(
+    @SerializedName("id")
+    val id: Int,
+
     @SerializedName("full_name")
     val fullName: String,
 
