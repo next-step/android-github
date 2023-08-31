@@ -1,3 +1,11 @@
+# Step3(2023-09-01) #
+    * GitHub(UI)
+        * [x] 앱을 실행하면 리스트 형태의 GitHub Repository UI가 보여야 한다.
+        * [x] MVVM 패턴으로 구현한다.
+        * [x] Dagger2, Hilt를 이용하여 의존성을 주입한다.
+        * [x] Domain 테스트 코드 추가
+        * [x] ViewModel 테스트 코드 추가
+
 # Step2(2023-08-30) #
     * GitHub(HTTP)
         * [x] GET, https://api.github.com/repositories
