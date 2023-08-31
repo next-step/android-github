@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "camp.nextstep.edu.github.CustomTestRunner"
     }
 
     buildTypes {
@@ -64,6 +64,13 @@ dependencies {
     testImplementation("junit:junit:${Version.junit4}")
     testImplementation("com.google.truth:truth:${Version.truth}")
     testImplementation("androidx.test.ext:junit:${Version.extJunit}")
+
+    // Test
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineTest}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutineTest}")
+
+    // Mockk
+    testImplementation("io.mockk:mockk:${Version.mockk}")
 
     // Live data test
     testImplementation("androidx.arch.core:core-testing:${Version.coreTesting}")
