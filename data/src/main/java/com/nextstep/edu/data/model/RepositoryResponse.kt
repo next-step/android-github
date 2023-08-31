@@ -9,8 +9,4 @@ internal data class RepositoryResponse(
 
     @SerializedName("description")
     val description: String
-) {
-    fun toDomain(): Repository {
-        return Repository(fullName = this.fullName, description = this.description)
-    }
-}
+)
