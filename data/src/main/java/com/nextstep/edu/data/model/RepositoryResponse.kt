@@ -8,8 +8,8 @@ internal data class RepositoryResponse(
     val id: Int,
 
     @SerializedName("full_name")
-    val fullName: String,
+    val fullName: String?,
 
     @SerializedName("description")
-    val description: String
+    val description: String?
 )

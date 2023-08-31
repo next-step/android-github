@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import camp.nextstep.edu.github.databinding.ItemRepositoryBinding
 import com.nextstep.edu.domain.model.Repository
 
-class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(HistoryDiffCallback) {
+class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(RepositoryDiffCallback) {
 
     init { setHasStableIds(true) }
 
@@ -38,7 +38,7 @@ class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(
         }
     }
 
-    internal object HistoryDiffCallback : DiffUtil.ItemCallback<Repository>() {
+    internal object RepositoryDiffCallback : DiffUtil.ItemCallback<Repository>() {
         override fun areItemsTheSame(oldItem: Repository, newItem: Repository) =
             oldItem.id == newItem.id
 
