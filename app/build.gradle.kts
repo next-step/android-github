@@ -62,8 +62,6 @@ dependencies {
 
     // Junit
     testImplementation("junit:junit:${Version.junit4}")
-    testImplementation("com.google.truth:truth:${Version.truth}")
-    testImplementation("androidx.test.ext:junit:${Version.extJunit}")
 
     // Test
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineTest}")
