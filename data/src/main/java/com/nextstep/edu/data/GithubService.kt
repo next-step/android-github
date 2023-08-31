@@ -6,7 +6,7 @@ import retrofit2.http.GET
 internal interface GithubService {
 
     /**
-     * GET : gitRepository 리스트
+     * gitRepository 리스트 가져오기
      **/
     @GET("repositories")
     suspend fun getRepositories(): List<RepositoryResponse>
