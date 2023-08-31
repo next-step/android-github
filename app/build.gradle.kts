@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
     implementation(project(":domain"))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}")
