@@ -2,6 +2,7 @@ package camp.nextstep.edu.github
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import camp.nextstep.edu.github.databinding.ActivityGithubBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,6 +12,7 @@ class GithubActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGithubBinding
     private val viewModel: GithubViewModel by viewModels()
+    private val repositoryAdapter by lazy { RepositoryAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,5 +21,24 @@ class GithubActivity : AppCompatActivity() {
             lifecycleOwner = this@GithubActivity
         }
         setContentView(binding.root)
+        initAdapter()
+        observeRepositories()
+        observeError()
+    }
+
+    private fun initAdapter() {
+        binding.recyclerView.adapter = repositoryAdapter
+    }
+
+    private fun observeRepositories() {
+        viewModel.repositories.observe(this) {
+            repositoryAdapter.submitList(it)
+        }
+    }
+
+    private fun observeError() {
+        viewModel.errorEvent.observe(this) {
+            Toast.makeText(this, getString(R.string.unknown_error), Toast.LENGTH_SHORT).show()
+        }
     }
 }
