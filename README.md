@@ -5,6 +5,12 @@
         * [x] Dagger2, Hilt를 이용하여 의존성을 주입한다.
         * [x] Domain 테스트 코드 추가
         * [x] ViewModel 테스트 코드 추가
+    * 1차 피드백
+        * [x] Binding 부분 함수화
+        * [x] Event 래핑 -> SingleLiveEvent 수정
+        * [x] binding.executePendingBindings() 제거 (변화가 없는 Adapter일 경우 성능상 제거하는 게 나음)
+        * [x] xml 코드 정렬
+        * [x] tool:text -> android:text
 
 # Step2(2023-08-30) #
     * GitHub(HTTP)
