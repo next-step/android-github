@@ -18,6 +18,10 @@ allprojects {
     }
 }
 
+plugins {
+    id("com.google.dagger.hilt.android") version "2.48" apply false
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
