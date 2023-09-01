@@ -62,13 +62,16 @@ dependencies {
 
     // Junit
     testImplementation("junit:junit:${Version.junit4}")
+    testImplementation("com.google.truth:truth:${Version.truth}")
+    testImplementation("androidx.test.ext:junit:${Version.extJunit}")
 
-    // Test
+    // Coroutine Test
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineTest}")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutineTest}")
 
     // Mockk
     testImplementation("io.mockk:mockk:${Version.mockk}")
+    androidTestImplementation("io.mockk:mockk-android:${Version.mockk}")
 
     // Live data test
     testImplementation("androidx.arch.core:core-testing:${Version.coreTesting}")
@@ -83,6 +86,7 @@ dependencies {
     androidTestImplementation("androidx.arch.core:core-testing:${Version.coreTesting}")
     androidTestImplementation("androidx.test.ext:junit:${Version.extJunit}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Version.espressoCore}")
+    androidTestImplementation("org.robolectric:robolectric:${Version.robolectic}")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:${Version.hilt}")
