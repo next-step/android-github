@@ -17,15 +17,15 @@ class GithubActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initBinding()
+        initDataBinding()
         initAdapter()
         observeRepositories()
         observeError()
 
         viewModel.getRepositories()
     }
-    
-    private fun initBinding() {
+
+    private fun initDataBinding() {
         binding = ActivityGithubBinding.inflate(layoutInflater).apply {
             viewmodel = viewModel
             lifecycleOwner = this@GithubActivity
