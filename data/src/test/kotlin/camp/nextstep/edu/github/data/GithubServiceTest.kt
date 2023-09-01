@@ -29,7 +29,7 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `test_json_요청`() = runTest {
+    fun `HTTP_요청_파싱후_첫번째_아이템이_포함되어야_한다`() = runTest {
         // given
         val response = MockResponse().setBody(File("src/test/resources/repositories.json").readText())
         server.enqueue(response)
