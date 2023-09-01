@@ -21,8 +21,8 @@ class GithubViewModel @Inject constructor(
     private val networkRepository: NetworkRepository
 ) : ViewModel() {
 
-    private val _repositories = MutableStateFlow<List<GithubRepository>>(emptyList())
-    val repositories: StateFlow<List<GithubRepository>> = _repositories.asStateFlow()
+    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     init {
         getGithubRepositories()
@@ -30,9 +30,18 @@ class GithubViewModel @Inject constructor(
 
     private fun getGithubRepositories() {
         viewModelScope.launch {
-            networkRepository.getRepositories().onSuccess { result ->
-                _repositories.value = result
-            }
+            networkRepository.getRepositories()
+                .onSuccess { result ->
+                    _uiState.value = UiState.Success(result)
+                }.onFailure {
+                    _uiState.value = UiState.Error(it.message.orEmpty())
+                }
         }
     }
+}
+
+sealed interface UiState {
+    object Loading : UiState
+    data class Success(val repositories: List<GithubRepository>) : UiState
+    data class Error(val message: String) : UiState
 }

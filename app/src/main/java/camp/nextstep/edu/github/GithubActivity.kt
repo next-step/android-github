@@ -1,6 +1,7 @@
 package camp.nextstep.edu.github
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,14 +21,29 @@ class GithubActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val repositories = githubViewModel.repositories.collectAsStateWithLifecycle()
+            val uiState = githubViewModel.uiState.collectAsStateWithLifecycle()
 
-            Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
-                HomeScreen(
-                    modifier = Modifier.padding(paddingValues),
-                    repositories = repositories.value
-                )
+            when (uiState.value) {
+                is UiState.Loading -> Unit
+                is UiState.Success -> {
+                    Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+                        HomeScreen(
+                            modifier = Modifier.padding(paddingValues),
+                            repositories = (uiState.value as? UiState.Success)?.repositories.orEmpty()
+                        )
+                    }
+                }
+
+                is UiState.Error -> {
+                    Toast.makeText(
+                        this,
+                        (uiState.value as UiState.Error).message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
+
+
         }
     }
 }
