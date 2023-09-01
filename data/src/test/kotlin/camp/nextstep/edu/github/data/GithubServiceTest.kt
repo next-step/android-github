@@ -7,6 +7,7 @@ package camp.nextstep.edu.github.data
 
 import camp.nextstep.edu.github.data.di.NetworkProvider
 import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
+import camp.nextstep.edu.github.data.retrofit.GithubNetwork
 import camp.nextstep.edu.github.data.retrofit.GithubService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest
@@ -14,6 +15,7 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
 import org.junit.Test
+import retrofit2.create
 import java.io.File
 
 
@@ -25,13 +27,15 @@ class GithubServiceTest {
     @Before
     fun setUp() {
         server = MockWebServer()
-        githubService = NetworkProvider.provideGithubService(server.url("").toString())
+        githubService = GithubNetwork(server.url("").toString()).createRetrofit()
+            .create(GithubService::class.java)
     }
 
     @Test
     fun `HTTP_요청_파싱후_첫번째_아이템이_포함되어야_한다`() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/repositories.json").readText())
+        val response =
+            MockResponse().setBody(File("src/test/resources/repositories.json").readText())
         server.enqueue(response)
 
         // when

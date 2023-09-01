@@ -10,9 +10,7 @@ import camp.nextstep.edu.github.data.toDomainModels
 import camp.nextstep.edu.github.domain.model.GithubRepository
 import camp.nextstep.edu.github.domain.repository.NetworkRepository
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 internal class DefaultNetworkRepository @Inject constructor(
     private val githubService: GithubService
 ) : NetworkRepository {

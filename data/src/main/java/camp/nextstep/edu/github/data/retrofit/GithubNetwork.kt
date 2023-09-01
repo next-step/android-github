@@ -10,7 +10,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 internal const val BASE_URL = "https://api.github.com/"
 
-internal object GithubNetwork {
+internal class GithubNetwork(private val baseUrl: String = BASE_URL) {
 
     private fun createOkhttpClient(): OkHttpClient {
         return OkHttpClient.Builder().apply {
@@ -25,7 +25,7 @@ internal object GithubNetwork {
                 .build()
         )
 
-    fun create(baseUrl: String): Retrofit {
+    fun createRetrofit(): Retrofit {
         return Retrofit.Builder()
             .client(createOkhttpClient())
             .baseUrl(baseUrl)

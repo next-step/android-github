@@ -19,8 +19,8 @@ dependencies {
     implementation("com.squareup.okhttp3:mockwebserver:4.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
-    implementation("com.google.dagger:hilt-core:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.google.dagger:hilt-core:2.44.2")
+    kapt("com.google.dagger:hilt-compiler:2.44.2")
     
     // test
     testImplementation("junit:junit:4.13.2")

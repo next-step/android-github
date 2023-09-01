@@ -15,9 +15,8 @@ internal object NetworkProvider {
 
     @Provides
     @Singleton
-    fun provideGithubService(baseUrl: String = BASE_URL): GithubService {
-        return GithubNetwork
-            .create(baseUrl)
+    fun provideGithubService(): GithubService {
+        return GithubNetwork().createRetrofit()
             .create(GithubService::class.java)
     }
 }
