@@ -46,7 +46,7 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `emptyList_응답`() = runTest {
+    fun `비어있는_결과가_내려오면_결과리스트도_빈값이어야_한다`() = runTest {
         // given
         val response = MockResponse().setBody(File("src/test/resources/emptyList.json").readText())
         server.enqueue(response)
@@ -56,5 +56,22 @@ class GithubServiceTest {
 
         // then
         assertThat(actual).isEmpty()
+    }
+
+    @Test
+    fun `결과가_에러로_내려오면_에러메시지가_내려온다`() = runTest {
+        // given
+        val response = MockResponse().setBody(File("src/test/resources/error.json").readText())
+        server.enqueue(response)
+
+        // when
+        val actual = runCatching {
+            githubService.getRepositories()
+        }
+
+        // then
+        actual.onFailure {
+            assertThat(it.message).isNotNull()
+        }
     }
 }
