@@ -46,19 +46,15 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `test_json_요청2`() = runTest {
+    fun `emptyList_응답`() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/repositories.json").readText())
+        val response = MockResponse().setBody(File("src/test/resources/emptyList.json").readText())
         server.enqueue(response)
 
         // when
         val actual = githubService.getRepositories()
 
         // then
-        val expected = GithubRepositoryResponse(
-            fullName = "jnicklas/uploadcolumn",
-            description = "UploadColumn is no longer maintained, check out CarrierWave for an alternative"
-        )
-        assertThat(actual).contains(expected)
+        assertThat(actual).isEmpty()
     }
 }
