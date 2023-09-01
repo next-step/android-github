@@ -9,7 +9,7 @@ import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
 import retrofit2.http.GET
 
 
-interface GithubService {
+internal interface GithubService {
     @GET("repositories")
     suspend fun getRepositories(): List<GithubRepositoryResponse>
 }

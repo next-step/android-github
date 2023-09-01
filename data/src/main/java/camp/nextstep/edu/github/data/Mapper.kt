@@ -8,11 +8,11 @@ package camp.nextstep.edu.github.data
 import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
 import camp.nextstep.edu.github.domain.model.GithubRepository
 
-fun List<GithubRepositoryResponse>.toDomainModels(): List<GithubRepository> {
+internal fun List<GithubRepositoryResponse>.toDomainModels(): List<GithubRepository> {
     return this.map { it.toDomainModel() }
 }
 
-fun GithubRepositoryResponse.toDomainModel(): GithubRepository {
+internal fun GithubRepositoryResponse.toDomainModel(): GithubRepository {
     return GithubRepository(
         fullName = fullName,
         description = description
