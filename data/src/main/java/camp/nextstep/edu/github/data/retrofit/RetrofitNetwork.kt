@@ -8,7 +8,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-const val BASE_URL = "https://api.github.com/"
+internal const val BASE_URL = "https://api.github.com/"
 
 internal object RetrofitNetwork {
 
