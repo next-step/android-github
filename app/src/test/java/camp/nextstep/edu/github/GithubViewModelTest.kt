@@ -2,11 +2,11 @@ package camp.nextstep.edu.github
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import camp.nextstep.edu.github.ui.GithubViewModel
+import camp.nextstep.edu.github.util.getOrAwaitValue
 import com.google.common.truth.Truth
 import com.nextstep.edu.domain.model.Repository
 import com.nextstep.edu.domain.repository.RemoteRepository
 import com.nextstep.edu.domain.usecase.GetRepositoryUseCase
-import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import io.mockk.coEvery
@@ -28,9 +28,6 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(application = HiltTestApplication::class)
 class GithubViewModelTest {
-
-    @get:Rule
-    var hiltrule = HiltAndroidRule(this)
 
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
