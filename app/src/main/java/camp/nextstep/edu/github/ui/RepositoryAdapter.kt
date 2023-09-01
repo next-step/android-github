@@ -37,7 +37,6 @@ class RepositoryAdapter : ListAdapter<Repository, RepositoryAdapter.ViewHolder>(
 
         fun bind(item: Repository) {
             binding.model = item
-            binding.executePendingBindings()
         }
     }
 
