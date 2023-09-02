@@ -65,7 +65,9 @@ class GithubServiceTest {
     @Test
     fun `결과가_에러로_내려오면_에러메시지가_내려온다`() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/error.json").readText())
+        val response = MockResponse()
+            .setBody(File("src/test/resources/error.json").readText())
+            .setResponseCode(404)
         server.enqueue(response)
 
         // when
