@@ -19,12 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import camp.nextstep.edu.github.domain.model.GithubRepository
+import camp.nextstep.edu.github.domain.model.RepositoryItem
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    repositories: List<GithubRepository>,
+    repositories: List<RepositoryItem>,
 ) {
     LazyColumn(
         modifier = modifier,
@@ -35,7 +35,7 @@ fun HomeScreen(
 }
 
 fun LazyListScope.repositoryList(
-    repositories: List<GithubRepository>
+    repositories: List<RepositoryItem>
 ) {
     itemsIndexed(repositories) { index, repository ->
         RepositoryItem(repository = repository,)
@@ -47,7 +47,7 @@ fun LazyListScope.repositoryList(
 
 @Composable
 fun RepositoryItem(
-    repository: GithubRepository
+    repository: RepositoryItem
 ) {
    Column(
      modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

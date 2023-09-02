@@ -7,11 +7,10 @@ package camp.nextstep.edu.github
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import camp.nextstep.edu.github.domain.model.GithubRepository
-import camp.nextstep.edu.github.domain.repository.NetworkRepository
+import camp.nextstep.edu.github.domain.model.RepositoryItem
+import camp.nextstep.edu.github.domain.repository.GithubRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GithubViewModel @Inject constructor(
-    private val networkRepository: NetworkRepository
+    private val githubRepository: GithubRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
@@ -36,7 +35,7 @@ class GithubViewModel @Inject constructor(
 
     private fun getGithubRepositories() {
         viewModelScope.launch {
-            networkRepository.getRepositories()
+            githubRepository.getRepositories()
                 .onSuccess { result ->
                     _uiState.value = UiState.Success(result)
                 }.onFailure {
@@ -49,7 +48,7 @@ class GithubViewModel @Inject constructor(
 
 sealed interface UiState {
     object Loading : UiState
-    data class Success(val repositories: List<GithubRepository>) : UiState
+    data class Success(val repositories: List<RepositoryItem>) : UiState
     data class Error(val message: String) : UiState
 }
 

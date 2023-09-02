@@ -6,8 +6,8 @@
 package camp.nextstep.edu.github
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import camp.nextstep.edu.github.domain.model.GithubRepository
-import camp.nextstep.edu.github.domain.repository.NetworkRepository
+import camp.nextstep.edu.github.domain.model.RepositoryItem
+import camp.nextstep.edu.github.domain.repository.GithubRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -26,14 +26,14 @@ class GithubViewModelTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var viewModel: GithubViewModel
-    private val networkRepository: NetworkRepository = mockk(relaxed = true)
+    private val githubRepository: GithubRepository = mockk(relaxed = true)
 
     @Test
     fun `GithubViewModel이 생성되면, 정상적으로 통신할 경우 GithubRepository를 가져온다`() {
         // given
-        coEvery { networkRepository.getRepositories() } returns Result.success(
+        coEvery { githubRepository.getRepositories() } returns Result.success(
             listOf(
-                GithubRepository(
+                RepositoryItem(
                     fullName = "KwonDae",
                     description = "KwonDae's repository",
                 )
@@ -41,14 +41,14 @@ class GithubViewModelTest {
         )
 
         // when
-        viewModel = GithubViewModel(networkRepository)
+        viewModel = GithubViewModel(githubRepository)
 
         // then
-        coVerify { networkRepository.getRepositories() }
+        coVerify { githubRepository.getRepositories() }
         assertThat(viewModel.uiState.value).isEqualTo(
             UiState.Success(
                 listOf(
-                    GithubRepository(
+                    RepositoryItem(
                         fullName = "KwonDae",
                         description = "KwonDae's repository",
                     )
@@ -60,13 +60,13 @@ class GithubViewModelTest {
     @Test
     fun `GithubViewModel이 생성되고, 정상적으로 통신했으나 빈값인 경우, 빈화면이 노출되어야 한다`() {
         // given
-        coEvery { networkRepository.getRepositories() } returns Result.success(emptyList())
+        coEvery { githubRepository.getRepositories() } returns Result.success(emptyList())
 
         // when
-        viewModel = GithubViewModel(networkRepository)
+        viewModel = GithubViewModel(githubRepository)
 
         // then
-        coVerify { networkRepository.getRepositories() }
+        coVerify { githubRepository.getRepositories() }
         assertThat(viewModel.uiState.value).isEqualTo(
             UiState.Success(emptyList())
         )
@@ -76,15 +76,15 @@ class GithubViewModelTest {
     fun `GithubViewModel이 생성되고, 통신이 실패하면, 에러메시지를 가져온다`() {
         // given
         val errorMessage = "통신에 실패하였습니다."
-        coEvery { networkRepository.getRepositories() } returns Result.failure(
+        coEvery { githubRepository.getRepositories() } returns Result.failure(
             Throwable(errorMessage)
         )
 
         // when
-        viewModel = GithubViewModel(networkRepository)
+        viewModel = GithubViewModel(githubRepository)
 
         // then
-        coVerify { networkRepository.getRepositories() }
+        coVerify { githubRepository.getRepositories() }
         assertThat(viewModel.uiState.value).isEqualTo(
             UiState.Error(errorMessage)
         )

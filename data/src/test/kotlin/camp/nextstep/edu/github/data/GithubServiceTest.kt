@@ -5,8 +5,7 @@
 
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.di.NetworkProvider
-import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
+import camp.nextstep.edu.github.data.response.RepositoryItemResponse
 import camp.nextstep.edu.github.data.retrofit.GithubNetwork
 import camp.nextstep.edu.github.data.retrofit.GithubService
 import com.google.common.truth.Truth.assertThat
@@ -15,7 +14,6 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Before
 import org.junit.Test
-import retrofit2.create
 import java.io.File
 
 
@@ -42,7 +40,7 @@ class GithubServiceTest {
         val actual = githubService.getRepositories()
 
         // then
-        val expected = GithubRepositoryResponse(
+        val expected = RepositoryItemResponse(
             fullName = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
