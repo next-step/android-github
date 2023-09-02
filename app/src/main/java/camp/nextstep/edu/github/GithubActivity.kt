@@ -51,7 +51,16 @@ class GithubActivity : AppCompatActivity() {
                 }
             }
 
-
+            LaunchedEffect(githubViewModel.uiEffect) {
+                githubViewModel.uiEffect.collect { effect ->
+                    when (effect) {
+                        is UiEffect.ShowToast -> {
+                            Toast.makeText(this@GithubActivity, effect.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
+            }
         }
     }
 }
