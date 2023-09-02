@@ -5,7 +5,6 @@
 
 package camp.nextstep.edu.github.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
