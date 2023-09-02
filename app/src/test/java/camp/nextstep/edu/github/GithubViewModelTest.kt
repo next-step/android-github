@@ -12,7 +12,6 @@ import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
@@ -30,7 +29,7 @@ class GithubViewModelTest {
     private val networkRepository: NetworkRepository = mockk(relaxed = true)
 
     @Test
-    fun `GithubViewModel이 생성되면, 정상적으로 통신할 경우 GithubRepository를 가져온다`() = runTest {
+    fun `GithubViewModel이 생성되면, 정상적으로 통신할 경우 GithubRepository를 가져온다`() {
         // given
         coEvery { networkRepository.getRepositories() } returns Result.success(
             listOf(
@@ -59,7 +58,7 @@ class GithubViewModelTest {
     }
 
     @Test
-    fun `GithubViewModel이 생성되고, 정상적으로 통신했으나 빈값인 경우, 빈화면이 노출되어야 한다`() = runTest {
+    fun `GithubViewModel이 생성되고, 정상적으로 통신했으나 빈값인 경우, 빈화면이 노출되어야 한다`() {
         // given
         coEvery { networkRepository.getRepositories() } returns Result.success(emptyList())
 
@@ -74,7 +73,7 @@ class GithubViewModelTest {
     }
 
     @Test
-    fun `GithubViewModel이 생성되고, 통신이 실패하면, 에러메시지를 가져온다`() = runTest {
+    fun `GithubViewModel이 생성되고, 통신이 실패하면, 에러메시지를 가져온다`() {
         // given
         val errorMessage = "통신에 실패하였습니다."
         coEvery { networkRepository.getRepositories() } returns Result.failure(
