@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -16,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "camp.nextstep.edu.github.CustomTestRunner"
     }
 
     buildTypes {
@@ -42,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
     implementation(project(":domain"))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}")
@@ -53,6 +55,32 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("androidx.fragment:fragment-ktx:${Version.fragmentKtx}")
+
+    // Coroutine Test
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineTest}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutineTest}")
+
+    // Mockk
+    testImplementation("io.mockk:mockk:${Version.mockk}")
+    androidTestImplementation("io.mockk:mockk-android:${Version.mockk}")
+
+    // Live data test
+    testImplementation("androidx.arch.core:core-testing:${Version.coreTesting}")
+
+    // Ui test
+    testImplementation("org.robolectric:robolectric:${Version.robolectic}")
+    testImplementation("androidx.test.espresso:espresso-core:${Version.espressoCore}")
+
+    // Robolectric
+    androidTestImplementation("org.robolectric:robolectric:${Version.robolectic}")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:${Version.hilt}")
+    kapt("com.google.dagger:hilt-compiler:${Version.hilt}")
+    testImplementation("com.google.dagger:hilt-android-testing:${Version.hilt}")
+    kaptTest("com.google.dagger:hilt-android-compiler:${Version.hilt}")
 }

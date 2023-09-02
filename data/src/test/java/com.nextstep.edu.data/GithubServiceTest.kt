@@ -34,17 +34,18 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `getRepositories 호출`() = testScope.runTest {
+    fun `getRepositories 호출시 결과의 첫번째는 mojombo grit의 정보이다`() = testScope.runTest {
         // given : githubRepositories.json 파일이 주어졌을 때
         val response = MockResponse()
             .setBody(File("src/test/resources/githubRepositories.json").readText())
         server.enqueue(response)
 
-        // when : getRepositories() 를 요청 하면
+        // when : getRepositories() 를 요청하면
         val actual = service.getRepositories()
 
-        // then : 결과의 첫번째의 full_name은 mojombo/grit 이다.
+        // then : 결과의 첫번째는 mojombo/grit의 정보이다.
         val expected = RepositoryResponse(
+            id = 1,
             fullName = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
@@ -52,17 +53,18 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `getRepositories 호출2`() = testScope.runTest {
+    fun `getRepositories 호출시 결과의 두번째의 wycats merb-core의 정보이다`() = testScope.runTest {
         // given : githubRepositories.json 파일이 주어졌을 때
         val response = MockResponse()
             .setBody(File("src/test/resources/githubRepositories.json").readText())
         server.enqueue(response)
 
-        // when : getRepositories() 를 요청 하면
+        // when : getRepositories() 를 요청하면
         val actual = service.getRepositories()
 
-        // then : 결과의 두번째의 full_name은 wycats/merb-core 이다.
+        // then : 결과의 두번째는 wycats/merb-core의 정보이다.
         val expected = RepositoryResponse(
+            id = 26,
             fullName = "wycats/merb-core",
             description = "Merb Core: All you need. None you don't."
         )
