@@ -5,15 +5,15 @@
 
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
-import camp.nextstep.edu.github.domain.model.GithubRepository
+import camp.nextstep.edu.github.data.response.RepositoryItemResponse
+import camp.nextstep.edu.github.domain.model.RepositoryItem
 
-internal fun List<GithubRepositoryResponse>.toDomainModels(): List<GithubRepository> {
+internal fun List<RepositoryItemResponse>.toDomainModels(): List<RepositoryItem> {
     return this.map { it.toDomainModel() }
 }
 
-internal fun GithubRepositoryResponse.toDomainModel(): GithubRepository {
-    return GithubRepository(
+internal fun RepositoryItemResponse.toDomainModel(): RepositoryItem {
+    return RepositoryItem(
         fullName = fullName,
         description = description
     )

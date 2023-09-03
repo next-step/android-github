@@ -5,8 +5,8 @@
 
 package camp.nextstep.edu.github.data
 
-import camp.nextstep.edu.github.data.di.NetworkProvider
-import camp.nextstep.edu.github.data.response.GithubRepositoryResponse
+import camp.nextstep.edu.github.data.response.RepositoryItemResponse
+import camp.nextstep.edu.github.data.retrofit.GithubNetwork
 import camp.nextstep.edu.github.data.retrofit.GithubService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest
@@ -25,20 +25,22 @@ class GithubServiceTest {
     @Before
     fun setUp() {
         server = MockWebServer()
-        githubService = NetworkProvider.provideGithubService(server.url("").toString())
+        githubService = GithubNetwork(server.url("").toString()).createRetrofit()
+            .create(GithubService::class.java)
     }
 
     @Test
-    fun `test_json_요청`() = runTest {
+    fun `HTTP_요청_파싱후_첫번째_아이템이_포함되어야_한다`() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/repositories.json").readText())
+        val response =
+            MockResponse().setBody(File("src/test/resources/repositories.json").readText())
         server.enqueue(response)
 
         // when
         val actual = githubService.getRepositories()
 
         // then
-        val expected = GithubRepositoryResponse(
+        val expected = RepositoryItemResponse(
             fullName = "mojombo/grit",
             description = "**Grit is no longer maintained. Check out libgit2/rugged.** Grit gives you object oriented read/write access to Git repositories via Ruby."
         )
@@ -46,19 +48,34 @@ class GithubServiceTest {
     }
 
     @Test
-    fun `test_json_요청2`() = runTest {
+    fun `비어있는_결과가_내려오면_결과리스트도_빈값이어야_한다`() = runTest {
         // given
-        val response = MockResponse().setBody(File("src/test/resources/repositories.json").readText())
+        val response = MockResponse().setBody(File("src/test/resources/emptyList.json").readText())
         server.enqueue(response)
 
         // when
         val actual = githubService.getRepositories()
 
         // then
-        val expected = GithubRepositoryResponse(
-            fullName = "jnicklas/uploadcolumn",
-            description = "UploadColumn is no longer maintained, check out CarrierWave for an alternative"
-        )
-        assertThat(actual).contains(expected)
+        assertThat(actual).isEmpty()
+    }
+
+    @Test
+    fun `결과가_에러로_내려오면_에러메시지가_내려온다`() = runTest {
+        // given
+        val response = MockResponse()
+            .setBody(File("src/test/resources/error.json").readText())
+            .setResponseCode(404)
+        server.enqueue(response)
+
+        // when
+        val actual = runCatching {
+            githubService.getRepositories()
+        }
+
+        // then
+        actual.onFailure {
+            assertThat(it.message).isNotNull()
+        }
     }
 }
