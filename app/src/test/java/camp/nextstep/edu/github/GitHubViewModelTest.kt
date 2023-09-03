@@ -3,6 +3,7 @@ package camp.nextstep.edu.github
 import com.example.github_data.GitHubApi
 import com.example.github_data.room.GithubRepoEntity
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
@@ -31,6 +32,7 @@ class GitHubViewModelTest {
             .create()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `MockWebServer를 활용하여 getGitHubInfo() 요청을 검증한다`() = runTest(UnconfinedTestDispatcher()) {
         // given : MockResponse을 활용해 서버 응답을 세팅해둔다.
