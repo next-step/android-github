@@ -42,6 +42,4 @@ dependencies{
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("androidx.room:room-runtime:2.5.2")
     kapt ("androidx.room:room-compiler:2.5.2")
-
-    testImplementation("io.projectreactor:reactor-test")
 }
