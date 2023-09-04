@@ -15,6 +15,8 @@ dependencies {
 	implementation("com.squareup.okhttp3:okhttp:4.9.3")
 	implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
+	testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
+	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 	testImplementation("junit:junit:4.13.2")
 	testImplementation("com.google.truth:truth:1.1.3")
 }
