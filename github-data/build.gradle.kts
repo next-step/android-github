@@ -31,6 +31,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies{
@@ -41,5 +47,14 @@ dependencies{
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("androidx.room:room-runtime:2.5.2")
+    implementation("com.squareup.okhttp3:mockwebserver:4.11.0")
+    implementation("androidx.test:core-ktx:1.5.0")
+
     kapt ("androidx.room:room-compiler:2.5.2")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation ("org.robolectric:robolectric:4.9")
+
 }

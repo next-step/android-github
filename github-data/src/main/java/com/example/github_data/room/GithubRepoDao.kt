@@ -1,11 +1,10 @@
 package com.example.github_data.room
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.example.github_domain.GithubRepoData
+import com.example.githubdomain.GithubRepoData
 
 @Dao
 interface GithubRepoDao {
@@ -21,5 +20,5 @@ interface GithubRepoDao {
     fun deleteAllGithubRepo()
 
     @Query("SELECT * FROM githubRepo")
-    fun getGitHubRepo(): List<GithubRepoData>
+    fun getGitHubRepo(): List<GithubRepoEntity>
 }

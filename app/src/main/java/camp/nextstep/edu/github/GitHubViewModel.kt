@@ -1,14 +1,8 @@
 package camp.nextstep.edu.github
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.github_domain.GitHubRepository
-import kotlinx.coroutines.launch
+import com.example.githubdomain.GitHubRepository
 
-class GitHubViewModel(private val gitHubRepository: GitHubRepository) : ViewModel() {
+class GitHubViewModel : ViewModel() {
 
-    fun insertGitHubRepository() {
-        gitHubRepository.insertGitHubRepository()
-    }
 }

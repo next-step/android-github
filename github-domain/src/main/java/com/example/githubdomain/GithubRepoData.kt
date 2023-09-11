@@ -1,7 +1,7 @@
-package com.example.github_domain
+package com.example.githubdomain
 
 data class GithubRepoData(
     val id: String,
-    val full_name: String,
+    val fullName: String,
     val description: String
 )

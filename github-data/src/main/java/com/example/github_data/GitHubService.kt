@@ -3,7 +3,7 @@ package com.example.github_data
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object GitHubService {
+internal object GitHubService {
     private val BASE_URL = "https://api.github.com"
 
     fun getGitHubService(): GitHubApi {
