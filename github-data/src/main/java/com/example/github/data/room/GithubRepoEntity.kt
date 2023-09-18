@@ -1,4 +1,4 @@
-package com.example.github_data.room
+package com.example.github.data.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,14 +9,11 @@ import com.google.gson.annotations.SerializedName
 data class GithubRepoEntity(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    @SerializedName("id")
-    val id: String,
+    val id: Int,
 
     @ColumnInfo(name = "fullName")
-    @SerializedName("full_name")
     val fullName: String,
 
     @ColumnInfo(name = "description")
-    @SerializedName("description")
     val description: String?
 )

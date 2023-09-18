@@ -1,10 +1,9 @@
-package com.example.github_data.room
+package com.example.github.data.room
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.example.githubdomain.GithubRepoData
 
 @Dao
 interface GithubRepoDao {

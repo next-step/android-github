@@ -1,4 +1,4 @@
-package com.example.github_data.room
+package com.example.github.data.room
 
 import android.content.Context
 import androidx.room.Database
