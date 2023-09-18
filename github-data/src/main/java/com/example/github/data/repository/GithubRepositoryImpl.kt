@@ -5,7 +5,6 @@ import com.example.github.data.repository.local.LocalGithubDataSource
 import com.example.github.data.repository.remote.RemoteGithubDataSource
 import com.example.githubdomain.GitHubRepository
 import com.example.githubdomain.GithubRepoData
-import java.net.SocketTimeoutException
 
 internal class GithubRepositoryImpl(
     private val localGithubDataSource: LocalGithubDataSource,

@@ -140,7 +140,7 @@ class GithubRepositoryImplTest {
 
         assertThat(githubRepositoryImpl.isEmptyLocalData()).isEqualTo(true)
 
-        // when : GitHubRepoData를 받아온다
+        // when : MockWebServer에 HTTP통신 요청을 한다.
         githubRepositoryImpl.getGitHubRepoData()
 
         // then :
@@ -176,51 +176,6 @@ class GithubRepositoryImplTest {
         }
 
     @Test
-    fun `githubRepo_json을 내려줄 때, 정상 응답이 아니라면 공백 리스트 값을 반환해야한다`() =
-        runTest(UnconfinedTestDispatcher()) {
-            // given : MockResponse을 활용해 서버 응답을 세팅해둔다.
-            val response = MockResponse()
-                .setBody(File("src/test/resources/githubRepo.json").readText())
-                .setResponseCode(500)
-
-            server.enqueue(response)
-
-            // when : MockWebServer에 HTTP통신 요청을 한다.
-            val actual = githubRepositoryImpl.getGitHubRepoData()
-
-            // then : 응답 받은 값과 비교한다.
-            assertThat(actual).isEmpty()
-        }
-
-    @Test
-    fun `Json 파싱이 잘못 됐을 때, 공백 리스트 값을 반환해야한다`() =
-        runTest(UnconfinedTestDispatcher()) {
-            // given : 네트워크 연결 끊김
-            val response = MockResponse()
-                .setBody("Invalid JSON")
-
-            server.enqueue(response)
-
-            // when : MockWebServer에 HTTP통신 요청을 한다.
-            val actual = githubRepositoryImpl.getGitHubRepoData()
-
-            // then : 응답 받은 값과 비교한다.
-            assertThat(actual).isEmpty()
-        }
-
-    @Test
-    fun `네트워크 연결이 끊겨있으면, 정상 응답이 아니라면 공백 리스트 값을 반환해야한다`() =
-        runTest(UnconfinedTestDispatcher()) {
-            // given : 네트워크 연결 끊김
-
-            // when : MockWebServer에 HTTP통신 요청을 한다.
-            val actual = githubRepositoryImpl.getGitHubRepoData()
-
-            // then : 응답 받은 값과 비교한다.
-            assertThat(actual).isEmpty()
-        }
-
-    @Test
     fun `emptyGithubRepo_Json을 내려줄 때, GitHubRepoData를 받아오면 올바른 결과값을 반환해야한다`() =
         runTest(UnconfinedTestDispatcher()) {
             // given : MockResponse을 활용해 서버 응답을 세팅해둔다.
@@ -236,5 +191,50 @@ class GithubRepositoryImplTest {
             // then : 응답 받은 값과 비교한다.
             val expected = listOf<GithubRepoData>()
             assertThat(actual).isEqualTo(expected)
+        }
+
+    @Test
+    fun `githubRepo_json을 내려줄 때, 정상 응답이 아니라면 공백 리스트 값을 반환해야한다`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // given : MockResponse에서 500 에러코드를 발생하도록 세팅해둔다
+            val response = MockResponse()
+                .setBody(File("src/test/resources/githubRepo.json").readText())
+                .setResponseCode(500)
+
+            server.enqueue(response)
+
+            // when : MockWebServer에 HTTP통신 요청을 한다.
+            val actual = githubRepositoryImpl.getGitHubRepoData()
+
+            // then : 통신 에러 시 빈값을 받아온다.
+            assertThat(actual).isEmpty()
+        }
+
+    @Test
+    fun `Json 파싱이 잘못 됐을 때, 공백 리스트 값을 반환해야한다`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // given : MockResponse에서 JSON 파싱 에러를 설정해둔다.
+            val response = MockResponse()
+                .setBody("Invalid JSON")
+
+            server.enqueue(response)
+
+            // when : MockWebServer에 HTTP통신 요청을 한다.
+            val actual = githubRepositoryImpl.getGitHubRepoData()
+
+            // then : JSON 파싱 에러 시 빈값을 받아온다.
+            assertThat(actual).isEmpty()
+        }
+
+    @Test
+    fun `네트워크 연결이 끊겨있으면, 정상 응답이 아니라면 공백 리스트 값을 반환해야한다`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // given : 네트워크 연결을 하지 않는다.
+
+            // when : MockWebServer에 HTTP통신 요청을 한다.
+            val actual = githubRepositoryImpl.getGitHubRepoData()
+
+            // then : 네트워크 타임아웃 에러 시 빈값을 받아온다.
+            assertThat(actual).isEmpty()
         }
 }
